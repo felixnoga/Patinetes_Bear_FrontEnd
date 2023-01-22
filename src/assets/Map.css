@@ -1,0 +1,29 @@
+.Map{
+    position:relative;
+    width: 40vw;
+    height: 40vh;
+}
+
+.Map-div--sidebar{
+    background-color: rgba(35, 55, 75, 0.9);
+    width: fit-content;
+    height: fit-content;
+    color: #fff;
+    z-index: 1;
+    position: absolute;
+    margin: 0.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    border-radius: 4px;    
+}
+
+.Map-p{
+    width:100%;
+    height: 100%;
+    font-size: 0.6em;
+    /* margin: 0.5em, 1em; */
+}
+
+.Marker-icon{
+    width: 2rem;
+}
