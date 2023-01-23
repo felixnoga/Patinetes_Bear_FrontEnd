@@ -1,0 +1,52 @@
+.AsideMenu-div{
+    position: absolute;
+    height: 100%;
+    z-index: 4;
+}
+.AsideMenu-div.isActive{
+    width:100%;
+}
+
+.AsideMenu-icon--Menu{
+    width: fit-content;
+}
+
+.AsideMenu-icon--Menu.isActive {
+    position: absolute;
+    left: 0;
+    width: fit-content;
+
+}
+
+.AsideMenu{
+    position: absolute;
+    top:0;
+    width: 0vw;
+    height: 100%;
+    overflow: hidden;
+    transition: all 1s ease;  
+    background-color: aliceblue;
+    z-index: 2;
+}
+
+.AsideMenu.isActive{
+    width: 20vw;
+ 
+}
+
+.AsideMenu-div-headericon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.AsideMenu-div--Background{
+    width: 0vw;
+    transition: all 1s ease;
+}
+.AsideMenu-div--Background.isActive{
+    display: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: #0000006d;
+    z-index: 1;
+}

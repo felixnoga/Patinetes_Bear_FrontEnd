@@ -170,7 +170,7 @@ body {
   /*igual pero en Edge*/
   hyphens: auto;
   /* opcional */
-  font-smooth: always;
+  /* font-smooth: always; */
   /*reduce bordes dentados y mejora la calidad de las letras*/
   /* opcional */
   -webkit-font-smoothing: antialiased;

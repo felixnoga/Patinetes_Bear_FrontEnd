@@ -1,15 +1,15 @@
 import './App.css';
 import Map from './Components/Map';
 import Map2 from './Components/Map2';
+import AsideMenu from "./Components/AsideMenu";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Patinetes Bear</h1>
-        <Map/>
+        {/* <Map/> */}
       </header>
-      <h2>React-map-gl</h2>
+      <AsideMenu/>
       <Map2/>
     </div>
   );

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useLayoutEffect, useState } from "react";
 
 const useLoc= ()=> {
@@ -8,18 +9,28 @@ const useLoc= ()=> {
     const handleLoc= (e)=> {
         setLat(e.coords.latitude)
         setLng(e.coords.longitude)
+        console.log(e)
     }
     const handleError= (error)=> {
         setError(error)
+        console.log(error.code)
     }
-    //Genera errores usar el useLayout o useEffect
+    // // Genera errores usar el useLayout o useEffect
     // useLayoutEffect(()=> {
     //     navigator.geolocation.getCurrentPosition(handleLoc, handleError)
     // },[]) 
-
-    navigator.geolocation.watchPosition(
+    useEffect( ()=>{
+    if(navigator.geolocation){
+    const watchLoc= navigator.geolocation.watchPosition(
         handleLoc,
-        handleError)
+        handleError,
+        { enableHighAccuracy: false,
+            timeout: 5000,
+            maximumAge: 0
+        });
+    return (
+    () => navigator.geolocation.clearWatch(watchLoc))
+    }}, [])
 
     return {
         lat,
