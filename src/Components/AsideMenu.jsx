@@ -1,8 +1,10 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import "../assets/AsideMenu.css"
-import { CgArrowsExchangeAltV, CgMenu } from "react-icons/cg";
-import {GiKickScooter } from "react-icons/gi";
+import { CgArrowsExchangeAltV, CgMenu, CgTime, CgCreditCard  } from "react-icons/cg";
+import { GiKickScooter} from "react-icons/gi";
+import { HiQuestionMarkCircle, HiOutlineShieldCheck } from "react-icons/hi2";
+import { SlSettings } from "react-icons/sl";
 
 const AsideMenu= ()=>  {
     const [toggle, setToggle]= useState(false)
@@ -17,7 +19,7 @@ const AsideMenu= ()=>  {
                 <div className={`AsideMenu-div--Background ${toggle && "isActive" }`} onClick={handleToggle}>
                     </div>
                  <div className={`AsideMenu ${toggle && "isActive" }`}>
-                    <h2 className="AsideMenu-h2">HEY USER</h2>
+                    <h2 className="AsideMenu-h2">Hey User</h2>
                     <div className="AsideMenu-div--header">
                         {/* <Link to="/kilometros" className="AsideMenu-Link--headericon"> */}
                             <div className="AsideMenu-div-headericon">
@@ -34,19 +36,24 @@ const AsideMenu= ()=>  {
 
                     </div>
                     {/* <Link to="/historial" className="AsideMenu-link"> */}
-                        <h4 className="AsideMenu-h4">Historial</h4>
+                    <div className="AsideMenu-div--link"> <CgTime className="AsideMenu-icon" />
+                        <h4 className="AsideMenu-h4">Historial</h4> </div>
                      {/* </Link> */}
                     {/* <Link to="/forma_pago" className="AsideMenu-link"> */}
-                            <h4 className="AsideMenu-h4">Forma de Pago</h4>
+                    <div className="AsideMenu-div--link"><CgCreditCard className="AsideMenu-icon" />
+                            <p className="AsideMenu-h4">Forma de Pago</p></div>
                          {/* </Link> */}
                     {/* <Link to="/ayuda" className="AsideMenu-link"> */}
-                            <h4 className="AsideMenu-h4">Ayuda</h4>
+                    <div className="AsideMenu-div--link"><HiQuestionMarkCircle className="AsideMenu-icon" />
+                            <h4 className="AsideMenu-h4">Ayuda</h4></div>
                     {/* </Link> */}
                     {/* <Link to="/seguridad" className="AsideMenu-link"> */}
-                        <h4 className="AsideMenu-h4">Centro de Seguridad</h4>
+                    <div className="AsideMenu-div--link"><HiOutlineShieldCheck className="AsideMenu-icon"/>
+                        <h4 className="AsideMenu-h4">Centro de Seguridad</h4></div>
                     {/* </Link> */}
                     {/* <Link to="/ajustes" className="AsideMenu-link"> */}
-                        <h4 className="AsideMenu-h4">Ajustes</h4>
+                    <div className="AsideMenu-div--link"><SlSettings className="AsideMenu-icon" />
+                        <h4 className="AsideMenu-h4">Ajustes</h4></div>
                     {/* </Link> */}
             
                 </div>

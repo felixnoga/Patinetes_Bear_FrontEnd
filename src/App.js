@@ -9,8 +9,9 @@ function App() {
       <header className="App-header">
         {/* <Map/> */}
       </header>
+      <home/>
       <AsideMenu/>
-      <Map2/>
+      {/* <Map2/> */}
     </div>
   );
 }

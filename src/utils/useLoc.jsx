@@ -7,9 +7,9 @@ const useLoc= ()=> {
     const [error, setError]= useState()
 
     const handleLoc= (e)=> {
-        setLat(e.coords.latitude)
-        setLng(e.coords.longitude)
-        console.log(e)
+        setLat(e.coords.latitude);
+        setLng(e.coords.longitude);
+        console.log(e.coords)
     }
     const handleError= (error)=> {
         setError(error)
@@ -20,17 +20,17 @@ const useLoc= ()=> {
     //     navigator.geolocation.getCurrentPosition(handleLoc, handleError)
     // },[]) 
     useEffect( ()=>{
-    if(navigator.geolocation){
+    if(!navigator.geolocation){
+        return setError( "No hay ubicacion disponible")
+    }
     const watchLoc= navigator.geolocation.watchPosition(
         handleLoc,
         handleError,
-        { enableHighAccuracy: false,
-            timeout: 5000,
-            maximumAge: 0
+        { enableHighAccuracy: true,
         });
     return (
     () => navigator.geolocation.clearWatch(watchLoc))
-    }}, [])
+    },[])
 
     return {
         lat,
