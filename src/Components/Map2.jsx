@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import Map, {Marker} from "react-map-gl"
 import useLoc from "../utils/useLoc";
-import AsideMenu from "./AsideMenu";
 import Marks from "../utils/Marks.json"
 import { MdNavigation } from "react-icons/md";
 import "../assets/Map.css"
