@@ -1,12 +1,13 @@
 import Map2 from './Map2';
 import AsideMenu from "./AsideMenu";
 
-export const Home = ()=> {
+const Home = () => {
 
-    return(
+    return (
         <>
             <AsideMenu />
-            <Map2/>
+            <Map2 />
         </>
     )
 }
+export default Home
