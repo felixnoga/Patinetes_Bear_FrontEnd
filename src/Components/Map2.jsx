@@ -1,12 +1,13 @@
 import { useState, useRef} from "react";
 import Map, {Marker, GeolocateControl} from "react-map-gl"
-import useLoc from "../utils/useLoc";
+// import useLoc from "../utils/useLoc";
 import Marks from "../utils/Marks.json"
 import { MdNavigation } from "react-icons/md";
 import "../assets/Map.css"
 
 const Map2= () => {
 // pendiente intentar crear un useLoc solo con current position para encuadrar el mapa al empezar.
+    // const {lat,lng, error}= useLoc()
     const initialViewState ={
             latitude: 40.4,
             longitude: -3.68,
@@ -18,7 +19,7 @@ const Map2= () => {
     const centerView = ((e = 40.4, i = -3.68) => {
         map2ref.current?.flyTo({ center: [i, e], zoom:15, duration: 2000 });
     })
-
+// FUNCION IS NEAR comprobará la cercania de los puntos.
     const isNear= (e)=>{
         console.log(e.coords.latitude, e.coords.longitude)
     }
@@ -56,7 +57,7 @@ const Map2= () => {
             </Map>
             <button onClick={()=> 
                 centerView(40.4, -3.68)} 
-                className="Map-icon--navcenter" >center</button>
+                className="Map-icon--navcenter">center</button>
             <MdNavigation className="Map-icon--nav"/>
         </div>
     )
