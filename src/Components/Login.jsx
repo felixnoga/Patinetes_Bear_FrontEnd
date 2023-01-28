@@ -10,7 +10,7 @@ const Login=() => {
         toHome("/")
     }
         return(
-            <button onClick={handleClick}>Botonaco</button>
+            <button onClick={handleClick}> PULSA PARA LOGIN!!!</button>
         )
 
 }
