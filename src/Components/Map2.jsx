@@ -1,7 +1,8 @@
-import { useState, useRef} from "react";
+import { useRef} from "react";
 import Map, {Marker, GeolocateControl} from "react-map-gl"
 // import useLoc from "../utils/useLoc";
 import Marks from "../utils/Marks.json"
+import TenMinLayer from "./Mapcomponents/TenMinLayer"
 import { MdNavigation } from "react-icons/md";
 import "../assets/Map.css"
 
@@ -31,13 +32,14 @@ const Map2= () => {
     return (
         <div className="Map">
             <Map
+            reuseMaps
             ref={map2ref}
             initialViewState= {initialViewState}
             mapStyle={"mapbox://styles/mapbox/streets-v9"}
             mapboxAccessToken= {process.env.REACT_APP_MAP_PUBLIC_TOKEN}
             cursor="auto"
             // activa la geolocalizacion al cargar el mapa directamente
-            onLoad={activeControl}
+            // onLoad={activeControl}
             >
                 {/* Geolocalizacion con funcion para usar de trigger por cercania */}
                 <GeolocateControl position="top-right"
@@ -54,6 +56,7 @@ const Map2= () => {
                             onClick={() => centerView(point.geometry.lat, point.geometry.lng)}>
                         <img className="Marker-icon"src="/30.png"></img>
                 </Marker>)}
+                <TenMinLayer/>
             </Map>
             <button onClick={()=> 
                 centerView(40.4, -3.68)} 
