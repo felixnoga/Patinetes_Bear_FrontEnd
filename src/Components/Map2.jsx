@@ -1,12 +1,17 @@
 import { useRef} from "react";
-import Map, {Marker, GeolocateControl} from "react-map-gl"
+import Map, {GeolocateControl} from "react-map-gl"
+import { useTripContext } from "../context/tripContext";
 // import useLoc from "../utils/useLoc";
-import Marks from "../utils/Marks.json"
+import Marks from "./Mapcomponents/Marks";
 import TenMinLayer from "./Mapcomponents/TenMinLayer"
 import { MdNavigation } from "react-icons/md";
 import "../assets/Map.css"
+import { useCallback } from "react";
 
 const Map2= () => {
+    const map2ref= useRef()
+    const geoControl=useRef()
+    const {select, setScooter, updatePos, userPosition}= useTripContext()
 // pendiente intentar crear un useLoc solo con current position para encuadrar el mapa al empezar.
     // const {lat,lng, error}= useLoc()
     const initialViewState ={
@@ -14,15 +19,21 @@ const Map2= () => {
             longitude: -3.68,
             zoom:12,
         }
-    const map2ref= useRef()
-    const geoControl=useRef()
-
-    const centerView = ((e = 40.4, i = -3.68) => {
-        map2ref.current?.flyTo({ center: [i, e], zoom:15, duration: 2000 });
-    })
+        //useCallback ya que se pasa a un elemento hijo, la funcion no cambiará ,asi se evitan renderizados innecesarios
+    const centerView = useCallback((e) => {
+        map2ref.current?.flyTo(
+            { center: [e.geometry.lng, e.geometry.lat], zoom:15, duration: 2000 });
+        setScooter(e)
+        select();
+        console.log(e)
+    },[])
 // FUNCION IS NEAR comprobará la cercania de los puntos.
-    const isNear= (e)=>{
-        console.log(e.coords.latitude, e.coords.longitude)
+    const currentPos= (e)=>{
+        const [lng, lat]= userPosition
+        //La comparacion evita peticiones dobles en layer y re renderizados.
+        if(lng !== e.longitude && lat !== e.latitude ){
+            updatePos(e.longitude, e.latitude)
+            console.log(e.latitude, e.longitude)}
     }
     const activeControl= ()=>{
         if(geoControl)
@@ -45,17 +56,8 @@ const Map2= () => {
                 <GeolocateControl position="top-right"
                     trackUserLocation="true"
                     ref= {geoControl}
-                    onGeolocate={e=>isNear(e)}/>
-
-                {Marks?.features?.map((point) => 
-                    <Marker
-                    key={point.properties.id}
-                    longitude={point.geometry.lng}
-                    latitude={point.geometry.lat}
-                    color= "yellow" 
-                            onClick={() => centerView(point.geometry.lat, point.geometry.lng)}>
-                        <img className="Marker-icon"src="/30.png"></img>
-                </Marker>)}
+                    onGeolocate={e=>currentPos(e.coords)}/>
+                <Marks onClick={centerView}/>
                 <TenMinLayer/>
             </Map>
             <button onClick={()=> 
