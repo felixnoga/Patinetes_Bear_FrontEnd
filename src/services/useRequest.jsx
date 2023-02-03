@@ -7,7 +7,7 @@ const useRequest= ()=>{
     try {
         const payload= await mapboxReq.getDirection(lng, lat);
             if (payload.status === 200) {
-                const dir = payload.data.features[0].place_name
+                const dir = [payload.data.features[0].text, payload.data.features[0].address ]
                 return dir
     }} catch(error){
         return 

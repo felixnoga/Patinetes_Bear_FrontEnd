@@ -9,13 +9,6 @@ const TenMinLayer = memo(()=>{
     const [layer, setLayer]= useState(false)
     const {getIso}= useRequest()
 
-    // const updateIso = useCallback(async () => {
-    //     if(userPosition && !isSelected){
-    //         const [lng, lat] = userPosition;
-    //         const payload = await getIso(lng, lat);
-    //         setLayer(payload)}
-    // })
-
     useEffect(()=>{ 
         if (userPosition.length && !isSelected){
             const updateIso = async () => {

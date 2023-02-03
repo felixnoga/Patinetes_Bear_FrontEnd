@@ -10,7 +10,7 @@ import { useCallback } from "react";
 
 const Map2= () => {
     const map2ref= useRef()
-    const geoControl=useRef()
+    const geoControl= useRef()
     const {select, setScooter, updatePos, userPosition}= useTripContext()
 // pendiente intentar crear un useLoc solo con current position para encuadrar el mapa al empezar.
     // const {lat,lng, error}= useLoc()

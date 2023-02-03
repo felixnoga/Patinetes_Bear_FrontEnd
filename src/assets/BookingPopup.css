@@ -38,7 +38,7 @@
 }
 .Bookingpp-div--logo{
     position: relative;
-    left: calc(50vw - 1.5em);
+    left: calc(50vw - 2.5em);
     top: 1.5em;
     border-radius: 50%;
     background-color: white;
@@ -53,6 +53,8 @@
     width: 4.5em;
 }
 .Bookingpp-div--info{
+    display: flex;
+    flex-direction: column;
     width:100%;
     background-color: white;
     padding: 2em;
@@ -60,5 +62,13 @@
     align-items: center;
     justify-content: center;
     gap: 1em;
+    font-size: 0.8rem;
+    border-top-left-radius: 20em 15em;
+    border-top-right-radius: 20em 15em;
 }
-.Bookingpp-div--prop{}
+.Bookingpp-div--prop{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

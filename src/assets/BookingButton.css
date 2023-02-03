@@ -1,0 +1,27 @@
+.BookingButton-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F4BC68;
+    border-radius: 50%;
+    width: 7em;
+    height: 7em;
+    box-shadow: 0 0 .5em black
+}
+.BookingButton-button{
+    color: #F4BC68;
+    background-color: green;
+    font-size:0.8rem;
+    font-weight: 600;
+    border-radius: 50%;
+    border: 0.1em solid black;
+    width: 5.5em;
+    height: 5.5em;
+    box-shadow: 0 0 1em black
+}
+.BookingButton-button:active {
+    box-shadow: 0 0 0.8em inset black
+}
+.BookingButton-button--cancel{
+    background-color: rgb(255, 0, 0);
+}

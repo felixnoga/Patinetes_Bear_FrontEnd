@@ -5,6 +5,7 @@ export const TripWrapper = ({ children }) => {
     const [isSelected, setIsSelected] = useState(false)
     const [scooter, setScooter]= useState({})
     const [userPosition, setUserPosition]= useState([])
+    const [isBooked, setIsBooked]= useState(false)
 
     const select = () => {
         setIsSelected(true)
@@ -15,6 +16,9 @@ export const TripWrapper = ({ children }) => {
     const updatePos= (lng, lat)=>{
         setUserPosition([lng, lat])
     }
+    const updateBook= ()=>{
+        setIsBooked(!isBooked)
+    }
 
     return (
         <TripContext.Provider value={({
@@ -24,7 +28,9 @@ export const TripWrapper = ({ children }) => {
             select,
             unSelect,
             userPosition,
-            updatePos
+            updatePos,
+            isBooked,
+            updateBook
         })}>
             {children}
         </TripContext.Provider>

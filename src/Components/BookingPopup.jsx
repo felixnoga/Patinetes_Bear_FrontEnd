@@ -1,7 +1,8 @@
 import { useTripContext } from "../context/tripContext"
+import { useState, useEffect, useCallback } from "react"
+import BookingButton from "./BookingButton"
 import useRequest from "../services/useRequest"
 import "../assets/BookingPopup.css" 
-import { useState, useEffect, useCallback } from "react"
 
 const BookingPopup = ()=>{
     const {isSelected, scooter, unSelect}= useTripContext()
@@ -12,7 +13,8 @@ const BookingPopup = ()=>{
         if (scooter.geometry){
             const {lng, lat}= scooter.geometry
             const payload = await getDirection(lng, lat)
-            setDirection(payload)
+            const adress = payload.join(", ")
+            setDirection(adress)
         }
     })
 
@@ -37,15 +39,15 @@ const BookingPopup = ()=>{
                         <img className="Bookingpp-img" src="/30.png" alt="Bear logo"></img>
                     </div>
                     <div className="Bookingpp-div--info">
-                        <h4 className="Bookingpp-h4">
+                        <div className="Bookingpp-div--prop">
+                            <h4 className="Bookingpp-h4">
                             Scooter {scooter.properties.id}
-                        </h4>
-                        <div className="Bookingpp-div--prop">
-                            <h5> {`nivel de batería ${scooter.properties.battery}%`}</h5>
+                            </h4>
+                            <h5> {`nivel de batería ${scooter.properties.battery}%`}
+                            </h5>
+                            <h5> {direction ? direction : "Loading..." }</h5> 
                         </div>
-                        <div className="Bookingpp-div--prop">
-                            <h5> {direction && isSelected ? direction : direction ? "Loading..." : "Closing..."}</h5>
-                        </div>
+                        <BookingButton/>
                     </div>
                 </div> }
             </div>
