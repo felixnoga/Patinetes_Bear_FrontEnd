@@ -5,7 +5,7 @@ import useRequest from "../services/useRequest"
 import "../assets/BookingPopup.css" 
 
 const BookingPopup = ()=>{
-    const {isSelected, scooter, unSelect}= useTripContext()
+    const {isSelected, scooter, unSelect, isBooked}= useTripContext()
     const [direction, setDirection]= useState(false)
     const {getDirection}= useRequest()
 
@@ -30,9 +30,10 @@ const BookingPopup = ()=>{
 
 
     return (
-        <div className={`Bookingpp-div ${isSelected && "isActive"}`}>
-                <div className={`Bookingpp-div--background ${isSelected && "isActive"}`}
-                 onClick={unSelect}></div>
+        <div className={`Bookingpp-div ${isSelected && "isActive"}
+                             ${isBooked && "Bookingpp-div--booked"}`  }>
+                {!isBooked && <div className={`Bookingpp-div--background ${isSelected && "isActive"}`}
+                 onClick={unSelect}></div>}
                 {scooter.type  &&
                 <div className="Bookingpp-div--main">
                     <div className="Bookingpp-div--logo">

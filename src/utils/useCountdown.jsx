@@ -1,7 +1,7 @@
 import { useState, useRef} from "react";
 
-const useCountdown= ()=>{
-    const [countdown, setCountdown]= useState(600)
+const useCountdown= (p)=>{
+    const [countdown, setCountdown]= useState(p)
 
     const interval= useRef()
 

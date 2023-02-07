@@ -4,7 +4,8 @@ import "../assets/BookingButton.css"
 
 const BookingButton= ()=>{
     const {isBooked, updateBook}= useTripContext()
-    const { timeLeft, init, cancel, limit }= useCountdown()
+    const timeToReachScooter= 600
+    const { timeLeft, init, cancel, limit }= useCountdown(timeToReachScooter)
 
     if(limit){
         updateBook()
@@ -25,8 +26,10 @@ const BookingButton= ()=>{
         return(
             <div className="BookingButton-div">
                 <button className="BookingButton-button BookingButton-button--cancel " 
-                onClick={()=> {cancel() ; updateBook()}}>
-                    {timeLeft}<bk/>Cancelar
+                onClick={()=> {
+                    cancel();
+                    updateBook()}}>
+                    <h5>{timeLeft}</h5><h5>Cancelar</h5>
                 </button>
             </div >
         )
