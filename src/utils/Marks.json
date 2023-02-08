@@ -55,6 +55,20 @@
                 "lng": -3.699,
                 "type": "Point"
             }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 55520,
+                "title": "Las Palmas",
+                "description": "A downtown park that is the site of many of Chicago's favorite festivals and events",
+                "battery": 95
+            },
+            "geometry": {
+                "lat": 28.1080,
+                "lng": -15.4229,
+                "type": "Point"
+            }
         }
     ],
         "type": "FeatureCollection"

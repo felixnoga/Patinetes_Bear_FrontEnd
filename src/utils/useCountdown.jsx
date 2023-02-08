@@ -1,21 +1,26 @@
-import { useState, useRef} from "react";
+import { useState, useRef, useEffect} from "react";
 
-const useCountdown= (p)=>{
-    const [countdown, setCountdown]= useState(p)
+const useCountdown= (time)=>{
+    const [countdown, setCountdown]= useState(time)
+    const [outOfTime, setOutOfTime]= useState(false)
 
     const interval= useRef()
 
     const init= ()=>{
-        interval.current = setInterval(()=>{setCountdown(prev=>(prev - 1)); console.log(countdown)}, 1000) 
+        interval.current = setInterval(()=>{setCountdown(prev=>(prev - 1))}, 1000) 
     }
     const cancel= ()=>{
         clearInterval(interval.current)
-        setCountdown(600)
+        setCountdown(time)
+        setOutOfTime(false)
     }
-    const limit = setCountdown === 0 ? true : false
-    if(setCountdown===0){
-        cancel();
-    }
+    // si llega a 0 cambia el estado de out of time y paraliza el contador. 
+    useEffect(()=>{
+    if(countdown===0){
+        setOutOfTime(true);
+        clearInterval(interval.current)
+        setCountdown(0)
+    }},[countdown])
 
     const minutes = Math.floor(countdown / 60)
     
@@ -29,7 +34,7 @@ const useCountdown= (p)=>{
       timeLeft,
       init,
       cancel,
-      limit  
+      outOfTime  
     })
 
 }

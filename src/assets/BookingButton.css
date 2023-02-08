@@ -23,5 +23,12 @@
     box-shadow: 0 0 0.8em inset black
 }
 .BookingButton-button--cancel{
-    background-color: rgb(255, 0, 0);
+    background-color: rgba(255, 0, 0, 0.633);
+}
+.isBlinking{    
+    animation: blink 1s infinite ease-out;
+}
+@keyframes blink {
+    0% { }
+    100% { background-color: rgba(163, 0, 0, 0.993) }
 }
