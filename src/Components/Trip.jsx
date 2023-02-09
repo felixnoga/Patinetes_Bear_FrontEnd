@@ -1,16 +1,17 @@
 import { useTripContext } from "../context/tripContext"
 import { useCallback, useEffect, useState } from "react"
 import "../assets/Trip.css"
-const Trip= ()=>{
+const Trip = ({cancelTime})=>{
     const {userPosition, scooter, isBooked } = useTripContext()
     const [isInZone, setIsInZone]= useState(false)
 
-    const isLessThan20Meters= useCallback(()=>{
+    // Funcion para que cuando este a menos de 20 metros se active el pop up.
+    const isLessThan20Meters= useCallback(()=>{ 
         if (scooter.geometry && isBooked){
         const { lng, lat } = scooter.geometry;
         const [lngUser, latUser] = userPosition;
         const pitagoricDistanceBetween= Math.sqrt(((lngUser-lng)**2)+((latUser-lat)**2));
-        const twentyMeters= 0.00050 
+        const twentyMeters= 0.00040 
         if(pitagoricDistanceBetween < twentyMeters){
             setIsInZone(true)
         }
@@ -19,16 +20,24 @@ const Trip= ()=>{
         }
         console.log(pitagoricDistanceBetween, twentyMeters)
         }
-        if(!isBooked) setIsInZone(false)
+        if(!isBooked) 
+            setIsInZone(false)
     })
     
     useEffect(()=>{
         isLessThan20Meters()
-    },[isBooked])
+    },[userPosition, isBooked])
+
+    useEffect(()=>{
+        if (!isBooked)
+        setIsInZone(false)
+    }, [isBooked])
+
+
 
     const handleSubmit= (event)=>{
         event.preventDefault()
-        setIsInZone(false)
+        cancelTime(true)
     }
      
     if (isInZone){

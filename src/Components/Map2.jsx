@@ -50,7 +50,7 @@ const Map2= () => {
             mapboxAccessToken= {process.env.REACT_APP_MAP_PUBLIC_TOKEN}
             cursor="auto"
             // activa la geolocalizacion al cargar el mapa directamente
-            // onLoad={activeControl}
+            onLoad={activeControl}
             >
                 {/* Geolocalizacion con funcion para usar de trigger por cercania */}
                 <GeolocateControl position="top-right"

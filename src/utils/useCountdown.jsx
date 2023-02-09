@@ -9,6 +9,9 @@ const useCountdown= (time)=>{
     const init= ()=>{
         interval.current = setInterval(()=>{setCountdown(prev=>(prev - 1))}, 1000) 
     }
+    // const pause= ()=>{
+    //     clearInterval(interval.current)
+    // }
     const cancel= ()=>{
         clearInterval(interval.current)
         setCountdown(time)
