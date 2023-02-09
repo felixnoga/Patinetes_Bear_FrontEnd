@@ -2,11 +2,13 @@ import { useTripContext } from "../context/tripContext"
 import { useState, useEffect, useCallback } from "react"
 import BookingButton from "./BookingButton"
 import useRequest from "../services/useRequest"
+import Trip from './Trip';
 import "../assets/BookingPopup.css" 
 
 const BookingPopup = ()=>{
     const {isSelected, scooter, unSelect, isBooked}= useTripContext()
     const [direction, setDirection]= useState(false)
+    const [isInZone, setIsInZone] = useState(false)
     const {getDirection}= useRequest()
 
     const updateDirection = useCallback(async ()=>{
@@ -25,7 +27,6 @@ const BookingPopup = ()=>{
             updateDirection()
         }
     },[isSelected])
-
 
 
 
@@ -48,7 +49,8 @@ const BookingPopup = ()=>{
                             </h5>
                             <h5> {direction ? direction : "Loading..." }</h5> 
                         </div>
-                        <BookingButton/>
+                        <BookingButton isInZone={isInZone} cancelTrip={(state) => { setIsInZone(state)}}/>
+                        <Trip cancelTime={(state) => { setIsInZone(state) } }/>
                     </div>
                 </div> }
             </div>
