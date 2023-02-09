@@ -1,0 +1,19 @@
+.Trip-div{
+    position: absolute;
+    top:20%;
+    bottom:20%;
+    left: 10%;
+    right: 10%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+    padding: .5em;
+    margin: auto;
+    background-color: azure;
+}
+.Trip-input{
+
+}

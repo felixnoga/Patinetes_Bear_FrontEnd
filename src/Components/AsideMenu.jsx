@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import { useTripContext } from "../context/tripContext";
 import "../assets/AsideMenu.css"
 import { CgArrowsExchangeAltV, CgMenu, CgTime, CgCreditCard  } from "react-icons/cg";
 import { GiKickScooter} from "react-icons/gi";
@@ -7,6 +8,7 @@ import { HiQuestionMarkCircle, HiOutlineShieldCheck } from "react-icons/hi2";
 import { SlSettings } from "react-icons/sl";
 
 const AsideMenu= ()=>  {
+    const {isBooked} = useTripContext()
     const [toggle, setToggle]= useState(false)
 
     const handleToggle=()=>{
@@ -16,6 +18,7 @@ const AsideMenu= ()=>  {
         return(
             <div className={`AsideMenu-div ${toggle && "isActive"}`}>
                 <CgMenu className={`AsideMenu-icon--Menu ${toggle && "isActive"}`} onClick={handleToggle} />
+                {isBooked && <h2 className="AsideMenu-h2 AsideMenu-h2--booked">Scooter Reservada</h2> }
                 <div className={`AsideMenu-div--Background ${toggle && "isActive" }`} onClick={handleToggle}>
                     </div>
                  <div className={`AsideMenu ${toggle && "isActive" }`}>
