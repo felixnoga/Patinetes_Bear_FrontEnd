@@ -43,6 +43,12 @@ const Login=() => {
         setData(newData);
       }
 
+    // pruebas para saltar el login.
+    const autoEnter= ()=>{
+        log()
+        toHome("/")
+    }
+
         return(
             <div className="login-container">
 
@@ -62,6 +68,8 @@ const Login=() => {
             <button type='button' className="login-btn" >Regístrate</button>  
         </div>
         </Link>
+        {/* para pruebas solo */}
+                <button type='button' className="login-btn" onClick={autoEnter}>TEST</button> 
 
         </div>
         )
