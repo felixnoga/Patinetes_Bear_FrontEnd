@@ -1,3 +1,6 @@
+import { TripWrapper } from '../context/tripContext';
+import BookingPopup from './BookingPopup';
+
 import Map2 from './Map2';
 import AsideMenu from "./AsideMenu";
 
@@ -5,8 +8,11 @@ const Home = () => {
 
     return (
         <>
-            <AsideMenu />
-            <Map2 />
+            <TripWrapper>
+                <AsideMenu />
+                <Map2 />
+                <BookingPopup/>
+            </TripWrapper>
         </>
     )
 }
