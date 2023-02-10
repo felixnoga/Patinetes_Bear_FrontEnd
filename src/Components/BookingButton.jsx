@@ -5,7 +5,7 @@ import "../assets/BookingButton.css"
 
 const BookingButton = ({ isInZone, cancelTrip })=>{
     const {isBooked, updateBook}= useTripContext()
-    const timeToReachScooter= 10
+    const timeToReachScooter= 15
     const { timeLeft, init, cancel, outOfTime }= useCountdown(timeToReachScooter)
 
     // Cuando llegue a 0 el contador se ejecuta el useEffect
