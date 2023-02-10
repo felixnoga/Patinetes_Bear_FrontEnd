@@ -11,7 +11,7 @@ const Register = () => {
     const url = "http://localhost:3005/register";
 
     const [data, setData] = useState({
-        name: "",
+        user_name: "",
         email: "",
         password: ""
     })
@@ -25,7 +25,7 @@ const Register = () => {
 
 
         axios.post(url, {
-            name: data.name,
+            user_name: data.user_name,
             email: data.email,
             password: data.password
         })
@@ -51,7 +51,7 @@ const Register = () => {
         <div className="login-container">
 
             <div className='login-input'>
-                <input type="text" name="name" placeholder="Nombre" required onChange={(e) => handle(e)} id="name" value={data.name} />
+                <input type="text" name="user_name" placeholder="Nombre" required onChange={(e) => handle(e)} id="user_name" value={data.user_name} />
             </div>
 
             <div className='login-input'>
