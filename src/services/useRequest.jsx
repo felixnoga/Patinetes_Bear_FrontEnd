@@ -1,5 +1,6 @@
 // import { useTripContext } from "../context/tripContext"
 import mapboxReq from "./mapboxReq";
+import serverReq from "./serverReq";
 
 const useRequest= ()=>{
 
@@ -12,6 +13,18 @@ const useRequest= ()=>{
     }} catch(error){
         return 
     }}
+
+    const getNearbyScooters= async(lng, lat)=>{
+        try {
+            const payload= await serverReq.nearbyScooters(lng, lat)
+                if(payload.status === 200){
+                    return payload.data}
+        }catch(error){
+            console.log(error)
+            return error.message
+        }
+    }
+
     const getIso = async (lng, lat)=>{
     try {
         const payload= await mapboxReq.getIso(lng, lat);
@@ -21,12 +34,14 @@ const useRequest= ()=>{
     }} catch(error){
         return error.message
     }
+
     
 
     }
     return({
         getDirection,
-        getIso
+        getIso,
+        getNearbyScooters
     }
     )
 }

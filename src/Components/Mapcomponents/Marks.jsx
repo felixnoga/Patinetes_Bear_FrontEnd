@@ -1,11 +1,26 @@
-import { useState, memo } from "react"
+import { useState, memo, useEffect } from "react"
 import { Marker } from "react-map-gl"
 import { useTripContext } from "../../context/tripContext"
-import MarksInfo from "../../utils/Marks.json"
+import useRequest from "../../services/useRequest"
 
 const Marks= memo(({onClick})=>{
-    const { isBooked, scooter} = useTripContext()
-    const [marksData, setMArksData]= useState(MarksInfo)
+    const { isBooked, scooter, userPosition} = useTripContext()
+    const {getNearbyScooters}= useRequest()
+    const [marksData, setMarksData]= useState(false)
+   
+
+    useEffect(()=>{
+        const getScooters = async()=>{
+            const [lngUser, latUser] = userPosition;
+            const marks = await getNearbyScooters( lngUser, latUser)
+            setMarksData(marks)
+        };
+        if(userPosition.length !== 0){
+            getScooters()
+        }
+
+        },[userPosition])
+
 
     if (!marksData) return ;
     // Si Esta activa una reserva, solo muestra esa Marca
@@ -18,6 +33,7 @@ const Marks= memo(({onClick})=>{
                 <img className="Marker-icon" src="/30.png" alt="logo Bear"></img>
             </Marker>
         )
+    // Todas las Marcas
     return(
         <>
         {marksData?.features?.map((point) =>
