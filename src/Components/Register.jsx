@@ -25,6 +25,7 @@ const Register = () => {
         }
 
        const body = {
+
             user_name: data.user_name,
             email: data.email,
             password: data.password
