@@ -18,7 +18,7 @@ const Trip = ({cancelTime})=>{
         else {
             setIsInZone(false)
         }
-        console.log(pitagoricDistanceBetween, twentyMeters)
+        console.log(pitagoricDistanceBetween, twentyMeters, userPosition)
         }
         if(!isBooked) 
             setIsInZone(false)

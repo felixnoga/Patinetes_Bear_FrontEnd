@@ -1,4 +1,4 @@
-import { useRef} from "react";
+import { useMemo, useRef} from "react";
 import Map, {GeolocateControl} from "react-map-gl"
 import { useTripContext } from "../context/tripContext";
 // import useLoc from "../utils/useLoc";
@@ -31,7 +31,7 @@ const Map2= () => {
     const currentPos= (e)=>{
         const [lng, lat]= userPosition
         //La comparacion evita peticiones dobles en layer y re renderizados.
-        if(lng !== e.longitude && lat !== e.latitude ){
+        if(lng !== e.longitude || lat !== e.latitude ){
             updatePos(e.longitude, e.latitude)
             console.log(e.latitude, e.longitude)}
     }
@@ -56,7 +56,9 @@ const Map2= () => {
                 <GeolocateControl position="top-right"
                     trackUserLocation="true"
                     ref= {geoControl}
-                    onGeolocate={e=>currentPos(e.coords)}/>
+                    onGeolocate={e=>currentPos(e.coords)}
+                    showAccuracyCircle="false" 
+                    />
                 <Marks onClick={centerView}/>
                 <TenMinLayer/>
             </Map>
