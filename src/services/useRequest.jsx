@@ -21,7 +21,7 @@ const useRequest= ()=>{
                     return payload.data}
         }catch(error){
             console.log(error)
-            return error.message
+            return error
         }
     }
 

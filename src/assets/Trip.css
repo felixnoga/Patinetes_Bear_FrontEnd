@@ -1,19 +1,39 @@
 .Trip-div{
     position: absolute;
-    top:20%;
-    bottom:20%;
+    top:-50%;
     left: 10%;
     right: 10%;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
+    align-items: center;
     justify-content: center;
     width: fit-content;
     height: fit-content;
-    padding: .5em;
+    padding: 1em;
     margin: auto;
     background-color: azure;
+    gap:1em;
+    border-radius: 1em;
+
 }
 .Trip-input{
-
+    width: 15vw;
+    font-size: 2rem;
+    font-weight: 800;
+    border-radius: 5px;
+    border-style: 1px solid black;
+    padding: 0.3em;
+}
+.Trip-div{
+    max-width: 40vw;
+}
+.Trip-p{
+    font-size: 1.5rem;
+}
+.Trip-button{
+    font-size: 1.5rem;
+    border-radius: 5px;
+    border-style: 1px solid black;
+    color: black;
+    background-color: rgba(238, 184, 83, 0.8);
 }

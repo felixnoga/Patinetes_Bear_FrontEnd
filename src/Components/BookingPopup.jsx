@@ -1,22 +1,27 @@
 import { useTripContext } from "../context/tripContext"
 import { useState, useEffect, useCallback } from "react"
+import {types} from "../utils/bookReducer"
 import BookingButton from "./BookingButton"
 import useRequest from "../services/useRequest"
 import Trip from './Trip';
 import "../assets/BookingPopup.css" 
 
 const BookingPopup = ()=>{
-    const {isSelected, scooter, unSelect, isBooked}= useTripContext()
+    const {isSelected, scooter, unSelect, isBooked, handleContext, bookState}= useTripContext()
     const [direction, setDirection]= useState(false)
     const [isInZone, setIsInZone] = useState(false)
     const {getDirection}= useRequest()
 
     const updateDirection = useCallback(async ()=>{
-        if (scooter.geometry){
-            const {lng, lat}= scooter.geometry
-            const payload = await getDirection(lng, lat)
-            const adress = payload.join(", ")
-            setDirection(adress)
+        if (bookState.scooter.lat){
+            const {lng, lat}= bookState.scooter
+            try{
+                const payload = await getDirection(lng, lat)
+                const adress = payload.join(", ")
+                setDirection(adress)
+            }catch(error){
+                setDirection("no hay disponible ninguna dirección")
+        }
         }
     })
 
@@ -26,16 +31,16 @@ const BookingPopup = ()=>{
         if (!direction){
             updateDirection()
         }
-    },[isSelected])
+    },[bookState.isSelected])
 
 
 
     return (
-        <div className={`Bookingpp-div ${isSelected && "isActive"}
-                             ${isBooked && "Bookingpp-div--booked"}`  }>
-                {!isBooked && <div className={`Bookingpp-div--background ${isSelected && "isActive"}`}
-                 onClick={unSelect}></div>}
-                {scooter.type  &&
+        <div className={`Bookingpp-div ${bookState.isSelected && "isActive"}
+                             ${bookState.isBooked && "Bookingpp-div--booked"}`  }>
+                {!bookState.isBooked && <div className={`Bookingpp-div--background ${bookState.isSelected && "isActive"}`}
+                 onClick={()=>handleContext(types.selectScooter, false)}></div>}
+                {bookState.scooter  &&
                 <div className="Bookingpp-div--main">
                     <div className="Bookingpp-div--logo">
                         <img className="Bookingpp-img" src="/30.png" alt="Bear logo"></img>
@@ -43,9 +48,9 @@ const BookingPopup = ()=>{
                     <div className="Bookingpp-div--info">
                         <div className="Bookingpp-div--prop">
                             <h4 className="Bookingpp-h4">
-                            Scooter {scooter.properties.id}
+                            Scooter {bookState.scooter.scooter_id}
                             </h4>
-                            <h5> {`nivel de batería ${scooter.properties.battery}%`}
+                            <h5> {`nivel de batería ${bookState.scooter.batery}%`}
                             </h5>
                             <h5> {direction ? direction : "Loading..." }</h5> 
                         </div>

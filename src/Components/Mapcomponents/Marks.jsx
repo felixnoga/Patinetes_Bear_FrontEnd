@@ -4,32 +4,38 @@ import { useTripContext } from "../../context/tripContext"
 import useRequest from "../../services/useRequest"
 
 const Marks= memo(({onClick})=>{
-    const { isBooked, scooter, userPosition} = useTripContext()
+    const { isBooked, scooter, userPosition, bookState} = useTripContext()
     const {getNearbyScooters}= useRequest()
     const [marksData, setMarksData]= useState(false)
    
 
     useEffect(()=>{
         const getScooters = async()=>{
-            const [lngUser, latUser] = userPosition;
-            const marks = await getNearbyScooters( lngUser, latUser)
-            setMarksData(marks)
+            const [lngUser, latUser] = bookState.userPosition;
+            try{
+                const marks = await getNearbyScooters( lngUser, latUser)
+                setMarksData(marks)
+            }catch(error){
+                // TODO Aviso de fallo en el server.
+                setMarksData(false)
+                throw new Error(error)
+            }
         };
-        if(userPosition.length !== 0){
+        if(bookState.userPosition.length !== 0){
             getScooters()
         }
 
-        },[userPosition])
+        },[bookState.userPosition])
 
 
     if (!marksData) return ;
     // Si Esta activa una reserva, solo muestra esa Marca
-    if (isBooked && scooter)
+    if (bookState.isBooked && bookState.scooter)
         return (
             <Marker
-                key={scooter.properties.id}
-                longitude={scooter.geometry.lng}
-                latitude={scooter.geometry.lat} >
+                key={bookState.scooter.scooter_id}
+                longitude={bookState.scooter.lng}
+                latitude={bookState.scooter.lat} >
                 <img className="Marker-icon" src="/30.png" alt="logo Bear"></img>
             </Marker>
         )
@@ -38,9 +44,9 @@ const Marks= memo(({onClick})=>{
         <>
         {marksData?.features?.map((point) =>
             <Marker
-                key={point.properties.id}
-                longitude={point.geometry.lng}
-                latitude={point.geometry.lat}
+                key={point.scooter_id}
+                longitude={point.lng}
+                latitude={point.lat}
                 onClick={() => onClick(point)} >
                 <img className="Marker-icon" src="/30.png" alt="logo Bear"></img>
             </Marker>)
