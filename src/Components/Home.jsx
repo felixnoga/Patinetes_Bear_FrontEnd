@@ -3,7 +3,6 @@ import BookingPopup from './BookingPopup';
 
 import Map2 from './Map2';
 import AsideMenu from "./AsideMenu";
-import Logout from "./Logout";
 
 const Home = () => {
 
