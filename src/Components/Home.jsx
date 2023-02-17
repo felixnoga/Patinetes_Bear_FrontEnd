@@ -3,6 +3,7 @@ import BookingPopup from './BookingPopup';
 
 import Map2 from './Map2';
 import AsideMenu from "./AsideMenu";
+import Logout from "./Logout";
 
 const Home = () => {
 
@@ -10,7 +11,7 @@ const Home = () => {
         <>
             <TripWrapper>
                 <AsideMenu />
-                <Map2 />
+                 <Map2 />
                 <BookingPopup/>
             </TripWrapper>
         </>
