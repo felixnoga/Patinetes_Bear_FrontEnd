@@ -1,0 +1,60 @@
+.TripInterface-div{
+    position: absolute;
+    bottom: 0;
+    right:0;
+    display: flex;
+    justify-content: end;
+    /* right: -60%; */
+    transform: translateX(80%);
+    transition: all 1s ease;
+    width: fit-content;
+    height: fit-content;
+}
+.TripInterface-div.isActive{
+    position: absolute;
+    bottom: 0;
+    transform: translateX(0%);
+    height: 100vh;
+    z-index:5;
+}
+
+.TripInterface-div--background.isActive{
+    position: absolute;
+    width:100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.121);
+    z-index: 1;
+}
+.TripInterface-div--menu{
+    position: relative;
+    bottom: 0%;
+    top: 60%;
+    /* left:15%; */
+    right: 0;
+    background-color: #F3DCC4;
+    height: 40vh;
+    width: 70vw;
+    border-top-left-radius: 20em 15em;
+    border-bottom-left-radius: 20em 15em;
+    z-index: 2;
+}
+.TripInterface-div--logo{
+    position: absolute;
+    bottom: 40%;
+    left: -2em;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    min-width: 80px;
+    min-height: 80px;
+    height: 10vw;
+    width: 10vw;
+    background-color: #F3DCC4;
+}
+.TripInterface-img{
+    min-width: 65px;
+    width: 8vw;
+}
+.TripInterface-div--info{}
+.TripInterface-div--EndTrip{}
