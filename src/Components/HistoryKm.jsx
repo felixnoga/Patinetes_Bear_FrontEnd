@@ -12,18 +12,16 @@ const HistoryKm = () => {
         <div className="big-conteiner">
             <div className="super-title" >
                 <div>
-                <RxCrossCircled className="icon-cross"/>
+                    <RxCrossCircled className="icon-cross" />
                 </div>
                 <div>
-            <h1  className="title-history"><b>Historial</b></h1>
+                    <h1 className="title-history"><b>Historial</b></h1>
+                </div>
             </div>
-            </div>
-         
-        
             <div className="conteiner-subtitle">
-                            <div className="title-date">
+                <div className="title-date">
                     <h2 className="date">ENERO 2023</h2>
-                </div>                
+                </div>
                 <div className="history-container">
                     <div className="trip-title">
                         <div className="trip">Viaje</div>
@@ -43,12 +41,10 @@ const HistoryKm = () => {
                 <div>
                 </div>
             </div>
-
-            
             <div className="conteiner-subtitle">
-                            <div className="title-date">
+                <div className="title-date">
                     <h2 className="date">DICIEMBRE 2022</h2>
-                </div>                
+                </div>
                 <div className="history-container">
                     <div className="trip-title">
                         <div className="trip">Viaje</div>
@@ -58,8 +54,7 @@ const HistoryKm = () => {
                         <input className="input-text" type="text" placeholder="22/12/2022, 13:05" />
                     </div>
                 </div>
-                <div>
-                </div>
+
             </div>
         </div>
 

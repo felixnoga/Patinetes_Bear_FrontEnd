@@ -1,13 +1,33 @@
 import React from 'react'
-import '../assets/DetailsHistory.css'
+import "../assets/detailsHistoryUser.css"
+import CardCancel from './CardCancel'
+import CardInCourse from './CardInCourse'
+import NabBarBear from './Navbar'
 
 const DetailsHistoryUser = () => {
   return (
-    <div className='history-navbar-user'>
-      <div className='h-navbar-deliveryMan title-navbar-h'>Fecha de viaje </div>
-      <div className='h-navbar-order-number title-navbar-h'>Hora</div>
-      <div className='h-navbar-price title-navbar-h'>Precio</div>
-      <div className='h-navbar-status title-navbar-h'>Estado</div>
+    <div>
+    <NabBarBear/>
+    <div className='big-history-details'>
+    
+      <h1 className='title-history'>Historial de viajes</h1>
+      <div className='big-details'>
+        <div className='detail-date'>
+          <h1>Fecha</h1>
+        </div>
+        <div className='detail-price'>
+          <h1>Precio</h1>
+        </div>
+        <div className='detail-State'>
+          <h1>Estado de Viaje</h1>
+        </div>
+      </div>   
+      <CardCancel/> 
+      <CardInCourse/>
+      <CardInCourse/>
+      <CardCancel/> 
+      <CardInCourse/>
+    </div>
     </div>
   )
 }
