@@ -8,7 +8,7 @@ import { HiQuestionMarkCircle, HiOutlineShieldCheck } from "react-icons/hi2";
 import { SlSettings } from "react-icons/sl";
 
 const AsideMenu= ()=>  {
-    const {isBooked} = useTripContext()
+    const {bookState:{isBooked}} = useTripContext()
     const [toggle, setToggle]= useState(false)
 
     const handleToggle=()=>{
