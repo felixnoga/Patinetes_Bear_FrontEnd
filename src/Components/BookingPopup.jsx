@@ -7,7 +7,7 @@ import Trip from './Trip';
 import "../assets/BookingPopup.css" 
 
 const BookingPopup = ()=>{
-    const {isSelected, scooter, unSelect, isBooked, handleContext, bookState}= useTripContext()
+    const {handleContext, bookState}= useTripContext()
     const [direction, setDirection]= useState(false)
     const [isInZone, setIsInZone] = useState(false)
     const {getDirection}= useRequest()
@@ -36,7 +36,7 @@ const BookingPopup = ()=>{
 
 
     return (
-        <div className={`Bookingpp-div ${bookState.isSelected && "isActive"}
+        <div className={`Bookingpp-div ${(bookState.isSelected & !bookState.onTrip )&& "isActive"}
                              ${bookState.isBooked && "Bookingpp-div--booked"}`  }>
                 {!bookState.isBooked && <div className={`Bookingpp-div--background ${bookState.isSelected && "isActive"}`}
                  onClick={()=>handleContext(types.selectScooter, false)}></div>}

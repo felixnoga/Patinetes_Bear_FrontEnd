@@ -4,7 +4,7 @@ import { useTripContext } from "../../context/tripContext"
 import useRequest from "../../services/useRequest"
 
 const Marks= memo(({onClick})=>{
-    const { isBooked, scooter, userPosition, bookState} = useTripContext()
+    const {bookState} = useTripContext()
     const {getNearbyScooters}= useRequest()
     const [marksData, setMarksData]= useState(false)
    
@@ -28,7 +28,7 @@ const Marks= memo(({onClick})=>{
         },[bookState.userPosition])
 
 
-    if (!marksData) return ;
+    if (!marksData || bookState.onTrip) return ;
     // Si Esta activa una reserva, solo muestra esa Marca
     if (bookState.isBooked && bookState.scooter)
         return (

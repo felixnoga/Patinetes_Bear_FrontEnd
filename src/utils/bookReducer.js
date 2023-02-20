@@ -3,6 +3,7 @@ const initialStateBook= {
     isBooked: false ,
     scooter: {},
     userPosition: [],
+    onTrip: false
 }
 
 const initialStateTrip= {}
@@ -11,9 +12,10 @@ const types= {
     resetState: "reset",
     selectScooter: "select",
     bookScooter: "booking",
-    ScooterInfo: "scooter",
+    scooterInfo: "scooter",
     updateUserPosition: "updatePosition",
-    updateMany: "updateMany"
+    updateMany: "updateMany",
+    trip: "trip"
 }
 
 const bookReducer= (state, action)=> {
@@ -48,6 +50,13 @@ const bookReducer= (state, action)=> {
                     ...state,
                     ...action.payload
                 }
+            case "trip":
+                return{
+                    ...initialStateBook,
+                    userPosition: state.userPosition,
+                    scooter: state.scooter,
+                    onTrip: action.payload
+            }
         }
 }
 
