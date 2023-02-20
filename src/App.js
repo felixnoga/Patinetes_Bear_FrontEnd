@@ -3,11 +3,11 @@ import { Routes, Route } from "react-router-dom";
 import { AppWrapper } from './context/context';
 import ProtectedRoute from './utils/ProtectedRoute';
 import Login from './Components/Login';
-import Register from './Components/Register'
 import Home from './Components/Home';
 import HistoryKM from './Components/HistoryKm';
 import DetailsHistoryUser from './Components/DetailsHistoryUser';
 import AllUsers from './Components/AllUsers';
+import Register from './Components/Register';
 
 
 function App() {
