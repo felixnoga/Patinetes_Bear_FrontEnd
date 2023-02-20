@@ -5,6 +5,7 @@ import useCountdown from "../utils/useCountdown"
 import "../assets/BookingButton.css"
 
 const BookingButton = ({ isInZone, cancelTrip })=>{
+
     const {bookState:{isBooked} , updateBook, handleContext}= useTripContext()
     const timeToReachScooter= 15
     const { timeLeft, init, cancel, outOfTime }= useCountdown(timeToReachScooter)

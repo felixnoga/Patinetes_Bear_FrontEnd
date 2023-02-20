@@ -42,6 +42,7 @@ const Map2= () => {
             handleContext(types.updateUserPosition, dataPosition )
             // updatePos(e.longitude, e.latitude)
             console.log(e.latitude, e.longitude, bookState)}
+
     }
     const activeControl= ()=>{
         if(geoControl)
