@@ -1,17 +1,20 @@
 import { useEffect } from "react"
 import { useTripContext } from "../context/tripContext"
+import {types} from "../utils/bookReducer"
 import useCountdown from "../utils/useCountdown"
 import "../assets/BookingButton.css"
 
 const BookingButton = ({ isInZone, cancelTrip })=>{
-    const {isBooked, updateBook}= useTripContext()
+
+    const {bookState:{isBooked} , updateBook, handleContext}= useTripContext()
     const timeToReachScooter= 15
     const { timeLeft, init, cancel, outOfTime }= useCountdown(timeToReachScooter)
 
     // Cuando llegue a 0 el contador se ejecuta el useEffect
     useEffect(()=>{
         if(outOfTime){
-        updateBook()
+        handleContext(types.bookScooter, false)
+        // updateBook()
         cancelTrip(false)
         }
     },[outOfTime])
@@ -19,7 +22,8 @@ const BookingButton = ({ isInZone, cancelTrip })=>{
     useEffect(()=>{
         if(isInZone === true){
             cancel()
-            updateBook()
+            handleContext(types.bookScooter, false)
+            // updateBook()
             cancelTrip(false)
         }
     }, [isInZone])
@@ -32,7 +36,8 @@ const BookingButton = ({ isInZone, cancelTrip })=>{
         return(
             <div className="BookingButton-div">
                 <button className="BookingButton-button" onClick={()=>{
-                    updateBook()
+                    handleContext(types.bookScooter, true)
+                    // updateBook()
                     init()}}>
                     Reservar (10 min) 
                 </button>
@@ -44,7 +49,10 @@ const BookingButton = ({ isInZone, cancelTrip })=>{
                 <button className= {`BookingButton-button BookingButton-button--cancel ${outOfTime && "isBlinking"}`} 
                 onClick={()=> {
                     cancel();
-                    isBooked && updateBook(); cancelTrip()}}>
+                    isBooked && 
+                    // updateBook(); 
+                    handleContext(types.bookScooter, false)
+                    cancelTrip()}}>
                     <h5>{timeLeft}</h5><h5>Cancelar</h5>
                 </button>
             </div >

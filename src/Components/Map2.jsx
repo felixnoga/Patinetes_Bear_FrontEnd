@@ -4,6 +4,7 @@ import { useTripContext } from "../context/tripContext";
 // import useLoc from "../utils/useLoc";
 import Marks from "./Mapcomponents/Marks";
 import TenMinLayer from "./Mapcomponents/TenMinLayer"
+import {types} from "../utils/bookReducer"
 import { MdNavigation } from "react-icons/md";
 import "../assets/Map.css"
 import { useCallback } from "react";
@@ -11,8 +12,8 @@ import { useCallback } from "react";
 const Map2= () => {
     const map2ref= useRef()
     const geoControl= useRef()
-    const {select, setScooter, updatePos, userPosition}= useTripContext()
-// pendiente intentar crear un useLoc solo con current position para encuadrar el mapa al empezar.
+    const {bookState, handleContext}= useTripContext()
+// TODO pendiente intentar crear un useLoc solo con current position para encuadrar el mapa al empezar.
     // const {lat,lng, error}= useLoc()
     const initialViewState ={
             latitude: 40.4,
@@ -22,18 +23,26 @@ const Map2= () => {
         //useCallback ya que se pasa a un elemento hijo, la funcion no cambiará ,asi se evitan renderizados innecesarios
     const centerView = useCallback((e) => {
         map2ref.current?.flyTo(
-            { center: [e.geometry.lng, e.geometry.lat], zoom:15, duration: 2000 });
-        setScooter(e)
-        select();
+            { center: [e.lng, e.lat], zoom:15, duration: 2000 });
+        const payload = {
+            scooter: e,
+            isSelected: true
+        }
+        handleContext(types.updateMany, payload)
+        // setScooter(e);
+        // select();
         console.log(e)
     },[])
 // FUNCION IS NEAR comprobará la cercania de los puntos.
     const currentPos= (e)=>{
-        const [lng, lat]= userPosition
+        const [lng, lat]= bookState.userPosition
         //La comparacion evita peticiones dobles en layer y re renderizados.
         if(lng !== e.longitude || lat !== e.latitude ){
-            updatePos(e.longitude, e.latitude)
-            console.log(e.latitude, e.longitude)}
+            const dataPosition = [e.longitude, e.latitude]
+            handleContext(types.updateUserPosition, dataPosition )
+            // updatePos(e.longitude, e.latitude)
+            console.log(e.latitude, e.longitude, bookState)}
+
     }
     const activeControl= ()=>{
         if(geoControl)
@@ -65,7 +74,7 @@ const Map2= () => {
             <button onClick={()=> 
                 centerView(40.4, -3.68)} 
                 className="Map-icon--navcenter">center</button>
-            <MdNavigation className="Map-icon--nav"/>
+            {/* <MdNavigation className="Map-icon--nav"/> */}
         </div>
     )
 }

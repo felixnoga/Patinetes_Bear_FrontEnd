@@ -10,7 +10,7 @@ import Logout from "./Logout";
 
 
 const AsideMenu= ()=>  {
-    const {isBooked} = useTripContext()
+    const {bookState:{isBooked}} = useTripContext()
     const [toggle, setToggle]= useState(false)
 
     const handleToggle=()=>{

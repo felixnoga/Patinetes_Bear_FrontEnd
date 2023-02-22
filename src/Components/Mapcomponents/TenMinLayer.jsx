@@ -5,7 +5,7 @@ import useRequest from "../../services/useRequest"
 
 
 const TenMinLayer = memo(()=>{
-    const {userPosition, isSelected}= useTripContext()
+    const {bookState:{userPosition, isSelected}}= useTripContext()
     const [layer, setLayer]= useState(false)
     const {getIso}= useRequest()
 
