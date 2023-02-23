@@ -2,6 +2,7 @@
 import { useState } from "react";
 import mapboxReq from "./mapboxReq";
 import serverReq from "./serverReq";
+import { useAppContext } from "../context/context";
 
 const useRequest= ()=>{
     const [loading, setLoading] = useState(false)
@@ -13,7 +14,7 @@ const useRequest= ()=>{
         const dir = [payload.data.features[0].text, payload.data.features[0].address ]
         return dir
     } catch(error){
-        return 
+        return  
     }finally{
         setLoading(false)
     }}
@@ -24,7 +25,7 @@ const useRequest= ()=>{
             const payload= await serverReq.nearbyScooters(lng, lat)
             return payload.data
         }catch(error){
-            return error
+            throw Error(error.response.data.message)
         } finally {
             setLoading(false)
         }
@@ -38,7 +39,7 @@ const useRequest= ()=>{
                 const dir = payload.data
                 return dir
     }} catch(error){
-        return error.message
+        throw Error(error)
     } finally {
         setLoading(false)
     }
@@ -65,7 +66,7 @@ const useRequest= ()=>{
             const trip = payload.data
             return trip
         } catch (error){
-            throw Error(error)
+            throw Error(error.message)
         } finally {
             setLoading(false)
         }
