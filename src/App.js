@@ -12,6 +12,9 @@ import LandingPage from './Components/Landing';
 
 
 function App() {
+
+  
+
   return (
     <div className="App">
       <AppWrapper>

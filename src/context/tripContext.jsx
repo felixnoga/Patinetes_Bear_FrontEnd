@@ -1,36 +1,20 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useReducer } from "react";
+import bookReducer, {initialStateBook} from "../utils/bookReducer";
 
 const TripContext = createContext()
 export const TripWrapper = ({ children }) => {
-    const [isSelected, setIsSelected] = useState(false)
-    const [scooter, setScooter]= useState({})
-    const [userPosition, setUserPosition]= useState([])
-    const [isBooked, setIsBooked]= useState(false)
+    const [bookState, dispatch]= useReducer(bookReducer, initialStateBook) 
 
-    const select = () => {
-        setIsSelected(true)
-    }
-    const unSelect = () => {
-        setIsSelected(false)
-    }
-    const updatePos= (lng, lat)=>{
-        setUserPosition([lng, lat])
-    }
-    const updateBook= ()=>{
-        setIsBooked(!isBooked)
-    }
+    const handleContext= (typeDispatch, payloadDispatch)=>{
+        dispatch({
+                type: typeDispatch,
+                payload: payloadDispatch
+                })}
 
     return (
         <TripContext.Provider value={({
-            isSelected,
-            scooter,
-            setScooter,
-            select,
-            unSelect,
-            userPosition,
-            updatePos,
-            isBooked,
-            updateBook
+            bookState,
+            handleContext,
         })}>
             {children}
         </TripContext.Provider>

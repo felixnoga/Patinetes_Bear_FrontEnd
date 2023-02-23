@@ -16,22 +16,43 @@ const Register = () => {
         password: ""
     })
 
-    function register(e) {
+    const register = async (e) => {
         e.preventDefault();
+
         if ((data.password) !== (data.passwordAgain)) {
             alert("Las contraseñas no son iguales")
             return;
         }
 
-        axios.post(url, {
+       const body = {
+
             user_name: data.user_name,
             email: data.email,
             password: data.password
-        })
-            .then(res => {
-                log()
+        }
+             
+            try {
+                const res = await fetch (url, 
+                {
+                    method: "POST",
+                    headers: {"Content-Type":"application/json"}, 
+                    body: JSON.stringify(body)
+                }
+                );
+                const parseRes = await res.json(); 
+                console.log(parseRes);         
+    
+            if (parseRes.token) {
+                localStorage.setItem("token", parseRes.token);
+                log();
                 toLogin("/");
-            });
+     
+               } else {
+                console.error(parseRes);
+              }
+            } catch (err) {
+              console.error(err.message);
+            }
 
     }
 

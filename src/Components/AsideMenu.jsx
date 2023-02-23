@@ -6,9 +6,11 @@ import { CgArrowsExchangeAltV, CgMenu, CgTime, CgCreditCard  } from "react-icons
 import { GiKickScooter} from "react-icons/gi";
 import { HiQuestionMarkCircle, HiOutlineShieldCheck } from "react-icons/hi2";
 import { SlSettings } from "react-icons/sl";
+import Logout from "./Logout";
+
 
 const AsideMenu= ()=>  {
-    const {isBooked} = useTripContext()
+    const {bookState:{isBooked}} = useTripContext()
     const [toggle, setToggle]= useState(false)
 
     const handleToggle=()=>{
@@ -58,6 +60,8 @@ const AsideMenu= ()=>  {
                     <div className="AsideMenu-div--link"><SlSettings className="AsideMenu-icon" />
                         <h4 className="AsideMenu-h4">Ajustes</h4></div>
                     {/* </Link> */}
+
+                    <Logout/>
             
                 </div>
           

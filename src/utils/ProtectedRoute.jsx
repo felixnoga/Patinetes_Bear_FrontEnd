@@ -1,5 +1,5 @@
 import { useAppContext } from "../context/context"
-import { Navigate, useLocation, useNavigate } from "react-router-dom"
+import { Navigate, useLocation } from "react-router-dom"
 
 const ProtectedRoute= ({children})=> {
     const {isLog}= useAppContext()
