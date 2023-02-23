@@ -54,7 +54,7 @@ const Login = () => {
          <div className="title-login2">
             <h1>Inicia de Sesión</h1>
         </div>
-            <div className="login-container">
+            <div className="login-conteiner">
 
                 <div className="big-login-input">
                     <div>

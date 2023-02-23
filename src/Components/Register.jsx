@@ -23,7 +23,6 @@ const Register = () => {
             return;
         }
 
-
         axios.post(url, {
             user_name: data.user_name,
             email: data.email,

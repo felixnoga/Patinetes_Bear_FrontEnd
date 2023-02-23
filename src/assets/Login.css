@@ -8,11 +8,11 @@
 
 .big-login-input{}
 
-.login-container{
+.login-conteiner{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 15em;
+    margin-top: 10em;
 }
 
 .login2-input{

@@ -8,6 +8,7 @@ import HistoryKM from './Components/HistoryKm';
 import DetailsHistoryUser from './Components/DetailsHistoryUser';
 import AllUsers from './Components/AllUsers';
 import Register from './Components/Register';
+import LandingPage from './Components/Landing';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     <div className="App">
       <AppWrapper>
         <Routes>
+          <Route path="/landing" element={<LandingPage/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/historykm" element={<HistoryKM/>}></Route>
