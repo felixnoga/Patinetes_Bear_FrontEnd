@@ -2,6 +2,7 @@ import './App.css';
 import { Routes, Route } from "react-router-dom";
 import { AppWrapper } from './context/context';
 import ProtectedRoute from './utils/ProtectedRoute';
+import ErrorMessage from './utils/ErrorMessage';
 import Login from './Components/Login';
 import Register from './Components/Register'
 import Home from './Components/Home';
@@ -19,6 +20,7 @@ function App() {
             </ProtectedRoute>}/>
           <Route path="*" element={<h1>Esta ruta no existe</h1>}/>
         </Routes>
+        <ErrorMessage/>
       </AppWrapper>
     </div>
   );

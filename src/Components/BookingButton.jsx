@@ -1,13 +1,16 @@
 import { useEffect } from "react"
+import { useAppContext } from "../context/context"
 import { useTripContext } from "../context/tripContext"
 import {types} from "../utils/bookReducer"
 import useCountdown from "../utils/useCountdown"
 import useRequest from "../services/useRequest"
 import "../assets/BookingButton.css"
+import SpinRotate from "../utils/SpinRotate"
 
 const BookingButton = ({ isInZone, cancelTrip })=>{
     const {bookState:{isBooked, scooter} , updateBook, handleContext}= useTripContext()
-    const timeToReachScooter= 15
+    const { handleError } = useAppContext()
+    const timeToReachScooter= 30
     const { timeLeft, init, cancel, outOfTime }= useCountdown(timeToReachScooter)
     const {bookingScooter, cancelBooking, loading}= useRequest()
 
@@ -47,6 +50,7 @@ const BookingButton = ({ isInZone, cancelTrip })=>{
             handleContext(types.bookScooter, true);
             init()
         }catch(error){
+            handleError("ups, parece que no pudimos confirmar la reserva de esta scooter")
             console.log(error)
         }
     }
@@ -65,6 +69,7 @@ const BookingButton = ({ isInZone, cancelTrip })=>{
             }
             cancelTrip()
         } catch (error) {
+            handleError("ups, parece que no pudimos cancelar esta reserva")
             console.log(error)
         }
     }
@@ -76,30 +81,22 @@ const BookingButton = ({ isInZone, cancelTrip })=>{
     if(!isBooked && !outOfTime)
         return(
             <div className="BookingButton-div">
-                <button className="BookingButton-button" onClick={handleBooking}
-                    // ()=>{
-                    // handleContext(types.bookScooter, true)
-                    // // updateBook()
-                    // init()}}
-                    >
+                { loading ? <SpinRotate/> :
+                <button className="BookingButton-button" onClick={handleBooking}>
                     Reservar (10 min) 
-                </button>
+                </button>}
             </div>
     )
     if(isBooked || outOfTime)
         return(
             <div className="BookingButton-div">
-                <button className= {`BookingButton-button BookingButton-button--cancel ${outOfTime && "isBlinking"}`} 
+                { loading ? <SpinRotate/> :
+                    <button className= {`BookingButton-button BookingButton-button--cancel ${outOfTime && "isBlinking"}`} 
                 onClick={handleCancel}
-                    // cancel();
-                    // isBooked && 
-                    // // updateBook(); 
-                    // handleContext(types.bookScooter, false)
-                    // cancelTrip()}}
                     >
                         <h5>{timeLeft}</h5>
                         <h5>Cancelar</h5>
-                </button>
+                </button>}
             </div >
         )
 }

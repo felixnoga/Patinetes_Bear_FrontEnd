@@ -1,12 +1,15 @@
 import { useState, memo, useEffect } from "react"
 import { Marker } from "react-map-gl"
 import { useTripContext } from "../../context/tripContext"
+import { useAppContext } from "../../context/context";
 import useRequest from "../../services/useRequest"
 
 const Marks= memo(({onClick})=>{
+    const {handleError} = useAppContext()
     const {bookState} = useTripContext()
     const {getNearbyScooters}= useRequest()
     const [marksData, setMarksData]= useState(false)
+
    
 
     useEffect(()=>{
@@ -15,10 +18,9 @@ const Marks= memo(({onClick})=>{
             try{
                 const marks = await getNearbyScooters( lngUser, latUser)
                 setMarksData(marks)
+                
             }catch(error){
-                // TODO Aviso de fallo en el server.
-                setMarksData(false)
-                throw new Error(error)
+                handleError(error.message)
             }
         };
         if(bookState.userPosition.length !== 0){

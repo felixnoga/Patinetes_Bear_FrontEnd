@@ -1,10 +1,14 @@
-import { useTripContext } from "../context/tripContext"
 import { useCallback, useEffect, useState } from "react"
+import { useTripContext } from "../context/tripContext"
+import { useAppContext } from "../context/context"
 import { types } from "../utils/bookReducer"
 import useRequest from "../services/useRequest"
 import "../assets/Trip.css"
+import SpinRotate from "../utils/SpinRotate"
+
 const Trip = ({cancelTime})=>{
     const {bookState:{userPosition, scooter, isBooked, trip}, handleContext} = useTripContext()
+    const { handleError } = useAppContext()
     const {loading, confirmBooking}= useRequest()
     const [isInZone, setIsInZone]= useState(false)
     const [hiding, setHiding]= useState(false)
@@ -55,8 +59,9 @@ const Trip = ({cancelTime})=>{
                 setHiding(false)
             }, 700)
         }catch(error){
+            handleError("ups, no pudimos confirmar tu viaje, parece que hemos tenido un error")
             console.log(error)
-            alert( "fail to finish the trip")
+            
         }
         
     }
@@ -67,8 +72,8 @@ const Trip = ({cancelTime})=>{
                 <div className="Trip-div--main">
                 <p className="Trip-p">Introduce el siguiente código</p>
                 <form onSubmit={handleSubmit} className="Trip-form">
-                    <input type="text" className="Trip-input" placeholder="Código" defaultValue={trip.booking_code}>
-                    </input>
+                    { loading ? <SpinRotate/> : <input type="text" className="Trip-input" placeholder="Código" defaultValue={trip.booking_code}>
+                    </input>}
                     <button type="submit" className="Trip-button">Aceptar</button>
                 </form>
                 </div>
