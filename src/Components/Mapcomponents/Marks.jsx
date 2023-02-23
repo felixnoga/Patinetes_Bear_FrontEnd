@@ -40,9 +40,10 @@ const Marks= memo(({onClick})=>{
             </Marker>
         )
     // Todas las Marcas
+    if(marksData.features)
     return(
         <>
-        {marksData?.features?.map((point) =>
+        {marksData.features?.map((point) =>
             <Marker
                 key={point.scooter_id}
                 longitude={point.lng}
