@@ -57,15 +57,15 @@ const useRequest= ()=>{
             setLoading(false)
         }
     }
-    const confirmBooking = async ({booking_id, lng, lat }) =>{
+    const confirmBooking = async ({booking_id, lngUser, latUser }) =>{
         setLoading(true)
-        const body = { lng, lat }
+        const body = { lng: lngUser , lat : latUser }
         try {
             const payload = await serverReq.confirmBooking(booking_id, body);
             const trip = payload.data
             return trip
         } catch (error){
-            throw Error(error.message)
+            throw Error(error)
         } finally {
             setLoading(false)
         }
@@ -79,7 +79,7 @@ const useRequest= ()=>{
             const trip = payload.data
             return trip
         } catch (error) {
-            throw Error(error.message)
+            throw Error(error)
         } finally {
             setLoading(false)
         }
@@ -90,7 +90,7 @@ const useRequest= ()=>{
             const payload = await serverReq.cancelBooking(id_scooter);
             return true
         } catch (error) {
-            throw Error(error.message)
+            throw Error(error)
         } finally {
             setLoading(false)
         }

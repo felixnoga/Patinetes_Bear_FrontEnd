@@ -52,10 +52,17 @@ const BookingButton = ({ isInZone, cancelTrip })=>{
     }
     const handleCancel= async ()=> {
         const id= scooter.scooter_id
+        const payload = {
+            booking_id: "",
+            booking_code: ""
+        }
         try {
             const data = await cancelBooking(id);
             cancel();
-            isBooked && handleContext(types.bookScooter, false)
+            if(isBooked){  
+                handleContext(types.bookScooter, false)
+                handleContext(types.updateTripData, payload)
+            }
             cancelTrip()
         } catch (error) {
             console.log(error)

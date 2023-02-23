@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useTripContext } from "../../context/tripContext"
 import useCountdown from "../../utils/useCountdown"
+import useRequest from "../../services/useRequest"
 import { types } from "../../utils/bookReducer"
 import "../../assets/TripInterface.css"
 
@@ -8,6 +9,7 @@ const TripInterface= ()=> {
     const [toogle, setToogle]= useState(false)
     const { bookState, handleContext } = useTripContext()
     const { timeLeft, init, cancel } = useCountdown(1 , true)
+    const {finishTrip, loading}= useRequest()
 
     useEffect(()=>{
         if(bookState.onTrip){
@@ -17,10 +19,18 @@ const TripInterface= ()=> {
             cancel()
     },[bookState.onTrip])
 
-    const handleButton= ()=>{
-        handleContext(types.trip, false)
-        setToogle(false)
-    }
+    const handleButton= async ()=>{
+        // Termina el viaje y pide de vuelta la factura.
+        const [lng, lat] = bookState.userPosition
+        const trip_id = bookState.trip.trip_id
+        try{
+            const data= await finishTrip({trip_id ,lng, lat})
+            handleContext(types.payment, data.payment)
+            setToogle(false)
+        }catch(error){
+            new alert("fallo al ejecutar el pago")
+        }}
+
 
     if(bookState.onTrip)
     return (
