@@ -7,6 +7,7 @@ import "../assets/BookingButton.css"
 
 const BookingButton = ({ isInZone, cancelTrip })=>{
     const {bookState:{isBooked, scooter} , updateBook, handleContext}= useTripContext()
+
     const timeToReachScooter= 15
     const { timeLeft, init, cancel, outOfTime }= useCountdown(timeToReachScooter)
     const {bookingScooter, cancelBooking, loading}= useRequest()

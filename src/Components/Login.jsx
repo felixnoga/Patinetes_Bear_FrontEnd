@@ -1,7 +1,6 @@
 import { useNavigate, Link } from "react-router-dom"
 import { useAppContext } from "../context/context";
 import {useState} from 'react';
-import  axios  from 'axios';
 import '../assets/Login.css'
 
 const Login=() => {
@@ -15,8 +14,9 @@ const Login=() => {
         password:""
     })
 
-    function login(e) {
+    const login = async (e) => {
         e.preventDefault(); 
+        
         if((data.email=="") || (data.password=="")) {
             if(data.email=="") {
                 alert("falta email")
@@ -26,27 +26,39 @@ const Login=() => {
             return;
         } 
 
-
-        axios.post(url, {
+        const body = {
             email: data.email, 
-            password:data.password
-        })
-        .then(res=>{
-                log()
-                toHome("/")
-        });
+            password:data.password,
+        }
+
+        try {
+            const res = await fetch (url, 
+            {
+                method: "POST",
+                headers: {"Content-Type":"application/json"}, 
+                body: JSON.stringify(body)
+            }
+            );
+            const parseRes = await res.json(); 
+            console.log(parseRes);         
+
+        if (parseRes.token) {
+            localStorage.setItem("token", parseRes.token);
+            log();
+            toHome("/");
+ 
+           } else {
+            console.error(parseRes);
+          }
+        } catch (err) {
+          console.error(err.message);
+        }
     }
 
     function handle(e){
         const newData = {...data};
         newData[e.target.id] = e.target.value;
         setData(newData);
-      }
-
-    // pruebas para saltar el login.
-    const autoEnter= ()=>{
-        log()
-        toHome("/")
     }
 
         return(
@@ -68,12 +80,10 @@ const Login=() => {
             <button type='button' className="login-btn" >Regístrate</button>  
         </div>
         </Link>
-        {/* para pruebas solo */}
-                <button type='button' className="login-btn" onClick={autoEnter}>TEST</button> 
 
         </div>
         )
 
 }
 
-export default Login
+export default Login;

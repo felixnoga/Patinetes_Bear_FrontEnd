@@ -10,7 +10,7 @@ const Home = () => {
         <>
             <TripWrapper>
                 <AsideMenu />
-                <Map2 />
+                 <Map2 />
                 <BookingPopup/>
                 <TripInterface />
             </TripWrapper>
