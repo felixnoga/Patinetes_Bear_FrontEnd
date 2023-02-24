@@ -44,10 +44,10 @@ const AsideMenu= ()=>  {
                     <div className="AsideMenu-div--link"> <CgTime className="AsideMenu-icon" />
                         <h4 className="AsideMenu-h4">Historial</h4> </div>
                      {/* </Link> */}
-                    {/* <Link to="/forma_pago" className="AsideMenu-link"> */}
+                    <Link to="/forma_pago" className="AsideMenu-link">
                     <div className="AsideMenu-div--link"><CgCreditCard className="AsideMenu-icon" />
                             <p className="AsideMenu-h4">Forma de Pago</p></div>
-                         {/* </Link> */}
+                         </Link>
                     {/* <Link to="/ayuda" className="AsideMenu-link"> */}
                     <div className="AsideMenu-div--link"><HiQuestionMarkCircle className="AsideMenu-icon" />
                             <h4 className="AsideMenu-h4">Ayuda</h4></div>

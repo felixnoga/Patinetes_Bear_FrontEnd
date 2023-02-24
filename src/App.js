@@ -6,6 +6,7 @@ import ErrorMessage from './utils/ErrorMessage';
 import Login from './Components/Login';
 import Register from './Components/Register'
 import Home from './Components/Home';
+import Payments from './Components/Payments';
  
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
                 <Home />
             </ProtectedRoute>}/>
           <Route path="*" element={<h1>Esta ruta no existe</h1>}/>
+          <Route path="/forma_pago" element={<Payments />} />
         </Routes>
         <ErrorMessage/>
       </AppWrapper>
