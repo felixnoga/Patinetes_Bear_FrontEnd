@@ -62,26 +62,34 @@ const Login=() => {
     }
 
         return(
-            <div className="login-container">
-
-        <div className='login-input'>
-            <input type="text" name="email" placeholder="Email" required onChange={(e)=>handle(e)} id="email" value={data.email}/>
-        </div>
-
-        <div className='login-input'>
-            <input type="password" name="password" placeholder="Contraseña" required onChange={(e)=>handle(e)} id="password" value={data.password}/>
-        </div>
-        <div>
-            <button type='button' className="login-btn" onClick={login}>Login</button>  
-        </div>
-        <p>¿No tienes cuenta todavia? </p>
-        <Link className='link' to="/register">
-        <div>
-            <button type='button' className="login-btn" >Regístrate</button>  
-        </div>
-        </Link>
-
-        </div>
+            <>  
+            <div className="title-login2">
+               <h1>Inicia de Sesión</h1>
+           </div>
+               <div className="login-conteiner">
+   
+                   <div className="big-login-input">
+                       <div>
+                           <input className='login2-input' type="text" name="email" placeholder="Email" required onChange={(e) => handle(e)} id="email" value={data.email} />
+                       </div>
+   
+                       <div >
+                           <input className='login2-input' type="password" placeholder="Contraseña" required onChange={(e) => handle(e)} id="password" value={data.password} />
+                       </div>
+                   </div>
+                   <div className="">
+                       <button type='button' className="login2-btn" onClick={login}>Login</button>
+                   </div>
+                   <div className="box-login">
+                   <Link className='link' to="/register">
+                   <h4 className="subtitle-login">¿No tienes cuenta todavia? <b className="reg">Registrate</b> </h4>
+                   </Link>
+                   </div>
+                   {/* para pruebas solo */}
+                   {/* <button type='button' className="login-btn" onClick={autoEnter}>TEST</button> */}
+   
+               </div>
+           </>
         )
 
 }
