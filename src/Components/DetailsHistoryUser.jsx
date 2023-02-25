@@ -1,10 +1,25 @@
-import React from 'react'
 import "../assets/detailsHistoryUser.css"
 import CardCancel from './CardCancel'
 import CardInCourse from './CardInCourse'
 import NabBarBear from './Navbar'
+import tripAPI from '../services/tripsAPI'
+import React, { useState, useEffect } from 'react'
+
 
 const DetailsHistoryUser = () => {
+
+  const [ trips, setTrips] = useState([]);
+
+  useEffect(() => {
+      const getAllTrip = async() => {
+         const response = await tripAPI.getAllTrip();
+         console.log(response);
+         setTrips(response)
+      }
+      getAllTrip();
+  }, [])
+
+
   return (
     <div>
       <NabBarBear />
