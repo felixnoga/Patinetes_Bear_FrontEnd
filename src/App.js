@@ -2,6 +2,7 @@ import './App.css';
 import { Routes, Route } from "react-router-dom";
 import { AppWrapper } from './context/context';
 import ProtectedRoute from './utils/ProtectedRoute';
+import ErrorMessage from './utils/ErrorMessage';
 import Login from './Components/Login';
 import Home from './Components/Home';
 import HistoryKM from './Components/HistoryKm';
@@ -9,8 +10,8 @@ import DetailsHistoryUser from './Components/DetailsHistoryUser';
 import AllUsers from './Components/AllUsers';
 import Register from './Components/Register';
 import LandingPage from './Components/Landing';
-
-
+import Payments from './Components/Payments';
+ 
 function App() {
 
   
@@ -30,7 +31,9 @@ function App() {
                 <Home />
             </ProtectedRoute>}/>
           <Route path="*" element={<h1>Esta ruta no existe</h1>}/>
+          <Route path="/forma_pago" element={<Payments />} />
         </Routes>
+        <ErrorMessage/>
       </AppWrapper>
     </div>
   );
