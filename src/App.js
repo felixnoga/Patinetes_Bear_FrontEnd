@@ -10,8 +10,8 @@ import DetailsHistoryUser from './Components/DetailsHistoryUser';
 import AllUsers from './Components/AllUsers';
 import Register from './Components/Register';
 import LandingPage from './Components/Landing';
-
-
+import Payments from './Components/Payments';
+ 
 function App() {
 
   
@@ -31,6 +31,7 @@ function App() {
                 <Home />
             </ProtectedRoute>}/>
           <Route path="*" element={<h1>Esta ruta no existe</h1>}/>
+          <Route path="/forma_pago" element={<Payments />} />
         </Routes>
         <ErrorMessage/>
       </AppWrapper>
