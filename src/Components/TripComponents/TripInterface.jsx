@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useNavigate} from "react-router-dom"
 import { useTripContext } from "../../context/tripContext"
 import { useAppContext } from "../../context/context"
 import useCountdown from "../../utils/useCountdown"
@@ -13,6 +14,7 @@ const TripInterface= ()=> {
     const { handleError } = useAppContext()
     const { timeLeft, init, cancel } = useCountdown(1 , true)
     const {finishTrip, loading}= useRequest()
+    const toPayment= useNavigate()
 
     useEffect(()=>{
         if(bookState.onTrip){
@@ -28,8 +30,10 @@ const TripInterface= ()=> {
         const trip_id = bookState.trip.trip_id
         try{
             const data= await finishTrip({trip_id ,lng, lat})
-            handleContext(types.payment, data.payment)
+            handleContext(types.invoice, data)
+            toPayment("/payments")
             setToogle(false)
+
         }catch(error){
             handleError(`ups, parece que ha habido un fallo en la conexión, no pudimos completar tu petición ${error}`)
         }}

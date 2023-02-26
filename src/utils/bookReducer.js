@@ -9,10 +9,8 @@ const initialStateBook= {
         trip_id: "",
         booking_code:""
     },
-    payment: false
+    invoice: false
 }
-
-const initialStateTrip= {}
 
 const types= {
     resetState: "reset",
@@ -23,7 +21,7 @@ const types= {
     updateMany: "updateMany",
     trip: "trip",
     updateTripData: "tripData",
-    payment: "payment"
+    invoice: "payment"
 }
 
 const bookReducer= (state, action)=> {
@@ -78,7 +76,7 @@ const bookReducer= (state, action)=> {
                 return{
                     ...initialStateBook,
                     userPosition: state.userPosition,
-                    payment: action.payload
+                    invoice: action.payload
             }
         }
 }
