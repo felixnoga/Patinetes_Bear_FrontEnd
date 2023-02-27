@@ -34,7 +34,7 @@ const BookingButton = ({ isInZone, cancelTrip })=>{
 
     const handleBooking= async ()=>{
         // TODO pendiente cambiar user_id por el user del contexto
-        const id_user= 1
+        const id_user= 35
         const body= {
             id_user,
             id_scooter: scooter.scooter_id

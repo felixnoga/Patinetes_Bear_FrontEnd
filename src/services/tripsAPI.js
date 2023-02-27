@@ -1,12 +1,12 @@
 import axios from "axios";
 
-class tipsAPI{
+class tripsAPI{
 
    static async getAllTrip() {
-        const requestUrl = `${process.env.REACT_APP_BASE_URL}/trip`;
+        const requestUrlTrip = `${process.env.REACT_APP_BASE_URL}/trip`;
         console.log("To backend!");
         try {
-            const response = await axios.get(requestUrl);
+            const response = await axios.get(requestUrlTrip);
       
             console.log(response.data)
             return response.data
@@ -19,4 +19,4 @@ class tipsAPI{
 
 }
 
-export default tipsAPI;
+export default tripsAPI;
