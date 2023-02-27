@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom"
 import { TripWrapper } from '../context/tripContext';
 import BookingPopup from './BookingPopup';
 import Map2 from './Map2';
@@ -13,6 +14,7 @@ const Home = () => {
                  <Map2 />
                 <BookingPopup/>
                 <TripInterface />
+                <Outlet/>
             </TripWrapper>
         </>
     )
