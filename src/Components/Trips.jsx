@@ -1,6 +1,7 @@
 import React from 'react';
 import '../assets/triprender.css'
 import { RxCrossCircled } from "react-icons/rx";
+import { Link } from 'react-router-dom';
 
 
 const TripList = (props) => {
@@ -8,10 +9,13 @@ const TripList = (props) => {
     if (!props.trips.length) {
 
         return (
+            
             <div className='trip-list'>
                 <div className='trips-title'>
                     <div>
+                        <Link to="/login">
                         <RxCrossCircled className="icon-cross" />
+                        </Link>
                     </div>
                     <div>
                         <h1 className='details-title'> Detalle de viajes </h1>

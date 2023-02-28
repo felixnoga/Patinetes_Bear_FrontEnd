@@ -1,11 +1,11 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useAppContext } from "../context/context";
 import { useState } from 'react';
-import axios from 'axios';
 import '../assets/Register.css'
 
+
 const Register = () => {
-    const { log } = useAppContext()
+    const { log, handleError } = useAppContext()
     const toLogin = useNavigate();
 
     const url = "http://localhost:3005/register";
@@ -37,10 +37,11 @@ const Register = () => {
                     method: "POST",
                     headers: {"Content-Type":"application/json"}, 
                     body: JSON.stringify(body)
-                }
+                } 
                 );
                 const parseRes = await res.json(); 
-                console.log(parseRes);         
+                console.log(parseRes);  
+                handleError(parseRes.errors[0].msg)       
     
             if (parseRes.token) {
                 localStorage.setItem("token", parseRes.token);

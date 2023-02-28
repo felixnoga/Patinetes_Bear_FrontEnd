@@ -10,7 +10,6 @@ import AllTrips from './Components/AllTrips';
 import Register from './Components/Register';
 import LandingPage from './Components/Landing';
 import Payments from './Components/Payments';
-import CardInCourse from './Components/CardInCourse';
 import NoTrips from './Components/NoTrips';
  
 function App() {

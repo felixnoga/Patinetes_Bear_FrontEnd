@@ -40,7 +40,7 @@ const AsideMenu= ()=>  {
                         {/* </Link> */}
 
                     </div>
-                    <Link to="historykm" className="AsideMenu-link">
+                    <Link to="/all-trips" className="AsideMenu-link">
                     <div className="AsideMenu-div--link"> <CgTime className="AsideMenu-icon" />
                         <h4 className="AsideMenu-h4">Historial</h4> </div>
                      </Link> 
