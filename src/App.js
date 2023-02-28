@@ -12,6 +12,7 @@ import LandingPage from './Components/Landing';
 import Payments from './Components/Payments';
 import CardInCourse from './Components/CardInCourse';
 import NoTrips from './Components/NoTrips';
+import Invoice from './Components/TripComponents/Invoice';
  
 function App() {
 
@@ -30,7 +31,9 @@ function App() {
           <Route path="/" element={
             <ProtectedRoute>
                 <Home />
-            </ProtectedRoute>}/>
+            </ProtectedRoute>}>
+              <Route path="payments" element={<Invoice />}></Route>
+            </Route>
           <Route path="*" element={<h1>Esta ruta no existe</h1>}/>
           <Route path="/forma_pago" element={<Payments />} />
         </Routes>

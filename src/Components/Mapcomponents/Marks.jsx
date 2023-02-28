@@ -14,12 +14,16 @@ const Marks= memo(({onClick})=>{
 
     useEffect(()=>{
         const getScooters = async()=>{
+            if(bookState.onTrip|| bookState.isBooked || bookState.isSelected){
+                return false
+            }
             const [lngUser, latUser] = bookState.userPosition;
             try{
                 const marks = await getNearbyScooters( lngUser, latUser)
                 setMarksData(marks)
                 
             }catch(error){
+                setMarksData(false)
                 handleError(error.message)
             }
         };
