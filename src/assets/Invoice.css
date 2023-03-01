@@ -1,0 +1,100 @@
+.Invoice-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    background-color: #fcfcfc;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+}
+.Invoice-div--header{
+    display: flex;
+    width: 90%;
+    justify-content: space-around;
+    margin: 1em;
+    padding: 0.8em;
+    border-radius: 1em;
+    background-color: aliceblue;
+    box-shadow: 0 0 3px #141204;
+}
+.Invoice-img{
+    width: 20%;
+    border-radius: 50%;
+    padding: 0.5em;
+    background-color: #f6cb8a;
+    box-shadow: 0 0 3px #141204;
+}
+.Invoice-div--body{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1em;
+    background-color: #F4BC68;
+    border-radius: 1em;
+    padding: 0.8em;
+    margin: 0.2em;
+    box-shadow: 0 0 3px #141204;
+
+}
+.Invoice-div--info{
+    min-width: 60% ;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    padding: 0.6em;
+    background-color: #14120437;
+    border-radius: 1em;
+}
+.Invoice-div--infoID{
+    background-color: #f6cb8a7e ;
+    padding: 0.5em;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 1em;
+}
+.Invoice-h2{
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.Invoice-h3{ 
+    font-size: 1rem;
+    font-weight: 500;
+}
+.Invoice-h4{}
+.Invoice-h5{
+    font-weight: 300;
+    font-size: 0.8rem;
+}
+.Invoice-div--footer{
+    margin-top: 10%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    align-items: center;
+    justify-content: center;
+}
+.Invoice-button{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 180px;
+    height: 40px;
+    background-color: #F4BC68;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.Invoice-button:active{
+    background-color: #f6af46;
+    box-shadow: 0 0 0.8em inset black
+}
