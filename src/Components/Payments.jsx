@@ -20,8 +20,9 @@ const CheckoutForm = ({amount, handler}) => {
                 card: elements.getElement(CardElement),
             })
             if (!error) {
+                const client_id= 1
                 const { id } = paymentMethod
-                const { data } = await axios.post("http://localhost:3005/payment", {
+                const { data } = await axios.post(`http://localhost:3005/payment/${client_id}`, {
                     id,
                     amount: amount,
                     currency: "EUR",
