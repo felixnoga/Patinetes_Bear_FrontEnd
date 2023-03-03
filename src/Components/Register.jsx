@@ -2,12 +2,20 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAppContext } from "../context/context";
 import {useClientContext} from "../context/clientDataContext"
 import { useState } from 'react';
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> dev
 import '../assets/Register.css'
 
+
 const Register = () => {
+<<<<<<< HEAD
     const { log, } = useAppContext();
+=======
+    const { log, handleError } = useAppContext()
+>>>>>>> dev
     const toLogin = useNavigate();
 
     const url = "http://localhost:3005/register";
@@ -39,10 +47,14 @@ const Register = () => {
                     method: "POST",
                     headers: {"Content-Type":"application/json"}, 
                     body: JSON.stringify(body)
-                }
+                } 
                 );
                 const parseRes = await res.json(); 
-                console.log(parseRes);         
+                if (parseRes.error || parseRes.errors) {
+                    handleError(parseRes.errors[0].msg)
+                        
+                    console.log(parseRes);  
+                }      
     
             if (parseRes.token) {
                 localStorage.setItem("token", parseRes.token);
@@ -59,7 +71,6 @@ const Register = () => {
             } catch (err) {
               console.error(err.message);
             }
-
     }
 
     function handle(e) {
@@ -98,7 +109,7 @@ const Register = () => {
             </div>
 
             <div>
-            <button type='button' className="register-btn" onClick={register}>Registro</button>
+            <button type='button' disabled={!data.user_name || !data.email || !data.password || !data.passwordAgain} className="register-btn" onClick={register}>Registro</button>
             </div>
             <div className="box-register">
                 <Link className='link-register' to="/login">

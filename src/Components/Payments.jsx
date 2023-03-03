@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import SpinRotate from "../utils/SpinRotate"
 // import "bootswatch/dist/lux/bootstrap.min.css";
 import "../assets/payments.css";
 
@@ -9,6 +10,7 @@ const stripePromise = loadStripe(process.env.REACT_APP_CARD_KEY)
 
 const CheckoutForm = ({amount, handler}) => {
 
+    const [loading, setLoading] = useState(false)
     const stripe = useStripe();
     const elements = useElements();
 
@@ -20,8 +22,10 @@ const CheckoutForm = ({amount, handler}) => {
                 card: elements.getElement(CardElement),
             })
             if (!error) {
+                const client_id= 1
                 const { id } = paymentMethod
-                const { data } = await axios.post("http://localhost:3005/payment", {
+                setLoading(true)
+                const { data } = await axios.post(`http://localhost:3005/payment/${client_id}`, {
                     id,
                     amount: amount,
                     currency: "EUR",
@@ -34,6 +38,9 @@ const CheckoutForm = ({amount, handler}) => {
         }catch(error){
             console.log(error)
         }
+        finally{
+            setLoading(false)
+        }
     }
     return <form onSubmit={handleSubmit}>
         <div>
@@ -41,16 +48,16 @@ const CheckoutForm = ({amount, handler}) => {
         </div>
         <div className="form-group">
             <CardElement className="numberCard" />
+            {loading ? <SpinRotate/> :
             <button className="btn btn-outline-warning">
                 Comprar
-            </button>
+            </button>}
         </div>
     </form>
 }
 
 const Payments = () => {
     const [amount , setAmount] = useState(null)
-
     return (
         <Elements stripe={stripePromise}>
             <div className="container p-4">                            

@@ -6,8 +6,6 @@
     color: #F4BC68;
 }
 
-.big-login-input{}
-
 .login-conteiner{
     display: flex;
     flex-direction: column;
@@ -51,7 +49,7 @@
     align-items: center;
     font-family: 'Poppins', sans-serif;
     margin-bottom: 25px;
-}
+}   
 
 .login2-btn{
     display: flex;

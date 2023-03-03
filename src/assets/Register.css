@@ -13,26 +13,29 @@
     margin-top: 10em;
 }
 
-
 .register-input{
     width: 300px;
     height: 40px;
     border: 1px solid #8D98A7;
     border-radius: 4px;
     font-size: 14px;
-    margin-bottom: 20px;    
+    margin-bottom: 20px;  
+    padding-left: 3px;
+    transition: all 0.3s ease;
+    color: rgb(0, 0, 0, 0.7);
+
 }
 
 
-::placeholder {
+/* ::placeholder {
     padding-left: 20px;
     color: #dfdfdf;
-}
+} */
 
-#email,
+/* #email,
 #password{
     padding: 5px;
-}
+} */
 
 .box-register{
     width: 100%;
