@@ -10,11 +10,10 @@ const useLoc= ()=> {
     const handleLoc= useCallback( (e)=> {
         setLat(e.coords.latitude);
         setLng(e.coords.longitude);
-        console.log(e.coords)
     },[])
     const handleError= (error)=> {
         setError(error)
-        console.log(error.code)
+        console.log(error)
     }
     // // Genera errores usar el useLayout o useEffect
     useEffect(()=> {

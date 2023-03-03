@@ -43,8 +43,6 @@ const Register = () => {
                 const parseRes = await res.json(); 
                 if (parseRes.error || parseRes.errors) {
                     handleError(parseRes.errors[0].msg)
-                        
-                    console.log(parseRes);  
                 }      
     
             if (parseRes.token) {

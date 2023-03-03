@@ -47,7 +47,6 @@ const BookingButton = ({ isInZone, cancelTrip })=>{
                 booking_id: data.data.booking_id,
                 booking_code: data.code
                 }
-            console.log( data, payload)
             handleContext(types.updateTripData, payload)
             handleContext(types.bookScooter, true);
             init()

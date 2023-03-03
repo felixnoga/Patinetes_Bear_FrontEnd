@@ -40,8 +40,7 @@ const Login=() => {
                 body: JSON.stringify(body)
             }
             );
-            const parseRes = await res.json(); 
-            console.log(parseRes);         
+            const parseRes = await res.json();          
 
         if (parseRes.token) {
             localStorage.setItem("token", parseRes.token);
