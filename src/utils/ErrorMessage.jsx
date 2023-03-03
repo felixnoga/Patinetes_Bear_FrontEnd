@@ -1,5 +1,6 @@
 import { useAppContext } from "../context/context"
 import "../assets/ErrorMessage.css"
+
 const ErrorMessage= ()=>{
     const { error, eraseError } = useAppContext()
     if (error)

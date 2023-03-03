@@ -1,9 +1,11 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+
 
 const AppContext = createContext()
+
 export const AppWrapper = ({ children }) => {
     const [isLog, setIsLog] = useState(false)
-    const [error, setError]= useState(null)
+    const [error, setError]= useState(null);
 
     const handleError= (a)=>{
         setError(a)
@@ -13,11 +15,12 @@ export const AppWrapper = ({ children }) => {
     }
 
     const log= ()=>{
-        setIsLog(!isLog)
+        setIsLog(true)
     }
     const logout= ()=>{
         setIsLog(false)
     }
+ 
 
     return (
         <AppContext.Provider value={({
@@ -26,7 +29,8 @@ export const AppWrapper = ({ children }) => {
             logout,
             error,
             handleError,
-            eraseError
+            eraseError,
+ 
         })}>
             {children}
         </AppContext.Provider>

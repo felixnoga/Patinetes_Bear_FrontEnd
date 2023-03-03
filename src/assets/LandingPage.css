@@ -4,9 +4,16 @@
     width: 100%;
 }
 
+.backgraund-landing{
+    background-color: #F4BC68;
+    height: 100%;
+    width: 100%;
+}
+
 .container-logo-landing{
     width: 390px;
     height: 844px;
+    background-color: white;
     background-color: white;
     
 }
@@ -20,9 +27,29 @@
     word-spacing: 0.2em;
     letter-spacing: 0.2em;
 }
+.title-landing{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: black;
+    font-size: larger;
+    font-weight: bold;
+    word-spacing: 0.2em;
+    letter-spacing: 0.2em;
+}
+
 
 .landing-conteiner{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10em;
+}
+
+
+::placeholder {
+    padding-left: 20px;
+    color: #dfdfdf;
     flex-direction: column;
     align-items: center;
     margin-top: 10em;
@@ -41,6 +68,13 @@
     justify-content: center;
 }
 
+.box-landing{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .link-landing{
     font-size: 12.5px;
     font-weight: 500;
@@ -50,6 +84,11 @@
 .reg{
     font-weight: bold;
 }
+
+.logo-landing{
+    width: 300px;
+}
+
 
 .logo-landing{
     width: 300px;

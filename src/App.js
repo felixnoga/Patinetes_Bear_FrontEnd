@@ -1,42 +1,49 @@
 import './App.css';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { AppWrapper } from './context/context';
+import { ClientDataProvider } from './context/clientDataContext'
 import ProtectedRoute from './utils/ProtectedRoute';
 import ErrorMessage from './utils/ErrorMessage';
 import Login from './Components/Login';
 import Home from './Components/Home';
-import HistoryKM from './Components/HistoryKm';
-import DetailsHistoryUser from './Components/DetailsHistoryUser';
-import AllUsers from './Components/AllUsers';
+import AllTrips from './Components/AllTrips';
 import Register from './Components/Register';
 import LandingPage from './Components/Landing';
 import Payments from './Components/Payments';
+import NoTrips from './Components/NoTrips';
 import Invoice from './Components/TripComponents/Invoice';
- 
+
 function App() {
 
-  
+
 
   return (
     <div className="App">
       <AppWrapper>
+      <ClientDataProvider>
+
         <Routes>
-          <Route path="/landing" element={<LandingPage/>}/>
-          <Route path="/register" element={<Register/>}/>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/historykm" element={<HistoryKM/>}></Route>
-          <Route path='/detailshistoryuser' element={<DetailsHistoryUser/>}></Route>
-          <Route path='/all-users' element={<AllUsers/>}></Route>
-          <Route path="/" element={
+        <Route path="/" element={<LandingPage/>}/>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/no-trips" element={<NoTrips/>}/>
+          
+          <Route path="/home" element={
             <ProtectedRoute>
                 <Home />
-            </ProtectedRoute>}>
-              <Route path="payments" element={<Invoice />}></Route>
-            </Route>
-          <Route path="*" element={<h1>Esta ruta no existe</h1>}/>
-          <Route path="/forma_pago" element={<Payments />} />
+              </ProtectedRoute>
+
+          }>
+            <Route path="forma_pago" element={<Payments />} />
+            <Route path="payments" element={<Invoice />}></Route>
+            <Route path='all-trips' element={<AllTrips/>}></Route>
+          </Route>
+          <Route path="*" element={<h1>Esta ruta no existe</h1>} />
+           
         </Routes>
-        <ErrorMessage/>
+        <ErrorMessage />
+        </ClientDataProvider>
+
       </AppWrapper>
     </div>
   );

@@ -1,10 +1,11 @@
 import axios from "axios";
 
-class usersAPI{
+class tripsAPI{
 
-   static async getAllUser() {
-        const requestUrl = `${process.env.REACT_APP_BASE_URL}/user`;
-        console.log("To backend!");
+   static async getAllTrip() {
+        const requestUrl = `${process.env.REACT_APP_BASE_URL}/trip`;
+        console.log(requestUrl)
+        console.log("Send to backend!");
         try {
             const response = await axios.get(requestUrl);
       
@@ -19,4 +20,4 @@ class usersAPI{
 
 }
 
-export default usersAPI;
+export default tripsAPI;
