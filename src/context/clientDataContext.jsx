@@ -16,7 +16,7 @@ export const ClientDataProvider = ({ children }) => {
     
     const getClientData = async () => {
         const client_id =  localStorage.getItem('id')
-        const res = await axios.get(`${ process.env.REACT_APP_BASE_URL } /client/${client_id}`);
+        const res = await axios.get(`${ process.env.REACT_APP_BASE_URL }/client/${client_id}`);
         setClientData(res.data[0]);
     } 
 
