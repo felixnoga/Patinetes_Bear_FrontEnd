@@ -29,7 +29,7 @@ const CheckoutForm = ({amount, handler}) => {
                 const client_id= clientData.client_id
                 const { id } = paymentMethod
                 setLoading(true)
-                const { data } = await axios.post(`http://localhost:3005/payment/${client_id}`, {
+                const { data } = await axios.post(`${process.env.REACT_APP_BASE_URL}/payment/${client_id}`, {
                     id,
                     amount: amount,
                     currency: "EUR",

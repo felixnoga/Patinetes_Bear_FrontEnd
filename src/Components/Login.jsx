@@ -8,7 +8,7 @@ const Login=() => {
     const {log}= useAppContext()
     const toHome= useNavigate();
 
-    const url= "http://localhost:3005/login"; 
+    const url = `${process.env.REACT_APP_BASE_URL}/login`; 
 
     const [data, setData] = useState({
         email:"",

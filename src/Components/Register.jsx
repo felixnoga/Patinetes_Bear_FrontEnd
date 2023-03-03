@@ -9,7 +9,7 @@ const Register = () => {
     const { log, handleError } = useAppContext()
     const toLogin = useNavigate();
 
-    const url = "http://localhost:3005/register";
+    const url = `${process.env.REACT_APP_BASE_URL}/register`;
 
     const [data, setData] = useState({
         user_name: "",
