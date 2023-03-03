@@ -2,20 +2,11 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAppContext } from "../context/context";
 import {useClientContext} from "../context/clientDataContext"
 import { useState } from 'react';
-<<<<<<< HEAD
-
-
-=======
->>>>>>> dev
 import '../assets/Register.css'
 
 
 const Register = () => {
-<<<<<<< HEAD
-    const { log, } = useAppContext();
-=======
     const { log, handleError } = useAppContext()
->>>>>>> dev
     const toLogin = useNavigate();
 
     const url = "http://localhost:3005/register";
