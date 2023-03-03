@@ -35,7 +35,6 @@ const CheckoutForm = ({amount, handler}) => {
                     currency: "EUR",
                     description: "Recarga 10€",
                 })
-                console.log(data)
                 elements.getElement(CardElement).clear();
                 handler(null)
             }

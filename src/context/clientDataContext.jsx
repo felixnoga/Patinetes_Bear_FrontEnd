@@ -7,12 +7,6 @@ export const ClientDataProvider = ({ children }) => {
 
     const [clientData, setClientData] = useState(null);
     const [userData, setUserData] = useState(null);
-
-    useEffect(() => {
-
-    }, [])
-
-    
     
     const getClientData = async () => {
         const client_id =  localStorage.getItem('id')

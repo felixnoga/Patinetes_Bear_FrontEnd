@@ -15,8 +15,7 @@ const AllUsers = () => {
         const getAllTrip = async () => {
             const id = localStorage.getItem('id')
             const response = await tripAPI.getAllTrip(id);
-            console.log(response);
-            setTrips(response)
+            setTrips(response);
         }
         getAllTrip();
     }, [])

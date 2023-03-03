@@ -29,10 +29,8 @@ const Map2= () => {
             isSelected: true
         }
         handleContext(types.updateMany, payload)
-        // setScooter(e);
-        // select();
-        console.log(e)
-    },[])
+        },[])
+        
 // FUNCION IS NEAR comprobará la cercania de los puntos.
     const currentPos= (e)=>{
         const [lng, lat]= bookState.userPosition
@@ -40,8 +38,7 @@ const Map2= () => {
         if(lng !== e.longitude || lat !== e.latitude ){
             const dataPosition = [e.longitude, e.latitude]
             handleContext(types.updateUserPosition, dataPosition )
-            // updatePos(e.longitude, e.latitude)
-            console.log(e.latitude, e.longitude, bookState)}
+        }
 
     }
     const activeControl= ()=>{

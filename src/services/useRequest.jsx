@@ -47,7 +47,6 @@ const useRequest= ()=>{
     
     const bookingScooter = async (body) =>{
         setLoading(true)
-        console.log(body)
         try {
             const payload = await serverReq.bookingScooter(body);
             const booking = payload.data

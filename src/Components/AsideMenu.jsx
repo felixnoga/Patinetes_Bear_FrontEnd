@@ -21,9 +21,7 @@ const AsideMenu= ()=>  {
         await getClientData();
     }; 
     getContext();
-    }, [])
-
-    console.log(clientData);
+    }, [toggle])
 
     
     const handleToggle=()=>{
