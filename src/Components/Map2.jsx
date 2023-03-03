@@ -71,10 +71,6 @@ const Map2= () => {
                 <Marks onClick={centerView}/>
                 <TenMinLayer/>
             </Map>
-            <button onClick={()=> 
-                centerView(40.4, -3.68)} 
-                className="Map-icon--navcenter">center</button>
-            {/* <MdNavigation className="Map-icon--nav"/> */}
         </div>
     )
 }

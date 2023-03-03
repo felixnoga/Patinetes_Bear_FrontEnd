@@ -19,7 +19,7 @@ const Invoice = ()=>{
         </div>)
     }
     const exitToHome= ()=>{
-        toHome("/")
+        toHome("/home")
     }
     if (invoice){
         const { payment, clientupdated } = invoice

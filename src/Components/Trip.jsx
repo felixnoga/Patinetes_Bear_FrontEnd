@@ -18,7 +18,7 @@ const Trip = ({cancelTime})=>{
         if (scooter.lng && isBooked){
         const { lng, lat } = scooter;
         const pitagoricDistanceBetween= Math.sqrt(((lngUser-lng)**2)+((latUser-lat)**2));
-        const twentyMeters= 0.00040 
+        const twentyMeters= 0.00150 
         if(pitagoricDistanceBetween < twentyMeters){
             setIsInZone(true)
         }

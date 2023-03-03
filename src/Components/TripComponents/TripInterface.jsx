@@ -31,7 +31,7 @@ const TripInterface= ()=> {
         try{
             const data= await finishTrip({trip_id ,lng, lat})
             handleContext(types.invoice, data)
-            toPayment("/payments")
+            toPayment("/home/payments")
             setToogle(false)
 
         }catch(error){

@@ -13,7 +13,8 @@ const AllUsers = () => {
 
     useEffect(() => {
         const getAllTrip = async () => {
-            const response = await tripAPI.getAllTrip();
+            const id = localStorage.getItem('id')
+            const response = await tripAPI.getAllTrip(id);
             console.log(response);
             setTrips(response)
         }

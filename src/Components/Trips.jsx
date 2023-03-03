@@ -12,7 +12,7 @@ const TripList = (props) => {
     const navigate = useNavigate();
 
     const navigateToLogin = () => {
-        navigate("/");
+        navigate("/home");
       };
 
   

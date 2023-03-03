@@ -53,11 +53,11 @@ const AsideMenu= ()=>  {
                         {/* </Link> */}
 
                     </div>
-                    <Link to="/all-trips" className="AsideMenu-link">
+                    <Link to="/home/all-trips" className="AsideMenu-link">
                     <div className="AsideMenu-div--link"> <CgTime className="AsideMenu-icon" />
                         <h4 className="AsideMenu-h4">Historial</h4> </div>
                      </Link> 
-                    <Link to="/forma_pago" className="AsideMenu-link">
+                    <Link to="/home/forma_pago" className="AsideMenu-link">
 
                     <div className="AsideMenu-div--link"><CgCreditCard className="AsideMenu-icon" />
                             <p className="AsideMenu-h4">Forma de Pago</p></div>

@@ -15,7 +15,7 @@ export const AppWrapper = ({ children }) => {
     }
 
     const log= ()=>{
-        setIsLog(!isLog)
+        setIsLog(true)
     }
     const logout= ()=>{
         setIsLog(false)

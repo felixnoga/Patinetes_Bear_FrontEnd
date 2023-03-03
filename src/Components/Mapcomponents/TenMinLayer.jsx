@@ -5,7 +5,7 @@ import useRequest from "../../services/useRequest"
 
 
 const TenMinLayer = memo(()=>{
-    const {bookState:{userPosition, isSelected}}= useTripContext()
+    const {bookState:{userPosition, isSelected, onTrip, isBooked}}= useTripContext()
     const [layer, setLayer]= useState(false)
     const {getIso}= useRequest()
 
@@ -29,7 +29,9 @@ const TenMinLayer = memo(()=>{
             "fill-antialias": true    
         }
     };
-    if (layer)
+    if(!layer || onTrip )
+        return 
+    if (layer && !onTrip && !isBooked)
     return(
         <Source 
             id="10MinSource"
@@ -42,8 +44,6 @@ const TenMinLayer = memo(()=>{
             </Layer>
         </Source>
     )
-    if(!layer)
-        return 
 } )
 
 export default TenMinLayer

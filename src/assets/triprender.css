@@ -1,6 +1,8 @@
 .trip-list{
+    position: absolute;
+    top:0;
+    width: 100vw;
     display: flex;
-    align-items: center;
     align-items: center;
     align-content: center;
     justify-content: flex-start;
@@ -8,6 +10,7 @@
     background-color: #F6F6F6;
     height: 100vh;
     flex-direction: column;
+    z-index: 9;
 }
 
 .title-trip_id{

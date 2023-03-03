@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect} from "react";
 
-const useCountdown= (time, up)=>{
+const useCountdown= (time, up= false)=>{
     const [countdown, setCountdown]= useState(time)
     const [outOfTime, setOutOfTime]= useState(false)
 
@@ -12,9 +12,7 @@ const useCountdown= (time, up)=>{
         }
         interval.current = setInterval(()=>{setCountdown(prev=>(prev - 1))}, 1000) 
     }
-    // const pause= ()=>{
-    //     clearInterval(interval.current)
-    // }
+
     const cancel= ()=>{
         clearInterval(interval.current)
         setCountdown(time)

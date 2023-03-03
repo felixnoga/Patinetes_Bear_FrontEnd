@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useAppContext } from "../context/context"
 import { useTripContext } from "../context/tripContext"
+import { useClientContext } from "../context/clientDataContext"
 import {types} from "../utils/bookReducer"
 import useCountdown from "../utils/useCountdown"
 import useRequest from "../services/useRequest"
@@ -10,7 +11,8 @@ import SpinRotate from "../utils/SpinRotate"
 const BookingButton = ({ isInZone, cancelTrip })=>{
     const {bookState:{isBooked, scooter} , updateBook, handleContext}= useTripContext()
     const { handleError } = useAppContext()
-    const timeToReachScooter= 30
+    const { clientData } = useClientContext();
+    const timeToReachScooter= 600
     const { timeLeft, init, cancel, outOfTime }= useCountdown(timeToReachScooter)
     const {bookingScooter, cancelBooking, loading}= useRequest()
 
@@ -34,7 +36,7 @@ const BookingButton = ({ isInZone, cancelTrip })=>{
 
     const handleBooking= async ()=>{
         // TODO pendiente cambiar user_id por el user del contexto
-        const id_user= 35
+        const id_user= clientData.client_id
         const body= {
             id_user,
             id_scooter: scooter.scooter_id

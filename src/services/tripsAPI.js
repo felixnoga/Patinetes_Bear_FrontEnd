@@ -2,8 +2,8 @@ import axios from "axios";
 
 class tripsAPI{
 
-   static async getAllTrip() {
-        const requestUrlTrip = `${process.env.REACT_APP_BASE_URL}/trip`;
+   static async getAllTrip(id) {
+        const requestUrlTrip = `${process.env.REACT_APP_BASE_URL}/trip/${id}`;
         console.log("To backend!");
         try {
             const response = await axios.get(requestUrlTrip);
