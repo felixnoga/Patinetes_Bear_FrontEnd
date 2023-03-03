@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const serverReq= {
-    url: process.env.REACT_APP_SERVER,
+    url: process.env.REACT_APP_BASE_URL,
 
     async nearbyScooters(lng, lat){
         return await axios.get(`${this.url}/scooters/available/${lng},${lat}`)
