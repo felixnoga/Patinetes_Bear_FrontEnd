@@ -1,11 +1,13 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useAppContext } from "../context/context";
+import {useClientContext} from "../context/clientDataContext"
 import { useState } from 'react';
-import axios from 'axios';
+
+
 import '../assets/Register.css'
 
 const Register = () => {
-    const { log } = useAppContext()
+    const { log, } = useAppContext();
     const toLogin = useNavigate();
 
     const url = "http://localhost:3005/register";
@@ -44,9 +46,13 @@ const Register = () => {
     
             if (parseRes.token) {
                 localStorage.setItem("token", parseRes.token);
+                localStorage.setItem("id", parseRes.id);
+
+               
+ 
                 log();
-                toLogin("/");
-     
+                toLogin("/home");
+      
                } else {
                 console.error(parseRes);
               }
