@@ -1,16 +1,15 @@
 import './App.css';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { AppWrapper } from './context/context';
 import ProtectedRoute from './utils/ProtectedRoute';
 import ErrorMessage from './utils/ErrorMessage';
 import Login from './Components/Login';
 import Home from './Components/Home';
-import HistoryKM from './Components/HistoryKm';
-import DetailsHistoryUser from './Components/DetailsHistoryUser';
-import AllUsers from './Components/AllUsers';
+import AllTrips from './Components/AllTrips';
 import Register from './Components/Register';
 import LandingPage from './Components/Landing';
 import Payments from './Components/Payments';
+import NoTrips from './Components/NoTrips';
 import Invoice from './Components/TripComponents/Invoice';
  
 function App() {
@@ -24,9 +23,8 @@ function App() {
           <Route path="/landing" element={<LandingPage/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="/login" element={<Login/>}/>
-          <Route path="/historykm" element={<HistoryKM/>}></Route>
-          <Route path='/detailshistoryuser' element={<DetailsHistoryUser/>}></Route>
-          <Route path='/all-users' element={<AllUsers/>}></Route>
+          <Route path="/no-trips" element={<NoTrips/>}/>
+          <Route path='/all-trips' element={<AllTrips/>}></Route>
           <Route path="/" element={
             <ProtectedRoute>
                 <Home />
@@ -36,6 +34,7 @@ function App() {
           <Route path="*" element={<h1>Esta ruta no existe</h1>}/>
           <Route path="/forma_pago" element={<Payments />} />
         </Routes>
+
         <ErrorMessage/>
       </AppWrapper>
     </div>
