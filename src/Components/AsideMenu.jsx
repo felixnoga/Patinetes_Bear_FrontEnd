@@ -1,10 +1,11 @@
-import { useState } from "react"
+import { useState, useEffect, useLayoutEffect } from "react";
 import { Link } from "react-router-dom"
 import { useTripContext } from "../context/tripContext";
 import "../assets/AsideMenu.css"
 import { CgArrowsExchangeAltV, CgMenu, CgTime, CgCreditCard  } from "react-icons/cg";
 import { GiKickScooter} from "react-icons/gi";
 import { HiQuestionMarkCircle, HiOutlineShieldCheck } from "react-icons/hi2";
+import {useClientContext} from "../context/clientDataContext"
 import { SlSettings } from "react-icons/sl";
 import Logout from "./Logout";
 
@@ -12,7 +13,19 @@ import Logout from "./Logout";
 const AsideMenu= ()=>  {
     const {bookState:{isBooked}} = useTripContext()
     const [toggle, setToggle]= useState(false)
+    const { getUserData, userData, getClientData, clientData } = useClientContext();
 
+    useLayoutEffect ( () => {
+        const getContext = async () => {
+        await getUserData();
+        await getClientData();
+    }; 
+    getContext();
+    }, [])
+
+    console.log(clientData);
+
+    
     const handleToggle=()=>{
         setToggle(!toggle)
     }
@@ -24,7 +37,7 @@ const AsideMenu= ()=>  {
                 <div className={`AsideMenu-div--Background ${toggle && "isActive" }`} onClick={handleToggle}>
                     </div>
                  <div className={`AsideMenu ${toggle && "isActive" }`}>
-                    <h2 className="AsideMenu-h2">Hey User</h2>
+                    <h2 className="AsideMenu-h2">Hey {userData?.user_name}</h2>
                     <div className="AsideMenu-div--header">
                         {/* <Link to="/kilometros" className="AsideMenu-Link--headericon"> */}
                             <div className="AsideMenu-div-headericon">
@@ -35,7 +48,7 @@ const AsideMenu= ()=>  {
                         {/* <Link to="/trayectos" className="AsideMenu-Link--headericon"> */}
                         <div className="AsideMenu-div-headericon">
                             <GiKickScooter />
-                            <h4 className="AsideMenu-h4 AsideMenu-h4--header">Trayectos</h4>
+                            <h4 className="AsideMenu-h4 AsideMenu-h4--header">{clientData?.no_trips} Trayectos</h4>
                         </div>
                         {/* </Link> */}
 

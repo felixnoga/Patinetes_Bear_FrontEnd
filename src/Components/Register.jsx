@@ -1,5 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useAppContext } from "../context/context";
+import {useClientContext} from "../context/clientDataContext"
 import { useState } from 'react';
 import '../assets/Register.css'
 
@@ -48,9 +49,13 @@ const Register = () => {
     
             if (parseRes.token) {
                 localStorage.setItem("token", parseRes.token);
+                localStorage.setItem("id", parseRes.id);
+
+               
+ 
                 log();
-                toLogin("/");
-     
+                toLogin("/home");
+      
                } else {
                 console.error(parseRes);
               }

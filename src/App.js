@@ -1,6 +1,7 @@
 import './App.css';
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AppWrapper } from './context/context';
+import { ClientDataProvider } from './context/clientDataContext'
 import ProtectedRoute from './utils/ProtectedRoute';
 import ErrorMessage from './utils/ErrorMessage';
 import Login from './Components/Login';
@@ -11,31 +12,37 @@ import LandingPage from './Components/Landing';
 import Payments from './Components/Payments';
 import NoTrips from './Components/NoTrips';
 import Invoice from './Components/TripComponents/Invoice';
- 
+
 function App() {
 
-  
+
 
   return (
     <div className="App">
       <AppWrapper>
+      <ClientDataProvider>
+
         <Routes>
-          <Route path="/landing" element={<LandingPage/>}/>
-          <Route path="/register" element={<Register/>}/>
-          <Route path="/login" element={<Login/>}/>
+        <Route path="/" element={<LandingPage/>}/>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/no-trips" element={<NoTrips/>}/>
           <Route path='/all-trips' element={<AllTrips/>}></Route>
-          <Route path="/" element={
+          <Route path="/home" element={
             <ProtectedRoute>
                 <Home />
-            </ProtectedRoute>}>
-              <Route path="payments" element={<Invoice />}></Route>
-            </Route>
-          <Route path="*" element={<h1>Esta ruta no existe</h1>}/>
+              </ProtectedRoute>
+
+          }>
+
+            <Route path="payments" element={<Invoice />}></Route>
+          </Route>
+          <Route path="*" element={<h1>Esta ruta no existe</h1>} />
           <Route path="/forma_pago" element={<Payments />} />
         </Routes>
+        <ErrorMessage />
+        </ClientDataProvider>
 
-        <ErrorMessage/>
       </AppWrapper>
     </div>
   );

@@ -4,6 +4,7 @@ import {useState} from 'react';
 import '../assets/Login.css'
 
 const Login=() => {
+
     const {log}= useAppContext()
     const toHome= useNavigate();
 
@@ -44,8 +45,10 @@ const Login=() => {
 
         if (parseRes.token) {
             localStorage.setItem("token", parseRes.token);
+            localStorage.setItem("id", parseRes.id);
+
             log();
-            toHome("/");
+            toHome("/home");
  
            } else {
             console.error(parseRes);

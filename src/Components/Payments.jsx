@@ -60,19 +60,21 @@ const Payments = () => {
     const [amount , setAmount] = useState(null)
     return (
         <Elements stripe={stripePromise}>
-            <div className="container p-4">
-                <div className="row">
+            <div className="container p-4">                            
+                <div className="row"> 
+                
                     <div className="col-md-4 offset-md-4">
                         { amount ? <CheckoutForm amount={amount} handler={setAmount}/> :
                         <div className="payments-div">
+                            <div className="payments-title"><h2>Selecciona pago:</h2></div>
                             <button className="payments-money" onClick={()=> setAmount(1000)}>
-                                10
+                                10 €
                             </button>
                             <button className="payments-money" onClick={() => setAmount(2000)}>
-                                20
+                                20 €
                             </button>
                             <button className="payments-money" onClick={() => setAmount(3000)}>
-                                30
+                                30 €
                             </button>
                         </div>}
                     </div>
