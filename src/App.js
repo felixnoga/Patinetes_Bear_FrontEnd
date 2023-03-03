@@ -5,7 +5,6 @@ import ProtectedRoute from './utils/ProtectedRoute';
 import ErrorMessage from './utils/ErrorMessage';
 import Login from './Components/Login';
 import Home from './Components/Home';
-// import DetailsHistoryUser from './Components/DetailsHistoryUser';
 import AllTrips from './Components/AllTrips';
 import Register from './Components/Register';
 import LandingPage from './Components/Landing';
@@ -25,7 +24,6 @@ function App() {
           <Route path="/register" element={<Register/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/no-trips" element={<NoTrips/>}/>
-          {/* <Route path='/detailshistoryuser' element={<DetailsHistoryUser/>}></Route> */}
           <Route path='/all-trips' element={<AllTrips/>}></Route>
           <Route path="/" element={
             <ProtectedRoute>

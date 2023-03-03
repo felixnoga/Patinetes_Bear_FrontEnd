@@ -57,7 +57,6 @@ const Register = () => {
             } catch (err) {
               console.error(err.message);
             }
-
     }
 
     function handle(e) {
@@ -96,7 +95,7 @@ const Register = () => {
             </div>
 
             <div>
-            <button type='button' className="register-btn" onClick={register}>Registro</button>
+            <button type='button' disabled={!data.user_name || !data.email || !data.password || !data.passwordAgain} className="register-btn" onClick={register}>Registro</button>
             </div>
             <div className="box-register">
                 <Link className='link-register' to="/login">

@@ -1,10 +1,21 @@
 import React from 'react';
 import '../assets/triprender.css'
 import { RxCrossCircled } from "react-icons/rx";
-import { Link } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
+import SpinRotate from "../utils/SpinRotate"
+import useRequest from "../services/useRequest"
 
 const TripList = (props) => {
+
+    const {loading}= useRequest()
+
+    const navigate = useNavigate();
+
+    const navigateToLogin = () => {
+        navigate("/");
+      };
+
+  
 
     if (!props.trips.length) {
 
@@ -13,9 +24,7 @@ const TripList = (props) => {
             <div className='trip-list'>
                 <div className='trips-title'>
                     <div>
-                        <Link to="/login">
-                        <RxCrossCircled className="icon-cross" />
-                        </Link>
+                       <button className="icon-cross" />
                     </div>
                     <div>
                         <h1 className='details-title'> Detalle de viajes </h1>
@@ -42,12 +51,14 @@ const TripList = (props) => {
             <div className='trip-list'>
                 <div className='trips-title'>
                     <div>
-                        <RxCrossCircled className="icon-cross" />
+                        <RxCrossCircled className="icon-cross" onClick={navigateToLogin} />
                     </div>
                     <div>
                         <h1 className='details-title'> Detalle de viajes </h1>
                     </div>
                 </div>
+                { loading ? <SpinRotate/> :
+
                 <div className='conteiner-trips'>
                     <div className='mini-conteiner-trip'>{props.trips.map(trip => (
                         <li className='title-trip_id' key={trip.trip_id}>
@@ -59,7 +70,7 @@ const TripList = (props) => {
                         </li>
                     ))}
                     </div>
-                </div>
+                </div>}
             </div>
 
             {/* <div className="trip-list">
