@@ -23,7 +23,7 @@ export const AppWrapper = ({ children }) => {
  
 
     return (
-        <AppContext.Provider value={({
+        <AppContext.Provider value={    ({
             isLog,
             log,
             logout,

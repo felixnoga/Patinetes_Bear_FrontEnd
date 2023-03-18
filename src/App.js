@@ -27,7 +27,6 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/no-trips" element={<NoTrips/>}/>
-          
           <Route path="/home" element={
             <ProtectedRoute>
                 <Home />
@@ -39,7 +38,6 @@ function App() {
             <Route path='all-trips' element={<AllTrips/>}></Route>
           </Route>
           <Route path="*" element={<h1>Esta ruta no existe</h1>} />
-           
         </Routes>
         <ErrorMessage />
         </ClientDataProvider>

@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useClientContext } from "../context/clientDataContext"
 import SpinRotate from "../utils/SpinRotate"
-// import "bootswatch/dist/lux/bootstrap.min.css";
 import "../assets/payments.css";
 
 const stripePromise = loadStripe(process.env.REACT_APP_CARD_KEY)
@@ -16,7 +15,7 @@ const CheckoutForm = ({amount, handler}) => {
     const [loading, setLoading] = useState(false)
     const { clientData } = useClientContext();
     const stripe = useStripe();
-    const elements = useElements();
+    const   elements = useElements();
 
     const handleSubmit = async (e) => {
         e.preventDefault();

@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect} from "react";
 
-const useCountdown= (time, up= false)=>{
+const useCountdown= (time, up= false) => {
     const [countdown, setCountdown]= useState(time)
     const [outOfTime, setOutOfTime]= useState(false)
 
