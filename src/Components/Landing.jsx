@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import '../assets/LandingPage.css'
 import logoLanding from '../assets/images/logolanding.png'
+import DragBar from "./auxiliar/DragBar";
 
 
 const LandingPage = () => {
@@ -19,6 +20,7 @@ const LandingPage = () => {
                         <Link className="link-landing" to='/login'>
                             <div className="title-landing"><h1>Reserva tu <b className="subtitle-landing">ScooterBear</b></h1></div>
                         </Link>
+                        {/* <DragBar/> */}
                     </div>
                 </div>
             </div>

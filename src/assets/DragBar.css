@@ -1,0 +1,36 @@
+.Dragbar-div--horizontal{
+    position: relative;
+    width: 15vw;
+    height: 3em;
+    background-color: aqua;
+    border-radius: .5rem;
+    transition: background-color 1s;
+
+}
+.Dragbar-div--horizontal.isDrag{
+    background-color: black;
+}
+.Dragbar-div--horizontal:active{
+    cursor: pointer !important
+}
+.Dragbar-div--circle{
+    position: absolute;
+    height: 2em;
+    width: 2em;
+    border-radius: 50%;
+    background-color: blue;
+}
+.Dragbar-div--circle{
+    cursor: pointer !important;
+}
+.Dragbar-div--reception{
+    position: absolute;
+    right: 0;
+    height: 2em;
+    width: 2em;
+    border-radius: 50%;
+    background-color: blue;
+}
+/* .Dragbar-div--reception:hover{
+    cursor: pointer !important;
+} */

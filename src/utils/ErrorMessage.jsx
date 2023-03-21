@@ -1,4 +1,5 @@
 import { useAppContext } from "../context/context"
+import { IoRocketOutline } from "react-icons/io5";
 import "../assets/ErrorMessage.css"
 
 const ErrorMessage= ()=>{
@@ -7,16 +8,20 @@ const ErrorMessage= ()=>{
     return(
         <div className="ErrorMessage-background">
             <div className="ErrorMessage-div">
-                <img className="ErrorMessage-icon" src="/30.png" alt="logo Bear"></img>
+                <div className="ErrorMessage-div-head">
+                    <IoRocketOutline className="ErrorMessage-icon" />
                 <h3 className="ErrorMessage-h3">
                     Lo sentimos, algo salió mal
                 </h3>
-                <p className="ErrorMessage-p">
-                    {error}
-                </p>
-                <button type="button" className="ErrorMessage-button" onClick={eraseError} >
-                    Aceptar 
-                </button>
+            </div>
+            <div className="ErrorMessage-div-body">
+            <p className="ErrorMessage-p">
+                {error}
+            </p>
+            <button type="button" className="ErrorMessage-button" onClick={eraseError} >
+                Aceptar 
+            </button>
+                </div>
             </div>
         </div>
     )
