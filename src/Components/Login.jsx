@@ -6,7 +6,7 @@ import '../assets/Login.css'
 
 const Login=() => {
 
-    const {log}= useAppContext()
+    const {log, handleError}= useAppContext()
     const toHome= useNavigate();
 
     const url = `${process.env.REACT_APP_BASE_URL}/login`; 
@@ -54,7 +54,8 @@ const Login=() => {
             console.error(parseRes);
           }
         } catch (err) {
-          console.error(err.message);
+            handleError(err)
+            console.error(err.message);
         }
     }
 
