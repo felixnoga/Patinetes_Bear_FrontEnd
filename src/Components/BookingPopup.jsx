@@ -55,7 +55,7 @@ const BookingPopup = ()=>{
                             <Time />}
                         </div>
                         <h5 className="Bookingpp-h5--scotterID">
-                            Nº 512{bookState?.scooter.scooter_id}
+                            Nº {bookState?.scooter.scooter_id}
                         </h5>
                     </div>
                     <div className="Bookingpp-div--info">

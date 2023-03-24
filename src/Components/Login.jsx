@@ -51,11 +51,12 @@ const Login=() => {
             toHome("/home");
  
            } else {
+            handleError(parseRes)
             console.error(parseRes);
           }
         } catch (err) {
-            handleError(err)
-            console.error(err.message);
+            handleError(err.message)
+            console.error(err);
         }
     }
 

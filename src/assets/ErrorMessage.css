@@ -53,6 +53,7 @@
     text-align: center;
 }
 .ErrorMessage-div-body{
+    width: 100%;
     background-color: #FCFAFA;
     border-radius: 0 0  1.4em 1.4em;
     display: flex;
