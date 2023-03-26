@@ -2,19 +2,22 @@ import { useNavigate } from "react-router-dom"
 import { useTripContext } from "../../context/tripContext"
 import { IoClose } from "react-icons/io5";
 import timeTransformer from "../../utils/timeTransformer";
+import { useClientContext } from "../../context/clientDataContext";
 import "../../assets/Invoice.css"
 import { useState } from "react"
 
 const Invoice = ()=>{
     const { bookState: {invoice}} = useTripContext() 
+    const { getClientData}= useClientContext()
     const [toogle, setToogle]= useState(false)
     const toHome= useNavigate()
     const exitToHome= ()=>{
         setToogle(false)
         toHome("/home")
     }
-    const showInvoice= ()=>{
+    const showInvoice= async () => {
         setToogle(true)
+        await getClientData()
     }
     const InvoiceBill= ()=> {
         if (toogle) {
