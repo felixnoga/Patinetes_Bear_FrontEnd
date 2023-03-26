@@ -3,9 +3,9 @@
 
 :root {
   --black-chocolate: #141204ff;
-  --negro: #393939;
+  --negro: rgba(1, 3, 3, 0.96);
   /* Tipografía */
-  --tipo-principal: Poppins, sans-serif;
+  --tipo-principal: Lato, Poppins, sans-serif;
   --tipo-secundaria: sans-serif;
 }
 

@@ -74,8 +74,8 @@ const Register = () => {
     }*/
 
     return (
-        <>
-          <div className="title-register2">
+        <div className="Register-div-Main">
+          <div className="title-register">
             <h1>Inicia tu registro</h1>
         </div>
         <div className="register-conteiner">
@@ -101,14 +101,14 @@ const Register = () => {
             <button type='button' disabled={!data.user_name || !data.email || !data.password || !data.passwordAgain} className="register-btn" onClick={register}>Registro</button>
             </div>
             <div className="box-register">
-                <Link className='link-register' to="/login">
-                <h4 className="subtitle-register">¿Ya tienes cuenta? <b className="register">Ingresa</b> </h4>
+                <Link className='link' to="/login">
+                <h4 className="subtitle-register">¿Ya tienes cuenta? <b className="reg">Ingresa</b> </h4>
                 </Link>
                 </div>
                 </div>
 
         </div>
-        </>
+        </div>
     )
 
 }
