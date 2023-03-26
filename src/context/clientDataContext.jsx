@@ -7,6 +7,12 @@ export const ClientDataProvider = ({ children }) => {
 
     const [clientData, setClientData] = useState(null);
     const [userData, setUserData] = useState(null);
+    const [card, setCard]= useState({
+        name: "",
+        number: "",
+        cvc: "",
+        expiry: ""
+    })
     
     const getClientData = async () => {
         const client_id =  localStorage.getItem('id')
@@ -26,7 +32,8 @@ export const ClientDataProvider = ({ children }) => {
         <ClientContext.Provider value={({
             clientData,
             getClientData,
-
+            card,
+            setCard,
             userData, 
             getUserData,
 

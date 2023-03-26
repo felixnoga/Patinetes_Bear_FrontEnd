@@ -51,7 +51,7 @@ const Login=() => {
             toHome("/home");
  
            } else {
-            handleError(parseRes)
+            handleError(parseRes.error)
             console.error(parseRes);
           }
         } catch (err) {

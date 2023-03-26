@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useTripContext } from "../../context/tripContext"
 import { IoClose } from "react-icons/io5";
+import timeTransformer from "../../utils/timeTransformer";
 import "../../assets/Invoice.css"
 import { useState } from "react"
 
@@ -15,33 +16,16 @@ const Invoice = ()=>{
     const showInvoice= ()=>{
         setToogle(true)
     }
-    // if(invoice === false){
-    //     return(
-    //     <div className="Invoice-div">
-    //             <div className="Invoice-div--body">
-    //                 <p > Todavía no has consumido ningún viaje en esta sesión </p>
-    //             </div>
-    //             <div className="Invoice-div--footer">
-    //                 <button className="Invoice-button"> ACEPTAR </button>
-    //                 <p>Gracias por utilizar nuestro servicio</p>
-    //             </div>
-    //     </div>)
-    // }
     const InvoiceBill= ()=> {
-    if (toogle) {
-        const { payment, clientupdated } = invoice
+        if (toogle) {
+            const { payment, clientupdated } = invoice
+            const time = timeTransformer(payment?.triptime)
         return (
             <div className="Invoice-div">
-                {/* <img className="Invoice-img" src="/30.png" alt="Bear logo"></img>
-            <div className="Invoice-div--header">
-                <h2 className="Invoice-h2"> Patinetes Bear</h2>
-                <h2 className="Invoice-h2"> The Bridge</h2>
-            </div>
-                <h3 className="Invoice-h3"> ID Cliente: {clientupdated?.client_id}</h3> */}
                 <div className="Invoice-div--body">
                     <div className="Invoice-div--head">
                         <h4 className="Invoice-h4 head"> Duración cobrada</h4>
-                        <h5 className="Invoice-h5 head">{payment?.triptime} segundosjklj </h5>
+                        <h5 className="Invoice-h5 head">{time} </h5>
                     </div>
                     <div className="Invoice-div--info">
                         <div className="Invoice-div--column">
@@ -53,10 +37,10 @@ const Invoice = ()=>{
                             <h4 className="Invoice-h4 Total" >Tu Cartera : </h4>
                         </div>
                         <div className="Invoice-div--column">
-                            <h5 className="Invoice-h5">{payment?.baseprice} € </h5>
+                            <h5 className="Invoice-h5">{(parseFloat(payment?.baseprice)* payment?.triptime).toFixed(2)} € </h5>
                             <h5 className="Invoice-h5">{payment?.taxes}%</h5>
                             <h5 className="Invoice-h5">{payment?.total_price}€</h5>
-                            <h5 className="Invoice-h5 Total"> {clientupdated?.balance}€   </h5>
+                            <h5 className="Invoice-h5 Total"> {parseFloat(clientupdated?.balance).toFixed(2)}€   </h5>
                         </div>
                     </div>
 
@@ -73,7 +57,7 @@ const Invoice = ()=>{
     return(
         <div className="InvoiceMain-div">
             <div className="InvoiceMain-div--body">
-                <img src="./Component.png" alt="Travelcomplete" className="InvoiceMain-img" />
+                <img src="/Component.png" alt="Travelcomplete" className="InvoiceMain-img" />
                 <h5 className="InvoiceMain-h5">¡Viaje Finalizado!</h5>
             </div>
             <InvoiceBill/>
@@ -82,11 +66,11 @@ const Invoice = ()=>{
                 </path>
                 </svg>
 
-                <img src="./Character.png" alt="complete" className="InvoiceMain-img2" />
                 <div className="InvoiceMain-div--button" onClick={showInvoice}>
                     <h5 className="InvoiceMain-h5--button">Ver factura</h5>
 
                 </div>
+                <img src="/Character.png" alt="complete" className="InvoiceMain-img2" />
             </div>
         </div>
     )

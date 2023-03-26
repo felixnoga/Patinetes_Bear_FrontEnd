@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import '../assets/LandingPage.css'
+import Payments from "./Payments";
 
 const LandingPage = () => {
 
@@ -25,6 +26,7 @@ const LandingPage = () => {
                     </Link>
                 </div>
             </div>
+            {/* <Payments/> */}
         </>
     )
 }

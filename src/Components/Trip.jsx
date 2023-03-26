@@ -52,12 +52,9 @@ const Trip = ({cancelTime})=>{
             }
             handleContext(types.updateTripData, payload)
             setHiding(true)
-            // se retrasan las funciones por la animacion de salida
-            setTimeout(() => {
                 handleContext(types.trip, true);
                 cancelTime(true);
                 setHiding(false)
-            }, 700)
         }catch(error){
             handleError("ups, no pudimos confirmar tu viaje, parece que hemos tenido un error")
             console.log(error)

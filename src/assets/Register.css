@@ -1,7 +1,9 @@
 .Register-div-Main {
     background-color: #31B8B8;
     width: 100vw;
+    width: 100svw;
     min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -27,29 +27,29 @@ const AsideMenu= ()=>  {
                 <div className={`AsideMenu-div--Background ${toggle && "isActive" }`} onClick={handleToggle}>
                     </div>
                  <div className={`AsideMenu ${toggle && "isActive" }`}>
-                    <h2 className="AsideMenu-h2">Hey, {userData?.user_name}</h2>
+                    <h2 className="AsideMenu-h2">Hey, { userData?.user_name|| "nombre"}</h2>
                     
                     <div className="AsideMenu-div-body">
                         <div className="AsideMenu-div--header">
                             {/* <Link to="/kilometros" className="AsideMenu-Link--headericon"> */}
                             <div className="AsideMenu-div-headericon">
                                 <p> Crédito disponible</p>
-                                <h4 className="AsideMenu-h4--header">{clientData?.balance}€</h4>
+                                <h4 className="AsideMenu-h4--header">{parseFloat(clientData?.balance).toFixed(2) || "0"}€</h4>
                             </div>
                             {/* </Link> */}
-                            {/* <Link to="/trayectos" className="AsideMenu-Link--headericon"> */}
+                            <Link to="/home/forma_pago" className="AsideMenu-Link--headericon">
                             <div className="AsideMenu-div-headericon">
                                 <button type="button"
                                 className="AsideMenu-btn">Añadir</button>
                             </div>
-                            {/* </Link> */}
+                            </Link>
 
                         </div>
                     <Link to="/home/all-trips" className="AsideMenu-link">
                     <div className="AsideMenu-div--link"> <CgTime className="AsideMenu-icon" />
                         <h4 className="AsideMenu-h4">Historial</h4> </div>
                      </Link> 
-                    <Link to="/home/forma_pago" className="AsideMenu-link">
+                        <Link to="/home/paymentform" className="AsideMenu-link">
 
                     <div className="AsideMenu-div--link"><CgCreditCard className="AsideMenu-icon" />
                             <p className="AsideMenu-h4">Forma de Pago</p></div>

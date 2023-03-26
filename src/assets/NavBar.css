@@ -1,10 +1,10 @@
 .navbar{
     width: 40vw;
+    width: 40svw;
     display: flex;
    /* flex-direction: row;*/
     justify-content:center;
     align-items: center;
-    width: 40vw;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
