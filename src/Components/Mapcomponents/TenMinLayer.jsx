@@ -18,7 +18,7 @@ const TenMinLayer = memo(()=>{
                 };
             updateIso()
         }
-    }, [userPosition. onTrip])
+    }, [userPosition, onTrip])
 
     const layerStyle = {
         id: '10MinLayer',

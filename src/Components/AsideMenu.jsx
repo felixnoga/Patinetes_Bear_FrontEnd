@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState} from "react";
 import { Link } from "react-router-dom"
 import { useTripContext } from "../context/tripContext";
 import { CgMenu, CgTime, CgCreditCard  } from "react-icons/cg";
@@ -34,7 +34,7 @@ const AsideMenu= ()=>  {
                             {/* <Link to="/kilometros" className="AsideMenu-Link--headericon"> */}
                             <div className="AsideMenu-div-headericon">
                                 <p> Crédito disponible</p>
-                                <h4 className="AsideMenu-h4--header">{parseFloat(clientData?.balance).toFixed(2) || "0"}€</h4>
+                                <h4 className="AsideMenu-h4--header">{parseFloat(clientData?.balance).toFixed(2)}€</h4>
                             </div>
                             {/* </Link> */}
                             <Link to="/home/forma_pago" className="AsideMenu-Link--headericon">

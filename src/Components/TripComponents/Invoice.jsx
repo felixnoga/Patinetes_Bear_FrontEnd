@@ -38,7 +38,7 @@ const Invoice = ()=>{
                         </div>
                         <div className="Invoice-div--column">
                             <h5 className="Invoice-h5">{(parseFloat(payment?.baseprice)* payment?.triptime).toFixed(2)} € </h5>
-                            <h5 className="Invoice-h5">{payment?.taxes}%</h5>
+                            <h5 className="Invoice-h5">{payment?.taxes * 100}%</h5>
                             <h5 className="Invoice-h5">{payment?.total_price}€</h5>
                             <h5 className="Invoice-h5 Total"> {parseFloat(clientupdated?.balance).toFixed(2)}€   </h5>
                         </div>

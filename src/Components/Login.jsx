@@ -95,8 +95,8 @@ const Login=() => {
                    <h4 className="subtitle-login">¿No tienes cuenta todavia? <b className="reg">Registrate</b> </h4>
                    </Link>
                    </div>
-                   para pruebas solo
-                   <button type='button' className="login2-btn" onClick={autoEnter}>TEST</button>
+                   {/* para pruebas solo
+                   <button type='button' className="login2-btn" onClick={autoEnter}>TEST</button> */}
 
                     <div className="Login-div-footer">
                         <p className="Login-p">O con</p>
