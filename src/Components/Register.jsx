@@ -2,6 +2,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAppContext } from "../context/context";
 import SpinRotate from "../utils/SpinRotate";
 import { useState } from 'react';
+import { BsGoogle, BsFacebook, BsApple } from "react-icons/bs";
 import '../assets/Register.css'
 
 
@@ -67,7 +68,7 @@ const Register = () => {
 
     function handle(e) {
         const newData = { ...data };
-        newData[e.target.id] = e.target.value;
+        newData[e.target.name] = e.target.value;
         setData(newData);
     }
 
@@ -79,6 +80,7 @@ const Register = () => {
     return (
         <div className="Register-div-Main">
           <div className="title-register">
+                <h1 className="Register-logo">SPEEDY</h1>
             <h1>Inicia tu registro</h1>
         </div>
         <div className="register-conteiner">
@@ -89,15 +91,15 @@ const Register = () => {
             </div>
 
             <div>
-                <input className="register-input" type="text" name="email" placeholder="Email" required onChange={(e) => handle(e)} id="email" value={data.email} />
+                <input className="register-input" type="text" name="email" placeholder="Email" required onChange={(e) => handle(e)} value={data.email} />
             </div>
 
             <div>
-                <input className="register-input" type="password" name="password" placeholder="Contraseña" required onChange={(e) => handle(e)} id="password" value={data.password} />
+                <input className="register-input" type="password" name="password" placeholder="Contraseña" required onChange={(e) => handle(e)} value={data.password} />
             </div>
 
             <div>
-                <input className="register-input" type="password" name="passwordAgain" placeholder="Repite tu contraseña" required onChange={(e) => handle(e)} id="passwordAgain" value={data.passwordAgain} />
+                <input className="register-input" type="password" name="passwordAgain" placeholder="Repite tu contraseña" required onChange={(e) => handle(e)} value={data.passwordAgain} />
             </div>
 
             <div>
@@ -110,6 +112,14 @@ const Register = () => {
                 <h4 className="subtitle-register">¿Ya tienes cuenta? <b className="reg">Ingresa</b> </h4>
                 </Link>
                 </div>
+                    <div className="Register-div-footer">
+                        <p className="Register-p">O con</p>
+                        <div className="Register-div-footericons">
+                            <BsGoogle className="Register-icon" />
+                            <BsFacebook className="Register-icon" />
+                            <BsApple className="Register-icon" />
+                        </div>
+                    </div>
                 </div>
 
         </div>
