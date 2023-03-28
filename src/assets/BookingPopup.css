@@ -140,3 +140,7 @@
     text-align: center;
     font-weight: 400;
 }
+@media screen and (min-width: 850px) {
+.Bookingpp-div--info{
+    align-items: center;
+}}

@@ -1,11 +1,12 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useAppContext } from "../context/context";
-import {useClientContext} from "../context/clientDataContext"
+import SpinRotate from "../utils/SpinRotate";
 import { useState } from 'react';
 import '../assets/Register.css'
 
 
 const Register = () => {
+    const [isPending, setIsPending] = useState(false);
     const { log, handleError } = useAppContext()
     const toLogin = useNavigate();
 
@@ -31,7 +32,7 @@ const Register = () => {
             email: data.email,
             password: data.password
         }
-             
+            setIsPending(true)
             try {
                 const res = await fetch (url, 
                 {
@@ -59,6 +60,8 @@ const Register = () => {
               }
             } catch (err) {
               console.error(err.message);
+            }finally{
+                setIsPending(false)
             }
     }
 
@@ -98,7 +101,9 @@ const Register = () => {
             </div>
 
             <div>
-            <button type='button' disabled={!data.user_name || !data.email || !data.password || !data.passwordAgain} className="register-btn" onClick={register}>Registro</button>
+            <button type='button' disabled={!data.user_name || !data.email || !data.password || !data.passwordAgain} className="register-btn" onClick={register}>
+                {!isPending ? "Registro" : <SpinRotate color={"white"}/>}
+                </button>
             </div>
             <div className="box-register">
                 <Link className='link' to="/login">

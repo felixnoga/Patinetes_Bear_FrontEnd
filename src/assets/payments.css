@@ -3,7 +3,7 @@
     width: 100vw;
     height: 100vh;
     width: 100svw;
-    height: 100svh;
+    height: 100dvh;
     top:0;
     display: flex;
     background-color: #F6F6F6;
@@ -106,7 +106,7 @@
 }
 .Payment-form-main{
     width: 100svw;
-    height: 100svh;
+    height: 100dvh;
     display: flex;
     /* flex-direction: column; */
     align-items: center;

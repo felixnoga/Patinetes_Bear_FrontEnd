@@ -59,7 +59,7 @@ const CheckoutForm = ({amount, handler}) => {
             </div>
             
             <div className="Payment-btn">
-                {loading ? <SpinRotate className="btn-outline-warning"/> :
+                {loading ? <SpinRotate color={"white"} className="btn-outline-warning"/> :
                     <button className="btn btn-outline-warning">
                         Recargar
                 </button>}
