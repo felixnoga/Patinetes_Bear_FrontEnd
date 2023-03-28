@@ -42,8 +42,11 @@ const Map2= () => {
     }
     // Activa automáticamente la ubicación
     const activeControl= ()=>{
-        if(geoControl)
-        geoControl.current.trigger()
+        if(geoControl){
+            console.log(geoControl)
+            if(!geoControl.current) return
+        geoControl.current.trigger()}
+
     }
 
     return (

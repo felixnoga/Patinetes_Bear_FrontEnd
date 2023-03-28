@@ -12,6 +12,9 @@ const useCountdown= (time, up= false) => {
         }
         interval.current = setInterval(()=>{setCountdown(prev=>(prev - 1))}, 1000) 
     }
+    const pause= ()=>{
+        clearInterval(interval.current)
+    }
 
     const cancel= ()=>{
         clearInterval(interval.current)
@@ -38,7 +41,8 @@ const useCountdown= (time, up= false) => {
       timeLeft,
       init,
       cancel,
-      outOfTime  
+      outOfTime,
+      pause
     })
 
 }

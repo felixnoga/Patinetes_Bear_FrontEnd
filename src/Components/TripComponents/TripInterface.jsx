@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useNavigate} from "react-router-dom"
 import { useTripContext } from "../../context/tripContext"
 import { useAppContext } from "../../context/context"
@@ -13,14 +13,15 @@ import SpinRotate from "../../utils/SpinRotate"
 
 const TripInterface= ()=> {
     const [toogle, setToogle]= useState(false)
+    const [inPause, setInPause]=useState(false)
     const { bookState, handleContext } = useTripContext()
     const { handleError } = useAppContext()
-    const { timeLeft, init, cancel } = useCountdown(1 , true)
+    const { timeLeft, init, cancel, pause } = useCountdown(1 , true)
     const {finishTrip, loading}= useRequest()
     const toPayment= useNavigate()
 
     useEffect(()=>{
-        if(bookState.onTrip){
+        if(bookState.onTrip & !inPause){
             init()
         }
         if(!bookState.onTrip)
@@ -33,6 +34,7 @@ const TripInterface= ()=> {
         const trip_id = bookState.trip.trip_id
         try{
             const data= await finishTrip({trip_id ,lng, lat})
+            cancel()
             handleContext(types.invoice, data)
             toPayment("/home/payments")
             setToogle(false)
@@ -40,6 +42,17 @@ const TripInterface= ()=> {
         }catch(error){
             handleError(`ups, parece que ha habido un fallo en la conexión, no pudimos completar tu petición ${error}`)
         }}
+    const handlePause= ()=>{
+        if(inPause=== false){
+            pause();
+            setInPause(true)
+        }
+        if(inPause === true){
+            init();
+            setInPause(false);
+        }
+    }
+    
 
 
     if(bookState.onTrip)
@@ -51,7 +64,7 @@ const TripInterface= ()=> {
                         {/* <img className="TripInterface-img" src="/30.png" alt="Bear logo"></img> */}
                         <div className="TripInterface-div--time">
                             {/* TODO hacer componente de tiempo para no tener que renderizarse todo cada vez que cambia el tiempo */}
-                            <h5 className="TripInterface-h5--time">{timeLeft}</h5>
+                            <h5 className={`TripInterface-h5--time ${inPause && "inPause"}`}>{timeLeft}</h5>
                         </div>
                     </div>
                 <p className="TripInterface-p--title">Viaje iniciado</p>
@@ -72,11 +85,17 @@ const TripInterface= ()=> {
                 
             </div>
             <div className="TripInterface-div--footer">
-                <div className="TripInterface-div--btn btn-pause">
-                    <GiPauseButton className="TripInterface-btn--icon" />
-                    <button type="button" className="TripInterface-button">
-                        Pausar viaje
-                    </button>
+                <div className="TripInterface-div--btn btn-pause" onClick={() => handlePause()}>
+                    {!inPause && <GiPauseButton className="TripInterface-btn--icon" />}
+                    {inPause ? 
+                        <button type="button" className="TripInterface-button" 
+                            >
+                            Reanudar viaje
+                        </button>
+                        :
+                        <button type="button" className="TripInterface-button" >
+                            Pausar viaje
+                        </button>  }
                 </div>
 
                 <div className="TripInterface-div--btn btn-finish">

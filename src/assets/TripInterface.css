@@ -156,7 +156,12 @@
     font-weight: 600;
     font-size: 1.5rem;
     color: #FFFFFF;
+    opacity: 1;
 }
+.TripInterface-h5--time.inPause{
+    animation: flickerAnimation 1s infinite
+}
+
 .TripInterface-h5--scotterID {
     font-size: 0.9rem;
     font-weight: 700;
@@ -211,6 +216,20 @@
         transform: scaleX(1) translateX(80%);
         -webkit-filter: blur(0px);
         filter: blur(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes flickerAnimation {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
         opacity: 1;
     }
 }
