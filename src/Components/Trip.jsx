@@ -66,7 +66,7 @@ const Trip = ({cancelTime})=>{
     if (isInZone){
         return(
             <div onClick={handleSubmit} className="Trip-form">
-                        {loading ? <SpinRotate color={"white"}/> : <button type="submit" className="Trip-btn Trip-btn--Booking">
+                        {loading ? <SpinRotate /> : <button type="submit" className="Trip-btn Trip-btn--Booking">
                         <IoMdUnlock className="Trip-btn--icon" />
                         Desbloquear</button>}
                     
