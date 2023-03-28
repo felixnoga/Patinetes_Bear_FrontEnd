@@ -1,16 +1,27 @@
+.Invoice-background{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.637);
+}
+
+
+
 .Invoice-div{
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 30%;
     background-color: #287272;
     width: fit-content;
     height: fit-content;
     border-radius: 1.4em;
     box-shadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.25);
-    z-index: 99;
 }
 .Invoice-div--header{
     display: flex;
@@ -61,6 +72,10 @@
     display: flex;
     flex-direction: column;
     gap: 0.15em;
+}
+.Invoice-div--column.column2{
+    display: flex;
+    align-items: flex-end;
 }
 .Invoice-h2{
     font-size: 1.2rem;

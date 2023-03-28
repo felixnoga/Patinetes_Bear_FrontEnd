@@ -27,7 +27,7 @@ const Logout = () => {
     return (
 
         <div className="AsideMenu-div--link logout"> 
-            <IoLogOutOutline className="AsideMenu-icon" />
+            <IoLogOutOutline className="AsideMenu-icon logout" />
             <button type='button' className="AsideMenu-h4 logout" onClick={logOut}>Cerrar sesion</button>
         </div>
     )

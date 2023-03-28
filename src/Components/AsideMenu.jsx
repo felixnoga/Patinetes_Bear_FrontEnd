@@ -23,10 +23,11 @@ const AsideMenu= ()=>  {
         return(
             <div className={`AsideMenu-div ${toggle && "isActive"}`}>
                 <CgMenu className={`AsideMenu-icon--Menu ${toggle && "isActive"}`} onClick={handleToggle} />
-                {isBooked && <h2 className="AsideMenu-h2 AsideMenu-h2--booked">Scooter Reservada</h2> }
+                {/* {isBooked && <h2 className="AsideMenu-h2 AsideMenu-h2--booked">Scooter Reservada</h2> } */}
                 <div className={`AsideMenu-div--Background ${toggle && "isActive" }`} onClick={handleToggle}>
                     </div>
                  <div className={`AsideMenu ${toggle && "isActive" }`}>
+                    <h1 className="AsideMenu-h1">SPEEDY</h1>
                     <h2 className="AsideMenu-h2">Hey, { userData?.user_name|| "nombre"}</h2>
                     
                     <div className="AsideMenu-div-body">

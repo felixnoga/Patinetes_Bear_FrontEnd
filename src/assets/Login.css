@@ -3,7 +3,7 @@
     width: 100vw;
     min-height: 100vh;
     width: 100svw;
-    min-height: 100svh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,12 +11,21 @@
 
 }
 .title-login2{
+    display: flex;
+    flex-direction: column;
+    gap:1.3em;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    margin-right: 4em;
     font-weight: 700;
     margin-top: 25px;
     color: #FCFAFA;
     font-size: 1.8rem;
+    width: 100%
+}
+.Login-logo{
+    font-family: 'League Gothic';
+    font-size: 4rem;
 }
 
 .login-conteiner{
