@@ -134,9 +134,16 @@
     gap: 1em
 }
 .Bookingpp-p--footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     font-size: 0.7rem;
     color: #827979;
     text-align: center;
     font-weight: 400;
 }
+@media screen and (min-width: 850px) {
+.Bookingpp-div--info{
+    align-items: center;
+}}

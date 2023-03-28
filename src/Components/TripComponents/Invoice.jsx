@@ -24,6 +24,7 @@ const Invoice = ()=>{
             const { payment, clientupdated } = invoice
             const time = timeTransformer(payment?.triptime)
         return (
+            <div className="Invoice-background">
             <div className="Invoice-div">
                 <div className="Invoice-div--body">
                     <div className="Invoice-div--head">
@@ -36,10 +37,10 @@ const Invoice = ()=>{
                             <h4 className="Invoice-h4">Precio Base (0.23€/min):</h4>
                             <h4 className="Invoice-h4">Impuestos: </h4>
                             <h4 className="Invoice-h4
-                        "> Total Facturado:  €</h4>
+                        "> Total Facturado:</h4>
                             <h4 className="Invoice-h4 Total" >Tu Cartera : </h4>
                         </div>
-                        <div className="Invoice-div--column">
+                        <div className="Invoice-div--column column2">
                             <h5 className="Invoice-h5">{(parseFloat(payment?.baseprice)* payment?.triptime).toFixed(2)} € </h5>
                             <h5 className="Invoice-h5">{payment?.taxes * 100}%</h5>
                             <h5 className="Invoice-h5">{payment?.total_price}€</h5>
@@ -53,6 +54,7 @@ const Invoice = ()=>{
                 </button>
 
 
+            </div>
             </div>
         )
     }}

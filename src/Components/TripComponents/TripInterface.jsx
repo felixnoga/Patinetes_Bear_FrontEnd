@@ -99,8 +99,9 @@ const TripInterface= ()=> {
                 </div>
 
                 <div className="TripInterface-div--btn btn-finish">
+                    
+                    {loading ? <SpinRotate color={"white"}/> : <button type="button" className="TripInterface-button" onClick={handleButton}>
                     <IoMdLock className="TripInterface-btn--icon" />
-                    {loading ? <SpinRotate /> : <button type="button" className="TripInterface-button" onClick={handleButton}>
                         Finalizar viaje
                     </button>}
                 </div>

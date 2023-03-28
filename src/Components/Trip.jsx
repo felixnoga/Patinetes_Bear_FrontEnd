@@ -68,7 +68,7 @@ const Trip = ({cancelTime})=>{
             <div onClick={handleSubmit} className="Trip-form">
                         {loading ? <SpinRotate /> : <button type="submit" className="Trip-btn Trip-btn--Booking">
                         <IoMdUnlock className="Trip-btn--icon" />
-                        Aceptar</button>}
+                        Desbloquear</button>}
                     
             </div>
         )
