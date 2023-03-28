@@ -93,9 +93,12 @@ const useBookingButton = ({ isInZone, cancelTrip })=>{
         if(isBooked || outOfTime)
         return(
             <div className="Bookingpp-p--footer" >
-                { loading ? <SpinRotate/> :
-                    <h5  onClick={handleCancel}> Cancelar Reserva </h5>
+                <h5  onClick={handleCancel}> 
+                
+                    { loading ? <SpinRotate/> :
+                        "Cancelar Reserva"     
                     }
+                </h5>
             </div >
         )}
 

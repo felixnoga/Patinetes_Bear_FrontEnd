@@ -28,7 +28,7 @@
 } */
 .SpinRotate-div{
     aspect-ratio: 1;
-    height: min(2em, 32px);
+    height: min(1em, 32px);
     border-radius: 50%;
     animation: load-pulse 0.85s infinite linear;
 }
