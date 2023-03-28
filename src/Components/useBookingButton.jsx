@@ -8,7 +8,7 @@ import useRequest from "../services/useRequest"
 import "../assets/BookingButton.css"
 import SpinRotate from "../utils/SpinRotate"
 
-const BookingButton = ({ isInZone, cancelTrip })=>{
+const useBookingButton = ({ isInZone, cancelTrip })=>{
     const {bookState:{isBooked, scooter} , updateBook, handleContext}= useTripContext()
     const { handleError } = useAppContext()
     const { clientData } = useClientContext();
@@ -77,8 +77,8 @@ const BookingButton = ({ isInZone, cancelTrip })=>{
 
    
        
-    // dos tipos de botones, para reservar y para cancelar la reserva
-
+    // dos tipos de botones, para reservar y para cancelar la reserva, y otro componente de Tiempo
+    const ReservedBtn= ()=> {
     if(!isBooked && !outOfTime)
         return(
             <div className="BookingButton-div">
@@ -87,19 +87,29 @@ const BookingButton = ({ isInZone, cancelTrip })=>{
                     Reservar
                 </button>}
             </div>
-    )
-    if(isBooked || outOfTime)
+    )}
+    
+    const CancelBooking= ()=>{
+        if(isBooked || outOfTime)
         return(
-            <div className="BookingButton-div">
+            <div className="Bookingpp-p--footer" >
                 { loading ? <SpinRotate/> :
-                    <button className= {`BookingButton-button BookingButton-button--cancel ${outOfTime && "isBlinking"}`} 
-                onClick={handleCancel}
-                    >
-                        <h5>{timeLeft}</h5>
-                        <h5>Cancelar</h5>
-                </button>}
+                    <h5  onClick={handleCancel}> Cancelar Reserva </h5>
+                    }
             </div >
-        )
+        )}
+
+        const Time = ()=>{
+            return(
+                <h5 className="Bookingpp-h5--time">{timeLeft}</h5>
+            )
+        }
+        
+        return {
+            CancelBooking,
+            Time,
+            ReservedBtn
+        }
 }
 
-export default BookingButton
+export default useBookingButton

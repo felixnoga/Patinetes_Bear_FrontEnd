@@ -18,13 +18,13 @@ const TenMinLayer = memo(()=>{
                 };
             updateIso()
         }
-    }, [userPosition])
+    }, [userPosition, onTrip])
 
     const layerStyle = {
         id: '10MinLayer',
         type: 'fill',
         paint: {
-            "fill-opacity": 0.33,
+            "fill-opacity": 0.20,
             "fill-color": "#08519c",
             "fill-antialias": true    
         }

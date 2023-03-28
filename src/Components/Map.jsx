@@ -13,7 +13,7 @@ const Map= ()=> {
     const [lat, setLat] = useState(40.4);
     const [zoom, setZoom] = useState(11);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
          map.current = new mapboxgl.Map({   /* creamos el mapa modificando el map->useref *previene recargas*/
             container: mapContainer.current, /* le decimos el contenedor HTML que tendra el map */
             style: 'mapbox://styles/mapbox/streets-v12',

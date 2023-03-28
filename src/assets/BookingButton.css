@@ -2,27 +2,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #F4BC68;
-    border-radius: 50%;
-    width: 7em;
-    height: 7em;
-    box-shadow: 0 0 .5em black
+    width: fit-content;
+    box-shadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.25);
+    border-radius: 1.2em;
+    background-color: #FCFAFA;
+    padding: 0.6em 1.2em;
 }
 .BookingButton-button{
-    color: #F4BC68;
-    background-color: green;
-    font-size:0.8rem;
-    font-weight: 600;
-    border-radius: 50%;
-    border: 0.1em solid black;
-    width: 5.5em;
-    height: 5.5em;
-    box-shadow: 0 0 1em black
+    min-width: 9em ;
+    color: #31B8B8;
+    font-size: 0.8rem;
+    font-weight: 500;
 }
 .BookingButton-button:active {
-    box-shadow: 0 0 0.8em inset black
+    box-shadow: 0 0 0.2em inset black
 }
-.BookingButton-button--cancel{
+/* .BookingButton-button--cancel{
     background-color: rgba(255, 0, 0, 0.633);
 }
 .isBlinking{    
@@ -31,4 +26,9 @@
 @keyframes blink {
     0% { }
     100% { background-color: rgba(163, 0, 0, 0.993) }
+} */
+.Bookingpp-h5--time{
+    color: #FFFFFF;
+    font-size: 1.3rem;
+    font-weight: 600;
 }

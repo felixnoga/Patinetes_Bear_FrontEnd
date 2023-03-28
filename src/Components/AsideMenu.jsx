@@ -1,27 +1,19 @@
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState} from "react";
 import { Link } from "react-router-dom"
 import { useTripContext } from "../context/tripContext";
-import "../assets/AsideMenu.css"
-import { CgArrowsExchangeAltV, CgMenu, CgTime, CgCreditCard  } from "react-icons/cg";
-import { GiKickScooter} from "react-icons/gi";
-import { HiQuestionMarkCircle, HiOutlineShieldCheck } from "react-icons/hi2";
+import { CgMenu, CgTime, CgCreditCard  } from "react-icons/cg";
+import { IoLockClosedOutline } from "react-icons/io5";
+import {IoMdHelpCircleOutline } from "react-icons/io";
 import {useClientContext} from "../context/clientDataContext"
 import { SlSettings } from "react-icons/sl";
 import Logout from "./Logout";
+import "../assets/AsideMenu.css"
 
 
 const AsideMenu= ()=>  {
     const {bookState:{isBooked}} = useTripContext()
     const [toggle, setToggle]= useState(false)
-    const { getUserData, userData, getClientData, clientData } = useClientContext();
-
-    useLayoutEffect ( () => {
-        const getContext = async () => {
-        await getUserData();
-        await getClientData();
-    }; 
-    getContext();
-    }, [toggle])
+    const {userData, clientData } = useClientContext();
 
     
     const handleToggle=()=>{
@@ -35,37 +27,39 @@ const AsideMenu= ()=>  {
                 <div className={`AsideMenu-div--Background ${toggle && "isActive" }`} onClick={handleToggle}>
                     </div>
                  <div className={`AsideMenu ${toggle && "isActive" }`}>
-                    <h2 className="AsideMenu-h2">Hey {userData?.user_name}</h2>
-                    <div className="AsideMenu-div--header">
-                        {/* <Link to="/kilometros" className="AsideMenu-Link--headericon"> */}
+                    <h2 className="AsideMenu-h2">Hey, { userData?.user_name|| "nombre"}</h2>
+                    
+                    <div className="AsideMenu-div-body">
+                        <div className="AsideMenu-div--header">
+                            {/* <Link to="/kilometros" className="AsideMenu-Link--headericon"> */}
                             <div className="AsideMenu-div-headericon">
-                            <CgArrowsExchangeAltV/>
-                            <h4 className="AsideMenu-h4 AsideMenu-h4--header">Kilometros</h4>
+                                <p> Crédito disponible</p>
+                                <h4 className="AsideMenu-h4--header">{parseFloat(clientData?.balance).toFixed(2)}€</h4>
                             </div>
-                        {/* </Link> */}
-                        {/* <Link to="/trayectos" className="AsideMenu-Link--headericon"> */}
-                        <div className="AsideMenu-div-headericon">
-                            <GiKickScooter />
-                            <h4 className="AsideMenu-h4 AsideMenu-h4--header">{clientData?.no_trips} Trayectos</h4>
-                        </div>
-                        {/* </Link> */}
+                            {/* </Link> */}
+                            <Link to="/home/forma_pago" className="AsideMenu-Link--headericon">
+                            <div className="AsideMenu-div-headericon">
+                                <button type="button"
+                                className="AsideMenu-btn">Añadir</button>
+                            </div>
+                            </Link>
 
-                    </div>
+                        </div>
                     <Link to="/home/all-trips" className="AsideMenu-link">
                     <div className="AsideMenu-div--link"> <CgTime className="AsideMenu-icon" />
                         <h4 className="AsideMenu-h4">Historial</h4> </div>
                      </Link> 
-                    <Link to="/home/forma_pago" className="AsideMenu-link">
+                        <Link to="/home/paymentform" className="AsideMenu-link">
 
                     <div className="AsideMenu-div--link"><CgCreditCard className="AsideMenu-icon" />
                             <p className="AsideMenu-h4">Forma de Pago</p></div>
                          </Link>
                     {/* <Link to="/ayuda" className="AsideMenu-link"> */}
-                    <div className="AsideMenu-div--link"><HiQuestionMarkCircle className="AsideMenu-icon" />
+                    <div className="AsideMenu-div--link"><IoMdHelpCircleOutline className="AsideMenu-icon" />
                             <h4 className="AsideMenu-h4">Ayuda</h4></div>
                     {/* </Link> */}
                     {/* <Link to="/seguridad" className="AsideMenu-link"> */}
-                    <div className="AsideMenu-div--link"><HiOutlineShieldCheck className="AsideMenu-icon"/>
+                    <div className="AsideMenu-div--link"><IoLockClosedOutline className="AsideMenu-icon"/>
                         <h4 className="AsideMenu-h4">Centro de Seguridad</h4></div>
                     {/* </Link> */}
                     {/* <Link to="/ajustes" className="AsideMenu-link"> */}
@@ -74,7 +68,7 @@ const AsideMenu= ()=>  {
                     {/* </Link> */}
 
                     <Logout/>
-            
+                </div>
                 </div>
           
             </div>

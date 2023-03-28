@@ -1,9 +1,11 @@
 .TripInterface-div{
     position: absolute;
-    top: -12%;
+    top: 0;
+    /* right:0; */
     display: flex;
     justify-content: center;
     align-items: end;
+    /* transform: translateX(80%); */
     transition: all 1s ease;
     width: 100%;
     height: fit-content;
@@ -13,6 +15,7 @@
 .TripInterface-div.isActive{
     position: absolute;
     top: 0;
+    transform: translateX(0%);
     height: 100vh;
     z-index:5;
 }
@@ -30,13 +33,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1em;
     justify-content: center;
     background-color: #FCFAFA;
     border-radius: 0px 0px 1.4em 1.4em;
     height: fit-content;
     width: 100%;
-    padding: 1.5em 2.5em 2.7em 2.5em;  
+    padding: 2.5em 2.5em 2.5em 2.5em;  
     font-size: 1rem;
     z-index: 999;
 }
@@ -49,25 +51,27 @@
 }
 .TripInterface-div--logo{
     position: absolute;
-    bottom: -2.4em;
+    bottom: -4em;
     display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-radius: 50%;
     width: fit-content;
     border-radius: 50%;
-    box-shadow: 0px 0.25em 0.25em rgba(0, 0, 0, 0.25);
+    /* margin: 0.5em; */
     background-color: #FCFAFA;;
 }
-/* .TripInterface-img{
+.TripInterface-img{
     min-width: 65px;
     width: 8vh;
     max-width: 100px;
-} */
+}
 .TripInterface-div--info{
     display: flex;
     align-items: center;
     justify-content: center ;
+    /* margin-left: 15%; */
     gap:1em;
 }
 .TripInterface-div--EndTrip{
@@ -77,41 +81,18 @@
     justify-content: center ;
     gap:1em
 }
-.TripInterface-div--footer{
-    position: absolute;
-    bottom: 1em;
-    display: flex;
-    gap: 1em;
-    z-index: 3;
-}
-.TripInterface-div--btn{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    padding: 0.6em 1em;
-    box-shadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.25);
-    color: #FCFAFA;
-    border-radius: 19px;
-    min-width: 10em;
-    
-}
-.TripInterface-div--btn.btn-finish{
-    background-color: #31B8B8;
-}
-.TripInterface-div--btn.btn-pause{
-    background-color: #FCFAFA;
-    color: #31B8B8;
-}
-.TripInterface-btn--icon{
-    font-size: 1.3em;
-    width: fit-content;
-}
 .TripInterface-button{
-    font-size: 0.9rem;
-    font-weight: 700;
+    position: absolute;
+    bottom: 0;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: 1px solid #141204;
+    background-color: rgba(238, 36, 36, 0.736);
+    padding: 0.4em 1.2em;
+    box-shadow: 0 0 .5em black
+
 }
-/* @media (hover:hover) {
+@media (hover:hover) {
     .TripInterface-button:hover{
     background-color: rgba(238, 36, 36, 0.918);
     }
@@ -120,7 +101,7 @@
     background-color: rgba(238, 36, 36, 0.918);
     box-shadow: 0 0 0.8em inset black
 
-} */
+}
 .TripInterface-h4{
     padding: 0.2em;
     border-radius: 5px;
@@ -131,75 +112,26 @@
     padding-top: 0.3em;
     font-size: 0.8rem;
 }
-/* .TripInterface-h6{
+.TripInterface-h6{
     color: red;
     font-size: 0.6rem;
-} */
+}
 .TripInterface-div--time{
     display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    width: 4.7em;
-    height: 4.7em;    
+    width: 4.5em;
+    height: 4.5em;    
     background-color: #31B8B8;
     padding: 2em;
-    margin: 0.25em;
-}
-.TripInterface-p--title{
-    color: #827979;
-    font-size: 0.85rem;
-    font-weight: 700;
+    margin: 0.2em;
 }
 .TripInterface-h5--time{
     font-weight: 600;
-    font-size: 1.5rem;
-    color: #FFFFFF;
-    opacity: 1;
-}
-.TripInterface-h5--time.inPause{
-    animation: flickerAnimation 1s infinite
-}
-
-.TripInterface-h5--scotterID {
-    font-size: 0.9rem;
-    font-weight: 700;
-    padding: 0.1em 0.25em;
-    background-color: #FCFAFA;
-}
-
-.TripInterface-img-scooterID{
-    width: 1.8em;
-
-}
-.TripInterface-div--battery {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.3em;
-    gap: .2em;
-    font-size: 0.8rem;
-    font-weight: 500;
-    border-radius: 0.6em;
-    width: fit-content;
-}
-
-.TripInterface-icon {
     font-size: 1.4rem;
-    width: fit-content;
-}
-
-.TripInterface-icon--bat {
-    font-size: 1.1rem;
-    width: fit-content;
-}
-
-.TripInterface-h5--battery {
-    font-size: 0.9rem;
-    font-weight: 700;
-    padding: 0.1em 0.2em;
-    background-color: #FCFAFA;
+    color: #FFFFFF;
 }
 @keyframes puff-in {
     0% {
@@ -216,20 +148,6 @@
         transform: scaleX(1) translateX(80%);
         -webkit-filter: blur(0px);
         filter: blur(0px);
-        opacity: 1;
-    }
-}
-
-@keyframes flickerAnimation {
-    0% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-    }
-
-    100% {
         opacity: 1;
     }
 }

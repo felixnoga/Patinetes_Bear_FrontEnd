@@ -1,7 +1,6 @@
 import { useAppContext } from "../context/context";
 import { useNavigate } from "react-router-dom";
-import '../assets/Login.css'
-
+import { IoLogOutOutline } from "react-icons/io5";
 
 const Logout = () => {
 
@@ -27,8 +26,9 @@ const Logout = () => {
 
     return (
 
-        <div> 
-        <button type='button' className="login-btn" onClick={logOut}>Logout</button>
+        <div className="AsideMenu-div--link logout"> 
+            <IoLogOutOutline className="AsideMenu-icon" />
+            <button type='button' className="AsideMenu-h4 logout" onClick={logOut}>Cerrar sesion</button>
         </div>
     )
 }

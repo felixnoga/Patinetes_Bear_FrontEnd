@@ -27,7 +27,6 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/no-trips" element={<NoTrips/>}/>
-          
           <Route path="/home" element={
             <ProtectedRoute>
                 <Home />
@@ -37,9 +36,9 @@ function App() {
             <Route path="forma_pago" element={<Payments />} />
             <Route path="payments" element={<Invoice />}></Route>
             <Route path='all-trips' element={<AllTrips/>}></Route>
+            <Route path='paymentform' element={<Payments/>}></Route>
           </Route>
           <Route path="*" element={<h1>Esta ruta no existe</h1>} />
-           
         </Routes>
         <ErrorMessage />
         </ClientDataProvider>

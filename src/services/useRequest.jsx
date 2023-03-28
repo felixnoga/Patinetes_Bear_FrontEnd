@@ -1,4 +1,3 @@
-// import { useTripContext } from "../context/tripContext"
 import { useState } from "react";
 import mapboxReq from "./mapboxReq";
 import serverReq from "./serverReq";
@@ -18,11 +17,23 @@ const useRequest= ()=>{
     }finally{
         setLoading(false)
     }}
+    const getRoute = async (userLng, userLat, scooterLng, scooterLat)=>{
+        setLoading(true)
+    try {
+        const payload= await mapboxReq.getRoute(userLng, userLat, scooterLng, scooterLat);
+        const dir = payload.data.routes[0]
+        return dir
+    } catch(error){
+        return  
+    }finally{
+        setLoading(false)
+    }}
 
     const getNearbyScooters= async(lng, lat)=>{
         setLoading(true)
+        const token= window.localStorage.getItem("token")
         try {
-            const payload= await serverReq.nearbyScooters(lng, lat)
+            const payload= await serverReq.nearbyScooters(lng, lat, token)
             return payload.data
         }catch(error){
             throw Error(error.response.data.message)
@@ -33,8 +44,9 @@ const useRequest= ()=>{
 
     const getIso = async (lng, lat)=>{
         setLoading(true)
+        const token = window.localStorage.getItem("token")
     try {
-        const payload= await mapboxReq.getIso(lng, lat);
+        const payload= await mapboxReq.getIso(lng, lat, token);
             if (payload.status === 200) {
                 const dir = payload.data
                 return dir
@@ -47,8 +59,9 @@ const useRequest= ()=>{
     
     const bookingScooter = async (body) =>{
         setLoading(true)
+        const token = window.localStorage.getItem("token")
         try {
-            const payload = await serverReq.bookingScooter(body);
+            const payload = await serverReq.bookingScooter(body, token);
             const booking = payload.data
             return booking
         } catch (error){
@@ -59,9 +72,10 @@ const useRequest= ()=>{
     }
     const confirmBooking = async ({booking_id, lngUser, latUser }) =>{
         setLoading(true)
+        const token = window.localStorage.getItem("token")
         const body = { lng: lngUser , lat : latUser }
         try {
-            const payload = await serverReq.confirmBooking(booking_id, body);
+            const payload = await serverReq.confirmBooking(booking_id, body, token);
             const trip = payload.data
             return trip
         } catch (error){
@@ -72,10 +86,11 @@ const useRequest= ()=>{
     }
     const finishTrip = async ({trip_id, lng, lat }) =>{
         setLoading(true)
+        const token = window.localStorage.getItem("token")
         const time= new Date().toUTCString()
         const body = { time, lng, lat }
         try {
-            const payload = await serverReq.finishTrip(trip_id, body);
+            const payload = await serverReq.finishTrip(trip_id, body, token);
             const trip = payload.data
             return trip
         } catch (error) {
@@ -86,8 +101,9 @@ const useRequest= ()=>{
     }
     const cancelBooking= async (id_scooter)=>{
         setLoading(true)
+        const token = window.localStorage.getItem("token")
         try {
-            const payload = await serverReq.cancelBooking(id_scooter);
+            const payload = await serverReq.cancelBooking(id_scooter, token);
             return true
         } catch (error) {
             throw Error(error)
@@ -99,6 +115,7 @@ const useRequest= ()=>{
     return({
         loading,
         getDirection,
+        getRoute,
         getIso,
         getNearbyScooters,
         bookingScooter,

@@ -14,7 +14,7 @@ const Marks= memo(({onClick})=>{
 
     useEffect(()=>{
         const getScooters = async()=>{
-            if(bookState.onTrip|| bookState.isBooked || bookState.isSelected){
+            if(bookState.onTrip || bookState.isSelected){
                 return false
             }
             const [lngUser, latUser] = bookState.userPosition;
@@ -31,7 +31,7 @@ const Marks= memo(({onClick})=>{
             getScooters()
         }
 
-        },[bookState.userPosition])
+        },[bookState.userPosition , bookState.onTrip])
 
 
     if (!marksData || bookState.onTrip) return ;
@@ -42,7 +42,7 @@ const Marks= memo(({onClick})=>{
                 key={bookState.scooter.scooter_id}
                 longitude={bookState.scooter.lng}
                 latitude={bookState.scooter.lat} >
-                <img className="Marker-icon" src="/30.png" alt="logo Bear"></img>
+                <img className="Marker-icon2" src="/Patinete Logo azul.png" alt="logo Bear"></img>
             </Marker>
         )
     // Todas las Marcas
@@ -55,7 +55,9 @@ const Marks= memo(({onClick})=>{
                 longitude={point.lng}
                 latitude={point.lat}
                 onClick={() => onClick(point)} >
-                <img className="Marker-icon" src="/30.png" alt="logo Bear"></img>
+                    {/* <div className="Mark-div"> */}
+                <img className="Marker-icon" src="/Patinele Logo normal.png" alt="logo Bear"></img>
+                {/* </div> */}
             </Marker>)
         }
         </>
