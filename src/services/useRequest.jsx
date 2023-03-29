@@ -21,8 +21,8 @@ const useRequest= ()=>{
         setLoading(true)
     try {
         const payload= await mapboxReq.getRoute(userLng, userLat, scooterLng, scooterLat);
-        const dir = payload.data.routes[0]
-        return dir
+        const route = payload.data.routes[0]
+        return route
     } catch(error){
         return  
     }finally{
@@ -31,7 +31,7 @@ const useRequest= ()=>{
 
     const getNearbyScooters= async(lng, lat)=>{
         setLoading(true)
-        const token= window.localStorage.getItem("token")
+        const token = window.localStorage.getItem("token")
         try {
             const payload= await serverReq.nearbyScooters(lng, lat, token)
             return payload.data
@@ -44,9 +44,8 @@ const useRequest= ()=>{
 
     const getIso = async (lng, lat)=>{
         setLoading(true)
-        const token = window.localStorage.getItem("token")
     try {
-        const payload= await mapboxReq.getIso(lng, lat, token);
+        const payload= await mapboxReq.getIso(lng, lat);
             if (payload.status === 200) {
                 const dir = payload.data
                 return dir
@@ -111,6 +110,7 @@ const useRequest= ()=>{
             setLoading(false)
         }
     }
+    
 
     return({
         loading,

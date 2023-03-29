@@ -208,16 +208,16 @@
 @keyframes puff-in {
     0% {
         
-        -webkit-transform: scaleX(2);
-        transform: scaleX(2);
+        -webkit-transform: scaleY(2);
+        transform: scaleY(2);
         -webkit-filter: blur(4px);
         filter: blur(4px);
         opacity: 0;
     }
 
     100% {
-        -webkit-transform: scaleX(1);
-        transform: scaleX(1) translateX(80%);
+        -webkit-transform: scaleY(1);
+        transform: scaleX(Y) translateY(5%);
         -webkit-filter: blur(0px);
         filter: blur(0px);
         opacity: 1;
