@@ -13,7 +13,7 @@
 .TripInterface-div.isActive{
     position: absolute;
     top: 0;
-    height: 100vh;
+    height: 100dvh;
     z-index:5;
 }
 
