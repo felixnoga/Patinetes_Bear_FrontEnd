@@ -14,7 +14,6 @@ const DragBar= ({action = null})=>{
         // event.dataTransfer.setDragImage(imagen.current, 0, 0);
         // event.dataTransfer.effectAllowed = "move";
         const startX= event.clientX
-        console.log("start", event.clientX, startPosition, finalPosition)
         setStartPosition(startX)
         setIsMoving(true)
         document.addEventListener("mousemove", movement)

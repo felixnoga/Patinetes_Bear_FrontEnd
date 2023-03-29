@@ -18,7 +18,6 @@ const RouteLayer = memo(()=>{
                     setRoute(payload)
                 };
             updateRoute()
-            console.log(route)
         }
     }, [userPosition, isBooked])
 
@@ -27,13 +26,15 @@ const RouteLayer = memo(()=>{
         type: 'line',
         layout:{
         "line-join" : "round", 
+        "line-cap": "round",
+        "line-round-limit": 5,
         },
         paint: {
             "line-width": 6,
-            "line-opacity": 0.7,
+            "line-opacity": 0.9,
             "line-color": "#31B8B8",
             "line-offset" : 8,
-            "line-dasharray":[ 1 , 1]  
+            "line-dasharray":[ .4 , 1.2]  
         }
     };
     if(!route || onTrip || !isBooked )

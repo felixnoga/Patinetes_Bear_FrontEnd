@@ -52,7 +52,6 @@ const useBookingButton = ({ isInZone, cancelTrip })=>{
             init()
         }catch(error){
             handleError("ups, parece que no pudimos confirmar la reserva de esta scooter")
-            console.log(error)
         }
     }
     const handleCancel= async ()=> {

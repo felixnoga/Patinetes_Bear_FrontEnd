@@ -48,7 +48,6 @@ const Trip = ({cancelTime})=>{
         event.preventDefault()
         let booking_id = id
         if (id=== false){ booking_id = trip.booking_id}
-        console.log(trip)
         try{
             const data= await confirmBooking({booking_id ,lngUser, latUser})
             const payload= {
@@ -59,7 +58,6 @@ const Trip = ({cancelTime})=>{
                 cancelTime(true);
         }catch(error){
             handleError("ups, no pudimos confirmar tu viaje, parece que hemos tenido un error")
-            console.log(error)
         }
         
     }
@@ -82,7 +80,6 @@ const Trip = ({cancelTime})=>{
             return data.data.booking_id
         } catch (error) {
             handleError("ups, parece que no pudimos confirmar la reserva de esta scooter")
-            console.log(error)
         }
     }
     const handleWithoutReserve= async (event)=>{
