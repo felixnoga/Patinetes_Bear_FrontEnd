@@ -21,6 +21,7 @@ const BookingButton = ({ isInZone, cancelTrip })=>{
         if(outOfTime){
         handleContext(types.bookScooter, false)
         // updateBook()
+        handleCancel()
         cancelTrip(false)
         }
     },[outOfTime])
@@ -52,7 +53,6 @@ const BookingButton = ({ isInZone, cancelTrip })=>{
             init()
         }catch(error){
             handleError("ups, parece que no pudimos confirmar la reserva de esta scooter")
-            console.log(error)
         }
     }
     const handleCancel= async ()=> {

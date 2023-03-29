@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useEffect } from "react";
-import { useLayoutEffect, useState } from "react";
+import { useState } from "react";
 
 const useLoc= ()=> {
     const [lat, setLat]=useState()
@@ -13,7 +13,6 @@ const useLoc= ()=> {
     },[])
     const handleError= (error)=> {
         setError(error)
-        console.log(error)
     }
     // // Genera errores usar el useLayout o useEffect
     useEffect(()=> {
