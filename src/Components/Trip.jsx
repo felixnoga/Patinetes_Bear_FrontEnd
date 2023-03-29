@@ -3,6 +3,7 @@ import { useTripContext } from "../context/tripContext"
 import { useAppContext } from "../context/context"
 import { types } from "../utils/bookReducer"
 import { IoMdUnlock } from "react-icons/io";
+import { useClientContext } from "../context/clientDataContext";
 import useRequest from "../services/useRequest"
 import "../assets/Trip.css"
 import SpinRotate from "../utils/SpinRotate"
@@ -10,9 +11,10 @@ import SpinRotate from "../utils/SpinRotate"
 const Trip = ({cancelTime})=>{
     const {bookState:{userPosition, scooter, isBooked, isSelected, trip}, handleContext} = useTripContext()
     const { handleError } = useAppContext()
-    const {loading, confirmBooking}= useRequest()
+    const { clientData } = useClientContext();
+    const {loading, confirmBooking, bookingScooter}= useRequest()
     const [isInZone, setIsInZone]= useState(false)
-    const [hiding, setHiding]= useState(false)
+    // const [hiding, setHiding]= useState(false)
     const [lngUser, latUser] = userPosition;
     // Funcion para que cuando este a menos de 20 metros se active el pop up.
     const isLessThan20Meters= useCallback(()=>{ 
@@ -42,30 +44,57 @@ const Trip = ({cancelTime})=>{
 
 
 
-    const handleSubmit= async (event)=>{
+    const handleSubmit= async (event, id= false)=>{
         event.preventDefault()
-        const booking_id= trip.booking_id
+        let booking_id = id
+        if (id=== false){ booking_id = trip.booking_id}
+        console.log(trip)
         try{
             const data= await confirmBooking({booking_id ,lngUser, latUser})
             const payload= {
                 trip_id: data.trip_id
             }
             handleContext(types.updateTripData, payload)
-            setHiding(true)
                 handleContext(types.trip, true);
                 cancelTime(true);
-                setHiding(false)
         }catch(error){
             handleError("ups, no pudimos confirmar tu viaje, parece que hemos tenido un error")
             console.log(error)
-            
         }
         
     }
+
+    const bookWithoutReserve= async (event)=>{
+        event.preventDefault()
+        const id_user = clientData.client_id
+        const body = {
+            id_user,
+            id_scooter: scooter.scooter_id
+        }
+        try {
+            const data = await bookingScooter(body);
+            const payload = {
+                booking_id: data.data.booking_id,
+                booking_code: data.code
+            }
+            handleContext(types.updateTripData, payload)
+            handleContext(types.bookScooter, true);
+            return data.data.booking_id
+        } catch (error) {
+            handleError("ups, parece que no pudimos confirmar la reserva de esta scooter")
+            console.log(error)
+        }
+    }
+    const handleWithoutReserve= async (event)=>{
+        const reserve = await bookWithoutReserve(event)
+        await handleSubmit(event, reserve)
+    }
+
      
     if (isInZone){
         return(
-            <div onClick={handleSubmit} className="Trip-form">
+            <div onClick={ isBooked ? handleSubmit : handleWithoutReserve} 
+                        className="Trip-form">
                         {loading ? <SpinRotate /> : <button type="submit" className="Trip-btn Trip-btn--Booking">
                         <IoMdUnlock className="Trip-btn--icon" />
                         Desbloquear</button>}

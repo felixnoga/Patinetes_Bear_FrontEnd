@@ -2,6 +2,7 @@ import { useMemo, useRef} from "react";
 import Map, {GeolocateControl} from "react-map-gl"
 import { useTripContext } from "../context/tripContext";
 import Marks from "./Mapcomponents/Marks";
+import RouteLayer from "./Mapcomponents/RouteLayer";
 import TenMinLayer from "./Mapcomponents/TenMinLayer"
 import {types} from "../utils/bookReducer"
 import "../assets/Map.css"
@@ -70,6 +71,7 @@ const Map2= () => {
                     />
                 <Marks onClick={centerView}/>
                 <TenMinLayer/>
+                <RouteLayer/>
             </Map>
         </div>
     )

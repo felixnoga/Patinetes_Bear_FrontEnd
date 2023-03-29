@@ -1,6 +1,6 @@
 import { useNavigate, Link } from "react-router-dom"
 import { useAppContext } from "../context/context";
-import {useState, useTransition} from 'react';
+import {useState} from 'react';
 import { BsGoogle, BsFacebook, BsApple } from "react-icons/bs";
 import SpinRotate from "../utils/SpinRotate";
 import '../assets/Login.css'
@@ -75,45 +75,45 @@ const Login=() => {
 
         return(
             <div className="Login-div-Main">  
-            <div className="title-login2">
-                <h1 className="Login-logo">SPEEDY</h1>
-               <h1>Inicio de sesión</h1>
-           </div>
-               <div className="login-conteiner">
-   
-                   <form className="big-login-input">
-                       <div>
-                           <input className='login2-input' type="text" name="email" placeholder="Email" required onChange={(e) => handle(e)} value={data.email} />
-                       </div>
-   
-                       <div >
-                           <input className='login2-input' type="password" placeholder="Contraseña" required onChange={(e) => handle(e)} name="password" value={data.password} />
-                       </div>
-                       <p className="Login-p">He olvidado mi contraseña</p>
-                   </form>
-                   <div>
-                        <button type='button' className="login2-btn" onClick={login}>
-                            {isPending ? <SpinRotate color={"white"}/> :  "Iniciar sesión"}
-                        </button >
-                   </div>
-                   <div className="box-login">
-                   <Link className='link' to="/register">
-                   <h4 className="subtitle-login">¿No tienes cuenta todavia? <b className="reg">Registrate</b> </h4>
-                   </Link>
-                   </div>
-                   {/* para pruebas solo
-                   <button type='button' className="login2-btn" onClick={autoEnter}>TEST</button> */}
-
-                    <div className="Login-div-footer">
-                        <p className="Login-p">O con</p>
-                        <div className="Login-div-footericons">
-                        <BsGoogle className="Login-icon"/>
-                        <BsFacebook className="Login-icon" />
-                        <BsApple className="Login-icon" />
+                <div className="title-login2">
+                    <h1 className="Login-logo">SPEEDY</h1>
+                <h1>Inicio de sesión</h1>
+            </div>
+                <div className="login-conteiner">
+    
+                    <form className="big-login-input">
+                        <div>
+                            <input className='login2-input' type="text" name="email" placeholder="Email" required onChange={(e) => handle(e)} value={data.email} />
                         </div>
+    
+                        <div >
+                            <input className='login2-input' type="password" placeholder="Contraseña" required onChange={(e) => handle(e)} name="password" value={data.password} />
+                        </div>
+                        <p className="Login-p">He olvidado mi contraseña</p>
+                    </form>
+                    <div>
+                            <button type='button' className="login2-btn" onClick={login}>
+                                {isPending ? <SpinRotate color={"white"}/> :  "Iniciar sesión"}
+                            </button >
                     </div>
-               </div>
-               
+                    <div className="box-login">
+                    <Link className='link' to="/register">
+                    <h4 className="subtitle-login">¿No tienes cuenta todavia? <b className="reg">Registrate</b> </h4>
+                    </Link>
+                    </div>
+                    {/* para pruebas solo
+                    <button type='button' className="login2-btn" onClick={autoEnter}>TEST</button> */}
+
+                        <div className="Login-div-footer">
+                            <p className="Login-p">O con</p>
+                            <div className="Login-div-footericons">
+                            <BsGoogle className="Login-icon"/>
+                            <BsFacebook className="Login-icon" />
+                            <BsApple className="Login-icon" />
+                            </div>
+                        </div>
+                </div>
+                
            </div>
         )
 
