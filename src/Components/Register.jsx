@@ -8,7 +8,7 @@ import '../assets/Register.css'
 
 const Register = () => {
     const [isPending, setIsPending] = useState(false);
-    const { log, handleError } = useAppContext()
+    const {handleError } = useAppContext()
     const toLogin = useNavigate();
 
     const url = `${process.env.REACT_APP_BASE_URL}/register`;
@@ -50,10 +50,6 @@ const Register = () => {
             if (parseRes.token) {
                 localStorage.setItem("token", parseRes.token);
                 localStorage.setItem("id", parseRes.id);
-
-               
- 
-                log();
                 toLogin("/home");
       
                } else {
@@ -71,11 +67,6 @@ const Register = () => {
         newData[e.target.name] = e.target.value;
         setData(newData);
     }
-
-    /*const handleClick= ()=>{
-        log()
-        toHome("/")
-    }*/
 
     return (
         <div className="Register-div-Main">

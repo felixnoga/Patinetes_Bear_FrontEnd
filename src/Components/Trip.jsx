@@ -7,6 +7,7 @@ import { useClientContext } from "../context/clientDataContext";
 import useRequest from "../services/useRequest"
 import "../assets/Trip.css"
 import SpinRotate from "../utils/SpinRotate"
+import DragBar from "./auxiliar/DragBar";
 
 const Trip = ({cancelTime})=>{
     const {bookState:{userPosition, scooter, isBooked, isSelected, trip}, handleContext} = useTripContext()
@@ -44,8 +45,8 @@ const Trip = ({cancelTime})=>{
 
 
 
-    const handleSubmit= async (event, id= false)=>{
-        event.preventDefault()
+    const handleSubmit= async ( id= false)=>{
+        console.log("trying")
         let booking_id = id
         if (id=== false){ booking_id = trip.booking_id}
         try{
@@ -62,8 +63,7 @@ const Trip = ({cancelTime})=>{
         
     }
 
-    const bookWithoutReserve= async (event)=>{
-        event.preventDefault()
+    const bookWithoutReserve= async ()=>{
         const id_user = clientData.client_id
         const body = {
             id_user,
@@ -82,30 +82,39 @@ const Trip = ({cancelTime})=>{
             handleError("ups, parece que no pudimos confirmar la reserva de esta scooter")
         }
     }
-    const handleWithoutReserve= async (event)=>{
-        const reserve = await bookWithoutReserve(event)
-        await handleSubmit(event, reserve)
+    const handleWithoutReserve= async ()=>{
+        const reserve = await bookWithoutReserve()
+        await handleSubmit(reserve)
     }
 
      
     if (isInZone){
         return(
-            <div onClick={ isBooked ? handleSubmit : handleWithoutReserve} 
+            <div onClick={ isBooked ? null : handleWithoutReserve} 
                         className="Trip-form">
-                        {loading ? <SpinRotate /> : <button type="submit" className="Trip-btn Trip-btn--Booking">
-                        <IoMdUnlock className="Trip-btn--icon" />
+                        {isBooked ? <DragBar action={handleSubmit}/> : loading ? <SpinRotate /> : <button type="submit" className="Trip-btn Trip-btn--Booking">
+                        <IoMdUnlock className="Trip-btn--icon"/>
                         Desbloquear</button>}
+                        
                     
             </div>
+            // <div onClick={ isBooked ? handleSubmit : handleWithoutReserve} 
+            //             className="Trip-form">
+            //             {loading ? <SpinRotate /> : <button type="submit" className="Trip-btn Trip-btn--Booking">
+            //             <IoMdUnlock className="Trip-btn--icon" />
+            //             Desbloquear</button>}
+                    
+            // </div>
         )
     }
     if (!isInZone)
     return (
         <div  className="Trip-div-main--NoBooking">
+            { isBooked ? <DragBar isDisabled={true}/> :  
             <button className="Trip-btn Trip-btn--NoBooking" type="button">
                 <IoMdUnlock className="Trip-btn--icon"/>
                 Desbloquear
-            </button>
+            </button>}
 
         </div>
 
