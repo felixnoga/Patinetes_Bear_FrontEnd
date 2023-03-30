@@ -1,47 +1,41 @@
-import { useState, useRef } from "react"
+import { useState, useEffect} from "react"
 import "../../assets/DragBar.css"
 
-const DragBar= ({action = null})=>{
-    const [startPosition, setStartPosition]= useState(false)
-    const [position, setPosition]= useState(0)
-    const [finalPosition, setFinalPosition]= useState(false)
-    const imagen = useRef()
-    const pos = useRef()
+const DragBar= ({action, isDisabled})=>{
+    const  [value, setValue]= useState(0)
+    const [isActivate, setIsActivate]= useState(false)
 
-    const dragStart= (event)=>{
-        event.dataTransfer.setDragImage(imagen.current, 0, 0);
-        event.dataTransfer.effectAllowed = "move"
-        event.dataTransfer.dropEffect = "move"
-        const start= event.clientX
-        setStartPosition(start)
-        console.log("start", startPosition)
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    }
+    const activateFunction= (event)=>{
+        if (event.target.value < 850){
+            setValue(0)
+           return setIsActivate("false")
+        }
+        setValue(1000)
+        setIsActivate(true)
+        action()
     }
 
-    const onMove= (event)=>{
-        
-    }
 
-    const dragEnd = async (event)=>{
-        const final = event.clientX
-        setFinalPosition(final)
-        const newPos= (final - startPosition)
-        setPosition((oldpos) =>
-            (oldpos + newPos))
-        console.log("end", finalPosition, newPos)
-    }
         return(
 
-
-        <div className="Dragbar-div--horizontal">
-                <div className="Dragbar-div--circle" style={{"left" : position}}
-                draggable
-                onDragStart={dragStart}
-                onDragEnd={dragEnd}
-                >
-
+        <>
+            <div>
+                <div className={`Dragbar-div--background ${isDisabled && "disabled"}`}>
+                        <p className={`Dragbar-p ${isDisabled && " disabled"}`}>Desliza para iniciar </p>
+                    <input className="Dragbar-div--horizontal" type="range" min="0" max="1000" step="1"
+                    value={value}
+                    onTouchEnd={activateFunction}
+                    onMouseUp={activateFunction}
+                    onChange={handleChange}
+                    disabled={isDisabled && true }
+                    />
                 </div>
-            <img ref={imagen}/>
-        </div>
+            </div>
+                    {/* <p>Valor seleccionado{value}  {isActivate}</p> */}
+        </>
     )
 
 }

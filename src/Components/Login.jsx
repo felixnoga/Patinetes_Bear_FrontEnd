@@ -3,6 +3,7 @@ import { useAppContext } from "../context/context";
 import {useState} from 'react';
 import { BsGoogle, BsFacebook, BsApple } from "react-icons/bs";
 import SpinRotate from "../utils/SpinRotate";
+import DragBar from "./auxiliar/DragBar";
 import '../assets/Login.css'
 
 const Login=() => {
@@ -47,8 +48,6 @@ const Login=() => {
         if (parseRes.token) {
             localStorage.setItem("token", parseRes.token);
             localStorage.setItem("id", parseRes.id);
-            
-            log();
             toHome("/home");
  
            } else {

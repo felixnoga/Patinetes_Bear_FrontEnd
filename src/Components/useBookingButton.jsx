@@ -35,7 +35,6 @@ const useBookingButton = ({ isInZone, cancelTrip })=>{
     }, [isInZone])
 
     const handleBooking= async ()=>{
-        // TODO pendiente cambiar user_id por el user del contexto
         const id_user= clientData.client_id
         const body= {
             id_user,
@@ -70,7 +69,6 @@ const useBookingButton = ({ isInZone, cancelTrip })=>{
             cancelTrip()
         } catch (error) {
             handleError("ups, parece que no pudimos cancelar esta reserva")
-            console.log(error)
         }
     }
 
