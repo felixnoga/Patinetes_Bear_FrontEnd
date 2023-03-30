@@ -69,7 +69,6 @@ const useBookingButton = ({ isInZone, cancelTrip })=>{
             cancelTrip()
         } catch (error) {
             handleError("ups, parece que no pudimos cancelar esta reserva")
-            console.log(error)
         }
     }
 

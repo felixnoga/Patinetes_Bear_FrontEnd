@@ -9,7 +9,6 @@ const DragBar= ({action, isDisabled})=>{
         setValue(event.target.value);
     }
     const activateFunction= (event)=>{
-        console.log("activate")
         if (event.target.value < 850){
             setValue(0)
            return setIsActivate("false")

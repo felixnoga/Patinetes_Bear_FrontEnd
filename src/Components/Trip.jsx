@@ -46,7 +46,6 @@ const Trip = ({cancelTime})=>{
 
 
     const handleSubmit= async ( id= false)=>{
-        console.log("trying")
         let booking_id = id
         if (id=== false){ booking_id = trip.booking_id}
         try{
