@@ -3,6 +3,7 @@ import { useAppContext } from "../context/context";
 import {useState} from 'react';
 import { BsGoogle, BsFacebook, BsApple } from "react-icons/bs";
 import SpinRotate from "../utils/SpinRotate";
+import DragBar from "./auxiliar/DragBar";
 import '../assets/Login.css'
 
 const Login=() => {
@@ -101,6 +102,7 @@ const Login=() => {
                     <h4 className="subtitle-login">¿No tienes cuenta todavia? <b className="reg">Registrate</b> </h4>
                     </Link>
                     </div>
+                    <DragBar/>
                     {/* para pruebas solo
                     <button type='button' className="login2-btn" onClick={autoEnter}>TEST</button> */}
 

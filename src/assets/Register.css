@@ -14,7 +14,7 @@
 .title-register {
     display: flex;
     flex-direction: column;
-    gap:1.3em;
+    gap:1.6em;
     align-items: center;
     justify-content: center;
     position: relative;
@@ -74,7 +74,7 @@
     font-size: 4rem;
 }
 
-.register-register-btn {
+/* .register-register-btn {
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -91,13 +91,13 @@
     align-items: center;
     margin: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
+} */
 
 .register-btn {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    width: 28em;
+    width: 26em;
     height: 40px;
     background-color: #31B8B8;
     border-radius: 1.6em;
