@@ -24,17 +24,16 @@ const DragBar= ({action, isDisabled})=>{
         <>
             <div>
                 <div className={`Dragbar-div--background ${isDisabled && "disabled"}`}>
-                        <p className={`Dragbar-p ${isDisabled && " disabled"}`}>Desliza para iniciar </p>
-                    <input className="Dragbar-div--horizontal" type="range" min="0" max="1000" step="1"
+                        <p className={`Dragbar-p ${isDisabled && " disabled"}`}>{isDisabled ? "Acercate a la scooter para iniciar" : "Desliza para iniciar"} </p>
+                    {!isDisabled && <input className="Dragbar-div--horizontal" type="range" min="0" max="1000" step="1"
                     value={value}
                     onTouchEnd={activateFunction}
                     onMouseUp={activateFunction}
                     onChange={handleChange}
                     disabled={isDisabled && true }
-                    />
+                    />}
                 </div>
             </div>
-                    {/* <p>Valor seleccionado{value}  {isActivate}</p> */}
         </>
     )
 

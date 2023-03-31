@@ -43,9 +43,12 @@ const Register = () => {
                 } 
                 );
                 const parseRes = await res.json(); 
-                if (parseRes.error || parseRes.errors) {
-                    handleError(parseRes.errors[0].msg)
-                }      
+                if (parseRes.errors) {
+                    handleError(parseRes.errors[0].msg)   
+                }
+                if (parseRes.error){
+                    handleError(parseRes.error)
+                }
     
             if (parseRes.token) {
                 localStorage.setItem("token", parseRes.token);
